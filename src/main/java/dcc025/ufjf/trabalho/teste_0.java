@@ -10,5 +10,7 @@ package dcc025.ufjf.trabalho;
  * @author thales
  */
 public class teste_0 {
-    
+    public static void main(String[] args) {
+        System.out.println("ta funcionando");
+    }
 }
