@@ -24,6 +24,8 @@ public class Restaurante {
         System.out.println("BEM VINDO!");
         System.out.println("O que gostaria de fazer: ");
         System.out.println("(1) CARDAPIO");
+        System.out.println("(2) CONTAS");
+        System.out.println("(3) ESTOQUE");
         opcao = scan.nextInt();
         
         if(opcao==1){

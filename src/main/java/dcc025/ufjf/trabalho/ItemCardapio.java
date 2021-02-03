@@ -13,12 +13,17 @@ public class ItemCardapio {
     
     private String nome;
     private String descricao;
-    private String preço;
+    private float preco;
 
-    public ItemCardapio(String nome, String descricao, String preço) {
+    public ItemCardapio(String nome, String descricao, float preco) {
         this.nome = nome;
         this.descricao = descricao;
-        this.preço = preço;
+        this.preco = preco;
+    }
+    
+    @Override
+    public String toString (){
+        return nome + "\n  " + descricao + "\n  R$" + preco;
     }
 
     public String getNome() {
@@ -37,11 +42,11 @@ public class ItemCardapio {
         this.descricao = descricao;
     }
 
-    public String getPreço() {
-        return preço;
+    public float getPreço() {
+        return preco;
     }
 
-    public void setPreço(String preço) {
-        this.preço = preço;
+    public void setPreço(float preco) {
+        this.preco = preco;
     }
 }

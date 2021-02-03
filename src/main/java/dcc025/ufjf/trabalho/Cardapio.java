@@ -13,18 +13,19 @@ import java.util.List;
  * @author pedro
  */
 public class Cardapio {
-    List<String> Itens = new ArrayList<String>();
+    List<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
     
     public Cardapio () {
-        Itens.add("Romulo picado");
-        Itens.add("Thales");
-        Itens.add("Júca flambado");
+        Itens.add(new ItemCardapio("a","a",100.50f));
+        Itens.add(new ItemCardapio("b","b",150.50f));
+        Itens.add(new ItemCardapio("c","c",50.50f));
+        
     }
     
     public void verCardapio (){
         System.out.println("Cardapio -------------------");
         int i = 1;
-        for(String item : Itens){
+        for(ItemCardapio item : Itens){
             System.out.println(i + " " + item);
             i++;
         }
