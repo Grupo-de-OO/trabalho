@@ -27,9 +27,8 @@ public class  Estoque
     
     public void verEstoque(){
     
-        Generica imprimeEstoque = new Generica("ESTOQUE"); //Achar o por que quando imprime o cardapio 
-        imprimeEstoque.ver(estoqueItens);                   // vem o estoque também
-        
+        Generica imprimeEstoque = new Generica("ESTOQUE");  
+        imprimeEstoque.ver(estoqueItens);                  
         
         
         
