@@ -13,7 +13,7 @@ import java.util.List;
  * @author pedro
  */
 public class Cardapio {
-    List<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
+    ArrayList<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
     
     public Cardapio () {
         Itens.add(new ItemCardapio("a","a",100.50f));
@@ -23,6 +23,7 @@ public class Cardapio {
     }
     
     public void verCardapio (){
+    /*
         System.out.println("Cardapio -------------------");
         int i = 1;
         for(ItemCardapio item : Itens){
@@ -30,4 +31,11 @@ public class Cardapio {
             i++;
         }
     }
+    */
+       Generica imprimeCardapio = new Generica("CARDAPIO");
+       imprimeCardapio.ver(this.Itens);
+
+
+
+}
 }
