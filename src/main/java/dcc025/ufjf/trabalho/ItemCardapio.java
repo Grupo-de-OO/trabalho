@@ -5,6 +5,7 @@
  */
 package dcc025.ufjf.trabalho;
 
+import java.util.*;
 /**
  *
  * @author bruno
@@ -14,6 +15,7 @@ public class ItemCardapio {
     private String nome;
     private String descricao;
     private float preco;
+    private List<Ingrediente> ingredientesNecessarios = new ArrayList<Ingrediente>();
 
     public ItemCardapio(String nome, String descricao, float preco) {
         this.nome = nome;
@@ -49,4 +51,13 @@ public class ItemCardapio {
     public void setPreço(float preco) {
         this.preco = preco;
     }
+
+    public List<Ingrediente> getIngredientesNecessarios() {
+        return ingredientesNecessarios;
+    }
+
+    public void setIngredientesNecessarios(List<Ingrediente> ingredientesNecessarios) {
+        this.ingredientesNecessarios = ingredientesNecessarios;
+    }
+    
 }

@@ -20,9 +20,6 @@ public class Generica {
         
     }
     
- 
-
-   
     public <T> void ver(ArrayList<T> itens)
     {
         System.out.println(" " + this.nomePrincipal + " -------------------");
@@ -33,8 +30,6 @@ public class Generica {
             System.out.println(i + " " + item);
             i++;
         }
-    
-    
-    
-}
+   
+    }
 }

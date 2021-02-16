@@ -13,7 +13,7 @@ import java.util.List;
  * @author pedro
  */
 public class Cardapio {
-    ArrayList<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
+    private ArrayList<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
     
     public Cardapio () {
         Itens.add(new ItemCardapio("a","a",100.50f));
@@ -34,8 +34,5 @@ public class Cardapio {
     */ 
        Generica imprimeCardapio = new Generica("CARDAPIO");
        imprimeCardapio.ver(this.Itens);
-
-
-
-}
+    }
 }

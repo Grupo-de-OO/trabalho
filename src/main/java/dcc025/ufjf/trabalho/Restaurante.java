@@ -5,8 +5,8 @@
  */
 package dcc025.ufjf.trabalho;
 
-import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,7 +16,6 @@ public class Restaurante {
     
     public static Cardapio cardapio = new Cardapio();
     public static Estoque estoque = new Estoque();
-    
     
     
     public static void main(String[] args) {
@@ -35,7 +34,23 @@ public class Restaurante {
                 cardapio.verCardapio(); 
                 break;
             case 3:
-                estoque.verEstoque();
+                String[] options2 = {"Ver estoque","Adicionar item ao estoque","Remover item do estoque"};
+                int opcao2 = JOptionPane.showOptionDialog(null, "O que gostaria de fazer no estoque:", "ESTOQUE", JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE, null, options2, options2[0]) + 1;
+                switch(opcao2){
+                    case 1:
+                        estoque.verEstoque();
+                        break;
+                    case 2:
+                        JTextField nome = new JTextField();
+                        JTextField quantidade = new JTextField();
+                        JTextField unidade = new JTextField();
+                        Object[] novoIngrediente = {"Nome:", nome,"Quantidade:",quantidade,"Unidade:",unidade};
+                        JOptionPane.showMessageDialog(null,novoIngrediente);
+                        estoque.addEstoque(nome.getText(),Integer.parseInt(quantidade.getText()), unidade.getText());
+                        break;
+                    case 3:
+                        break;
+                }
                 break;
              
                 
