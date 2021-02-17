@@ -8,6 +8,7 @@ package dcc025.ufjf.layout;
 import dcc025.ufjf.trabalho.Estoque;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -191,10 +192,7 @@ public class Menu extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
+                {"teste",  new Integer(1), "kg"},
                 {null, null, null}
             },
             new String [] {
@@ -357,12 +355,15 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-//        JTextField nome = new JTextField();
-//        JTextField quantidade = new JTextField();
-//        JTextField unidade = new JTextField();
-//        Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
-//        JOptionPane.showMessageDialog(null, novoIngrediente);
-//        estoque.addEstoque(nome.getText(), Integer.parseInt(quantidade.getText()), unidade.getText());
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        JTextField nome = new JTextField();
+        JTextField quantidade = new JTextField();
+        JTextField unidade = new JTextField();
+        Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
+        JOptionPane.showMessageDialog(null, novoIngrediente);
+        estoque.addEstoque(nome.getText(), Integer.parseInt(quantidade.getText()), unidade.getText());
+        estoque.verEstoque();
+        model.addRow(new Object[] {nome.getText(), quantidade.getText(), unidade.getText()});
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
