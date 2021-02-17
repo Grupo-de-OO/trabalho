@@ -45,26 +45,26 @@ public class Menu extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         pComandas = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel10 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        LabelComandaFix = new javax.swing.JLabel();
+        jSeparador_Comanda = new javax.swing.JSeparator();
+        jLabelN = new javax.swing.JLabel();
+        jComboBoxComandas = new javax.swing.JComboBox<>();
+        jLabelMesaFix = new javax.swing.JLabel();
+        jLabelMesa = new javax.swing.JLabel();
+        jScrollPaneComandas = new javax.swing.JScrollPane();
+        jTableComandas = new javax.swing.JTable();
+        jButtonInserirC = new javax.swing.JButton();
+        jButtonInserirItem = new javax.swing.JButton();
+        jButtonRemItem = new javax.swing.JButton();
+        jButtonFechaComanda = new javax.swing.JButton();
         pCaixa = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        jLabelCaixaFix = new javax.swing.JLabel();
+        jScrollPaneCaixa = new javax.swing.JScrollPane();
+        jTableCaixa = new javax.swing.JTable();
+        jLabelSaldo = new javax.swing.JLabel();
+        jLabelAberto = new javax.swing.JLabel();
+        jLabelEmCaixa = new javax.swing.JLabel();
+        jButtonNovaTrans = new javax.swing.JButton();
         pEstoque = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
@@ -150,27 +150,27 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel3.setText("COMANDAS");
+        LabelComandaFix.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        LabelComandaFix.setText("COMANDAS");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel10.setText("Nº:");
+        jLabelN.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelN.setText("Nº:");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxComandas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jComboBoxComandas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel11.setText("Mesa:");
+        jLabelMesaFix.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelMesaFix.setText("Mesa:");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel12.setText("XXXX");
+        jLabelMesa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelMesa.setText("XXXX");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableComandas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -215,28 +215,28 @@ public class Menu extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPaneComandas.setViewportView(jTableComandas);
 
-        jButton8.setText("Inserir Comanda");
+        jButtonInserirC.setText("Inserir Comanda");
 
-        jButton9.setText("Inserir Item");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInserirItem.setText("Inserir Item");
+        jButtonInserirItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButtonInserirItemActionPerformed(evt);
             }
         });
 
-        jButton10.setText("Remover Item");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRemItem.setText("Remover Item");
+        jButtonRemItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                jButtonRemItemActionPerformed(evt);
             }
         });
 
-        jButton11.setText("Fechar Comanda");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFechaComanda.setText("Fechar Comanda");
+        jButtonFechaComanda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                jButtonFechaComandaActionPerformed(evt);
             }
         });
 
@@ -249,63 +249,63 @@ public class Menu extends javax.swing.JFrame {
                 .addGroup(pComandasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pComandasLayout.createSequentialGroup()
                         .addGroup(pComandasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparador_Comanda, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(pComandasLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addComponent(jLabelN)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxComandas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel11)
+                                .addComponent(jLabelMesaFix)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel12)
+                                .addComponent(jLabelMesa)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pComandasLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
+                        .addComponent(LabelComandaFix)
                         .addGap(186, 186, 186))
                     .addGroup(pComandasLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPaneComandas, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pComandasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                            .addComponent(jButton10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                            .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                            .addComponent(jButtonInserirC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonInserirItem, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(jButtonRemItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(jButtonFechaComanda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         pComandasLayout.setVerticalGroup(
             pComandasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pComandasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addComponent(LabelComandaFix)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparador_Comanda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pComandasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabelN)
+                    .addComponent(jComboBoxComandas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelMesaFix)
+                    .addComponent(jLabelMesa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pComandasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneComandas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pComandasLayout.createSequentialGroup()
-                        .addComponent(jButton8)
+                        .addComponent(jButtonInserirC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9)
+                        .addComponent(jButtonInserirItem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton10)
+                        .addComponent(jButtonRemItem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton11)))
+                        .addComponent(jButtonFechaComanda)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel4.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("CAIXA");
+        jLabelCaixaFix.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        jLabelCaixaFix.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelCaixaFix.setText("CAIXA");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCaixa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Conta Mesa #1", "Conta paga", "R$ 100,00"},
                 {"Conta Mesa #2", "Conta paga", "R$ 150,00"},
@@ -315,18 +315,18 @@ public class Menu extends javax.swing.JFrame {
                 "Transação", "Descrição", "Valor"
             }
         ));
-        jScrollPane1.setViewportView(jTable2);
+        jScrollPaneCaixa.setViewportView(jTableCaixa);
 
-        jLabel7.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel7.setText("Saldo do dia: R$ 100,00");
+        jLabelSaldo.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabelSaldo.setText("Saldo do dia: R$ 100,00");
 
-        jLabel8.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel8.setText("Comandas em aberto: R$ 100,00");
+        jLabelAberto.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabelAberto.setText("Comandas em aberto: R$ 100,00");
 
-        jLabel9.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabel9.setText("Em caixa: R$ 200,00");
+        jLabelEmCaixa.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
+        jLabelEmCaixa.setText("Em caixa: R$ 200,00");
 
-        jButton7.setText("Nova transação");
+        jButtonNovaTrans.setText("Nova transação");
 
         javax.swing.GroupLayout pCaixaLayout = new javax.swing.GroupLayout(pCaixa);
         pCaixa.setLayout(pCaixaLayout);
@@ -334,37 +334,37 @@ public class Menu extends javax.swing.JFrame {
             pCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pCaixaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelCaixaFix, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(pCaixaLayout.createSequentialGroup()
                 .addGap(64, 64, 64)
                 .addGroup(pCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pCaixaLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(jLabelEmCaixa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel8))
+                        .addComponent(jLabelAberto))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pCaixaLayout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonNovaTrans, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)))
+                        .addComponent(jLabelSaldo)))
                 .addGap(0, 69, Short.MAX_VALUE))
         );
         pCaixaLayout.setVerticalGroup(
             pCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pCaixaLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel4)
+                .addComponent(jLabelCaixaFix)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(pCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabelEmCaixa)
+                    .addComponent(jLabelAberto))
                 .addGap(34, 34, 34)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jButtonNovaTrans, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSaldo))
                 .addGap(65, 65, 65))
         );
 
@@ -558,17 +558,17 @@ public class Menu extends javax.swing.JFrame {
         model.addRow(new Object[] {nome.getText(), quantidade.getText(), unidade.getText()});
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void jButtonInserirItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInserirItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_jButtonInserirItemActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void jButtonRemItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_jButtonRemItemActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void jButtonFechaComandaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFechaComandaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_jButtonFechaComandaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -606,41 +606,41 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelComandaFix;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButtonFechaComanda;
+    private javax.swing.JButton jButtonInserirC;
+    private javax.swing.JButton jButtonInserirItem;
+    private javax.swing.JButton jButtonNovaTrans;
+    private javax.swing.JButton jButtonRemItem;
+    private javax.swing.JComboBox<String> jComboBoxComandas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelAberto;
+    private javax.swing.JLabel jLabelCaixaFix;
+    private javax.swing.JLabel jLabelEmCaixa;
+    private javax.swing.JLabel jLabelMesa;
+    private javax.swing.JLabel jLabelMesaFix;
+    private javax.swing.JLabel jLabelN;
+    private javax.swing.JLabel jLabelSaldo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPaneCaixa;
+    private javax.swing.JScrollPane jScrollPaneComandas;
+    private javax.swing.JSeparator jSeparador_Comanda;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTableCaixa;
+    private javax.swing.JTable jTableComandas;
     private javax.swing.JPanel pCaixa;
     private javax.swing.JPanel pCardapio;
     private javax.swing.JPanel pComandas;
