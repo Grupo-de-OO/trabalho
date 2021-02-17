@@ -57,6 +57,7 @@ public class Menu extends javax.swing.JFrame {
         jButtonInserirItem = new javax.swing.JButton();
         jButtonRemItem = new javax.swing.JButton();
         jButtonFechaComanda = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         pCaixa = new javax.swing.JPanel();
         jLabelCaixaFix = new javax.swing.JLabel();
         jScrollPaneCaixa = new javax.swing.JScrollPane();
@@ -117,7 +118,6 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Ubuntu", 1, 48)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon("/home/thales/projetos_ori_obj/trabalho/src/main/java/Imagens/restaurante.png")); // NOI18N
         jLabel6.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -169,13 +169,18 @@ public class Menu extends javax.swing.JFrame {
         jLabelN.setText("Nº:");
 
         jComboBoxComandas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBoxComandas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxComandas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        jComboBoxComandas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxComandasActionPerformed(evt);
+            }
+        });
 
         jLabelMesaFix.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelMesaFix.setText("Mesa:");
 
         jLabelMesa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelMesa.setText("XXXX");
+        jLabelMesa.setText("42");
 
         jTableComandas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -215,7 +220,7 @@ public class Menu extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Float.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -223,6 +228,12 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jScrollPaneComandas.setViewportView(jTableComandas);
+        if (jTableComandas.getColumnModel().getColumnCount() > 0) {
+            jTableComandas.getColumnModel().getColumn(0).setHeaderValue("Quantidade");
+            jTableComandas.getColumnModel().getColumn(1).setHeaderValue("Item");
+            jTableComandas.getColumnModel().getColumn(2).setResizable(false);
+            jTableComandas.getColumnModel().getColumn(2).setHeaderValue("Valor");
+        }
 
         jButtonInserirC.setText("Inserir Comanda");
         jButtonInserirC.addActionListener(new java.awt.event.ActionListener() {
@@ -251,6 +262,10 @@ public class Menu extends javax.swing.JFrame {
                 jButtonFechaComandaActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Total: R$150,00");
 
         javax.swing.GroupLayout pComandasLayout = new javax.swing.GroupLayout(pComandas);
         pComandas.setLayout(pComandasLayout);
@@ -281,10 +296,13 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pComandasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonRemItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonFechaComanda, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                            .addComponent(jButtonFechaComanda, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
                             .addComponent(jButtonInserirItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonInserirC, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                        .addContainerGap())))
+                            .addComponent(jButtonInserirC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(pComandasLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pComandasLayout.setVerticalGroup(
             pComandasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -301,7 +319,6 @@ public class Menu extends javax.swing.JFrame {
                     .addComponent(jLabelMesa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pComandasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneComandas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pComandasLayout.createSequentialGroup()
                         .addComponent(jButtonInserirC)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -309,8 +326,11 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonRemItem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonFechaComanda)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonFechaComanda))
+                    .addComponent(jScrollPaneComandas, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addGap(27, 27, 27))
         );
 
         jLabelCaixaFix.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
@@ -319,9 +339,9 @@ public class Menu extends javax.swing.JFrame {
 
         jTableCaixa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Conta Mesa #1", "Conta paga", "R$ 100,00"},
-                {"Conta Mesa #2", "Conta paga", "R$ 150,00"},
-                {"Mercado", "Compra de Ingredientes", "R$ 50,00"},
+                {"Conta  #1", "Conta paga", "R$ 100,00"},
+                {"Conta  #2", "Conta paga", "R$ 150,00"},
+                {"Mercado", "Compra de Ingredientes", "-R$ 50,00"},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -353,13 +373,13 @@ public class Menu extends javax.swing.JFrame {
         jScrollPaneCaixa.setViewportView(jTableCaixa);
 
         jLabelSaldo.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabelSaldo.setText("Saldo do dia: R$ 100,00");
+        jLabelSaldo.setText("Saldo do dia: R$ 200,00");
 
         jLabelAberto.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabelAberto.setText("Comandas em aberto: R$ 100,00");
+        jLabelAberto.setText("Comandas em aberto: R$ 150,00");
 
         jLabelEmCaixa.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
-        jLabelEmCaixa.setText("Em caixa: R$ 200,00");
+        jLabelEmCaixa.setText("Em caixa: R$ 1981,00");
 
         jButtonNovaTrans.setText("Nova transação");
         jButtonNovaTrans.addActionListener(new java.awt.event.ActionListener() {
@@ -434,13 +454,12 @@ public class Menu extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"teste",  new Integer(1), "kg"},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
+                {"Massa de pizza", "30", "Unid."},
+                {"Brahma Litrão", "50", "Unid."},
+                {"Frango", "20", "Kg"},
+                {"Picanha", "15", "Kg"},
+                {"Molho de tomate", "20", "Latas"},
+                {"", null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -461,11 +480,11 @@ public class Menu extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Ingrediente", "Quantidade", "Unidade"
+                "Produtos", "Quantidade", "Unidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -600,7 +619,7 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 592, Short.MAX_VALUE)
+            .addGap(0, 593, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pComandas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -740,6 +759,10 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jComboBoxComandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxComandasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxComandasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -791,6 +814,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRemItem;
     private javax.swing.JLabel jCardapioLabel;
     private javax.swing.JComboBox<String> jComboBoxComandas;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

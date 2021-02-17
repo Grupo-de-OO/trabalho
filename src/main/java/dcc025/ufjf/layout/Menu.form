@@ -154,9 +154,6 @@
                   <Font name="Ubuntu" size="48" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="/home/thales/projetos_ori_obj/trabalho/src/main/java/Imagens/restaurante.png"/>
-                </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
             </Component>
@@ -172,7 +169,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="592" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="593" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Component id="pComandas" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -240,11 +237,15 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jButtonRemItem" max="32767" attributes="0"/>
-                                      <Component id="jButtonFechaComanda" pref="146" max="32767" attributes="0"/>
+                                      <Component id="jButtonFechaComanda" pref="159" max="32767" attributes="0"/>
                                       <Component id="jButtonInserirItem" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jButtonInserirC" alignment="0" pref="146" max="32767" attributes="0"/>
+                                      <Component id="jButtonInserirC" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel1" min="-2" pref="207" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -253,20 +254,19 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="LabelComandaFix" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jSeparador_Comanda" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabelN" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBoxComandas" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelMesaFix" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelMesa" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPaneComandas" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="jButtonInserirC" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -276,8 +276,11 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButtonFechaComanda" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jScrollPaneComandas" min="-2" pref="365" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jLabel1" pref="54" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -308,13 +311,16 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                        <StringItem index="0" value="1"/>
+                        <StringItem index="1" value="2"/>
+                        <StringItem index="2" value="3"/>
+                        <StringItem index="3" value="4"/>
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxComandasActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -332,7 +338,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="XXXX"/>
+                    <Property name="text" type="java.lang.String" value="42"/>
                   </Properties>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPaneComandas">
@@ -346,25 +352,25 @@
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="3" rowCount="30">
-                            <Column editable="true" title="Quantidade" type="java.lang.Integer"/>
+                            <Column editable="true" title="Quantidade" type="java.lang.Float"/>
                             <Column editable="true" title="Item" type="java.lang.String"/>
-                            <Column editable="true" title="Valor" type="java.lang.Double"/>
+                            <Column editable="true" title="Valor" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
+                              <Title value="Quantidade"/>
                               <Editor/>
                               <Renderer/>
                             </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
+                              <Title value="Item"/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                              <Title/>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title value="Valor"/>
                               <Editor/>
                               <Renderer/>
                             </Column>
@@ -408,6 +414,15 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFechaComandaActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="24" style="0"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="2"/>
+                    <Property name="text" type="java.lang.String" value="Total: R$150,00"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -490,8 +505,8 @@
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="3" rowCount="26">
                             <Column editable="true" title="Transa&#xe7;&#xe3;o" type="java.lang.Object">
-                              <Data value="Conta Mesa #1"/>
-                              <Data value="Conta Mesa #2"/>
+                              <Data value="Conta  #1"/>
+                              <Data value="Conta  #2"/>
                               <Data value="Mercado"/>
                               <Data value="null"/>
                               <Data value="null"/>
@@ -548,7 +563,7 @@
                             <Column editable="true" title="Valor" type="java.lang.Object">
                               <Data value="R$ 100,00"/>
                               <Data value="R$ 150,00"/>
-                              <Data value="R$ 50,00"/>
+                              <Data value="-R$ 50,00"/>
                               <Data value="null"/>
                               <Data value="null"/>
                               <Data value="null"/>
@@ -606,7 +621,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Ubuntu" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Saldo do dia: R$ 100,00"/>
+                    <Property name="text" type="java.lang.String" value="Saldo do dia: R$ 200,00"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabelAberto">
@@ -614,7 +629,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Ubuntu" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Comandas em aberto: R$ 100,00"/>
+                    <Property name="text" type="java.lang.String" value="Comandas em aberto: R$ 150,00"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabelEmCaixa">
@@ -622,7 +637,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Ubuntu" size="18" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Em caixa: R$ 200,00"/>
+                    <Property name="text" type="java.lang.String" value="Em caixa: R$ 1981,00"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButtonNovaTrans">
@@ -721,15 +736,14 @@
                     <Component class="javax.swing.JTable" name="jTable1">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="3" rowCount="25">
-                            <Column editable="true" title="Ingrediente" type="java.lang.String">
-                              <Data value="teste"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
+                          <Table columnCount="3" rowCount="24">
+                            <Column editable="true" title="Produtos" type="java.lang.String">
+                              <Data value="Massa de pizza"/>
+                              <Data value="Brahma Litr&#xe3;o"/>
+                              <Data value="Frango"/>
+                              <Data value="Picanha"/>
+                              <Data value="Molho de tomate"/>
+                              <Data value=""/>
                               <Data value="null"/>
                               <Data value="null"/>
                               <Data value="null"/>
@@ -749,13 +763,12 @@
                               <Data value="null"/>
                               <Data value="null"/>
                             </Column>
-                            <Column editable="true" title="Quantidade" type="java.lang.Integer">
-                              <Data value="1"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
+                            <Column editable="true" title="Quantidade" type="java.lang.String">
+                              <Data value="30"/>
+                              <Data value="50"/>
+                              <Data value="20"/>
+                              <Data value="15"/>
+                              <Data value="20"/>
                               <Data value="null"/>
                               <Data value="null"/>
                               <Data value="null"/>
@@ -777,12 +790,11 @@
                               <Data value="null"/>
                             </Column>
                             <Column editable="true" title="Unidade" type="java.lang.String">
-                              <Data value="kg"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
-                              <Data value="null"/>
+                              <Data value="Unid."/>
+                              <Data value="Unid."/>
+                              <Data value="Kg"/>
+                              <Data value="Kg"/>
+                              <Data value="Latas"/>
                               <Data value="null"/>
                               <Data value="null"/>
                               <Data value="null"/>
