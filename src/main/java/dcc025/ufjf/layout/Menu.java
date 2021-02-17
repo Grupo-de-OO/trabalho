@@ -72,7 +72,11 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         pCardapio = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jCardapioLabel = new javax.swing.JLabel();
+        jScrollCardapioPane = new javax.swing.JScrollPane();
+        jTableCardapio = new javax.swing.JTable();
+        jAdcionaCardapio = new javax.swing.JButton();
+        jRemoveCardapio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -271,7 +275,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jButtonInserirC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonInserirItem, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                             .addComponent(jButtonRemItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                            .addComponent(jButtonFechaComanda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                            .addComponent(jButtonFechaComanda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         pComandasLayout.setVerticalGroup(
@@ -434,30 +438,69 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(148, Short.MAX_VALUE))
         );
 
-        jLabel1.setText("cardapio");
+        jCardapioLabel.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jCardapioLabel.setText("CARDÁPIO");
+
+        jTableCardapio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null}
+            },
+            new String [] {
+                "Nome", "Preço"
+            }
+        ));
+        jScrollCardapioPane.setViewportView(jTableCardapio);
+        if (jTableCardapio.getColumnModel().getColumnCount() > 0) {
+            jTableCardapio.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        jAdcionaCardapio.setText("Adiciona Item");
+        jAdcionaCardapio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAdcionaCardapioActionPerformed(evt);
+            }
+        });
+
+        jRemoveCardapio.setText("Remove item");
 
         javax.swing.GroupLayout pCardapioLayout = new javax.swing.GroupLayout(pCardapio);
         pCardapio.setLayout(pCardapioLayout);
         pCardapioLayout.setHorizontalGroup(
             pCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pCardapioLayout.createSequentialGroup()
-                .addGap(261, 261, 261)
-                .addComponent(jLabel1)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addGroup(pCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pCardapioLayout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addGroup(pCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollCardapioPane, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pCardapioLayout.createSequentialGroup()
+                                .addComponent(jAdcionaCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(55, 55, 55)
+                                .addComponent(jRemoveCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(pCardapioLayout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(jCardapioLabel)))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         pCardapioLayout.setVerticalGroup(
             pCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pCardapioLayout.createSequentialGroup()
-                .addContainerGap(244, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(238, 238, 238))
+            .addGroup(pCardapioLayout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(jCardapioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(jScrollCardapioPane, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(pCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jAdcionaCardapio)
+                    .addComponent(jRemoveCardapio))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
+            .addGap(0, 592, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(pComandas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,6 +613,21 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonFechaComandaActionPerformed
 
+    private void jAdcionaCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdcionaCardapioActionPerformed
+
+        // TODO add your handling code here:
+     DefaultTableModel model =(DefaultTableModel)jTableCardapio.getModel(); 
+     JTextField nome = new JTextField();
+     JTextField preço = new JTextField();
+     Object[] novoItem = {"Nome:", nome, " Preço:", preço };
+     JOptionPane.showMessageDialog(null, novoItem);
+     //
+     //
+     //       
+     model.addRow(new Object[] {nome.getText(),preço.getText()});
+        
+    }//GEN-LAST:event_jAdcionaCardapioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -607,6 +665,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelComandaFix;
+    private javax.swing.JButton jAdcionaCardapio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -618,8 +677,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInserirItem;
     private javax.swing.JButton jButtonNovaTrans;
     private javax.swing.JButton jButtonRemItem;
+    private javax.swing.JLabel jCardapioLabel;
     private javax.swing.JComboBox<String> jComboBoxComandas;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -633,6 +692,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton jRemoveCardapio;
+    private javax.swing.JScrollPane jScrollCardapioPane;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPaneCaixa;
     private javax.swing.JScrollPane jScrollPaneComandas;
@@ -640,6 +701,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableCaixa;
+    private javax.swing.JTable jTableCardapio;
     private javax.swing.JTable jTableComandas;
     private javax.swing.JPanel pCaixa;
     private javax.swing.JPanel pCardapio;
