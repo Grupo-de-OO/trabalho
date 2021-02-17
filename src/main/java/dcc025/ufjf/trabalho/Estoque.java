@@ -99,4 +99,8 @@ public class  Estoque
          }else
             JOptionPane.showMessageDialog(null, "Não existe " + ingrediente.getNomeIngrediente() + " no estoque.");
      }
+     
+     public int getEstoqueSize (){
+         return estoqueItens.size();
+     }
 }

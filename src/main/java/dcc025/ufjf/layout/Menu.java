@@ -5,16 +5,22 @@
  */
 package dcc025.ufjf.layout;
 
+import dcc025.ufjf.trabalho.Estoque;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author bruno
  */
-public class Mesas extends javax.swing.JFrame {
+public class Menu extends javax.swing.JFrame {
 
     /**
      * Creates new form Mesas
      */
-    public Mesas() {
+    private Estoque estoque = new Estoque();
+    
+    public Menu() {
         initComponents();
     }
 
@@ -43,6 +49,10 @@ public class Mesas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         pEstoque = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         pCardapio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -165,23 +175,73 @@ public class Mesas extends javax.swing.JFrame {
                 .addContainerGap(283, Short.MAX_VALUE))
         );
 
-        jLabel5.setText("estoque");
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel5.setText("ESTOQUE");
+        jLabel5.setToolTipText("");
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jButton5.setText("Adicionar Ingrediente");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Remover Ingrediente");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Ingrediente", "Quantidade", "Unidade"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout pEstoqueLayout = new javax.swing.GroupLayout(pEstoque);
         pEstoque.setLayout(pEstoqueLayout);
         pEstoqueLayout.setHorizontalGroup(
             pEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pEstoqueLayout.createSequentialGroup()
-                .addGap(269, 269, 269)
-                .addComponent(jLabel5)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addGroup(pEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pEstoqueLayout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addComponent(jLabel5))
+                    .addGroup(pEstoqueLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pEstoqueLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jButton5)
+                        .addGap(68, 68, 68)
+                        .addComponent(jButton6)))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         pEstoqueLayout.setVerticalGroup(
             pEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pEstoqueLayout.createSequentialGroup()
-                .addGap(215, 215, 215)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel5)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92)
+                .addGroup(pEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         jLabel1.setText("cardapio");
@@ -268,7 +328,7 @@ public class Mesas extends javax.swing.JFrame {
         pCaixa.setVisible(false);
         pEstoque.setVisible(false);
         pCardapio.setVisible(false);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -294,6 +354,16 @@ public class Mesas extends javax.swing.JFrame {
         pEstoque.setVisible(false);
         pCardapio.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+//        JTextField nome = new JTextField();
+//        JTextField quantidade = new JTextField();
+//        JTextField unidade = new JTextField();
+//        Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
+//        JOptionPane.showMessageDialog(null, novoIngrediente);
+//        estoque.addEstoque(nome.getText(), Integer.parseInt(quantidade.getText()), unidade.getText());
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,7 +395,7 @@ public class Mesas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mesas().setVisible(true);
+                new Menu().setVisible(true);
             }
         });
     }
@@ -335,6 +405,8 @@ public class Mesas extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -344,7 +416,9 @@ public class Mesas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pCaixa;
     private javax.swing.JPanel pCardapio;
     private javax.swing.JPanel pComandas;
