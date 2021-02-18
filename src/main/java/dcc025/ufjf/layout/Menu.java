@@ -65,18 +65,21 @@ public class Menu extends javax.swing.JFrame {
         jLabelAberto = new javax.swing.JLabel();
         jLabelEmCaixa = new javax.swing.JLabel();
         jButtonNovaTrans = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
         pEstoque = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jSeparator3 = new javax.swing.JSeparator();
         pCardapio = new javax.swing.JPanel();
         jCardapioLabel = new javax.swing.JLabel();
         jScrollCardapioPane = new javax.swing.JScrollPane();
         jTableCardapio = new javax.swing.JTable();
         jAdcionaCardapio = new javax.swing.JButton();
         jRemoveCardapio = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -275,7 +278,7 @@ public class Menu extends javax.swing.JFrame {
                             .addComponent(jButtonInserirC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonInserirItem, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                             .addComponent(jButtonRemItem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                            .addComponent(jButtonFechaComanda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, Short.MAX_VALUE))
+                            .addComponent(jButtonFechaComanda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         pComandasLayout.setVerticalGroup(
@@ -305,7 +308,7 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabelCaixaFix.setFont(new java.awt.Font("Ubuntu", 1, 36)); // NOI18N
+        jLabelCaixaFix.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabelCaixaFix.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCaixaFix.setText("CAIXA");
 
@@ -353,13 +356,18 @@ public class Menu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelSaldo)))
                 .addGap(0, 69, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pCaixaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator2))
         );
         pCaixaLayout.setVerticalGroup(
             pCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pCaixaLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(jLabelCaixaFix)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(pCaixaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelEmCaixa)
                     .addComponent(jLabelAberto))
@@ -372,7 +380,7 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(65, 65, 65))
         );
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel5.setText("ESTOQUE");
         jLabel5.setToolTipText("");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -412,33 +420,36 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(pEstoqueLayout.createSequentialGroup()
                 .addGroup(pEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pEstoqueLayout.createSequentialGroup()
-                        .addGap(199, 199, 199)
-                        .addComponent(jLabel5))
-                    .addGroup(pEstoqueLayout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pEstoqueLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(jButton5)
                         .addGap(68, 68, 68)
-                        .addComponent(jButton6)))
+                        .addComponent(jButton6))
+                    .addGroup(pEstoqueLayout.createSequentialGroup()
+                        .addGap(201, 201, 201)
+                        .addComponent(jLabel5)))
                 .addContainerGap(75, Short.MAX_VALUE))
+            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         pEstoqueLayout.setVerticalGroup(
             pEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pEstoqueLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
                 .addComponent(jLabel5)
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(92, 92, 92)
                 .addGroup(pEstoqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton6))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
-        jCardapioLabel.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jCardapioLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jCardapioLabel.setText("CARDÁPIO");
 
         jTableCardapio.setModel(new javax.swing.table.DefaultTableModel(
@@ -478,22 +489,25 @@ public class Menu extends javax.swing.JFrame {
                                 .addGap(55, 55, 55)
                                 .addComponent(jRemoveCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pCardapioLayout.createSequentialGroup()
-                        .addGap(178, 178, 178)
+                        .addGap(195, 195, 195)
                         .addComponent(jCardapioLabel)))
                 .addContainerGap(102, Short.MAX_VALUE))
+            .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         pCardapioLayout.setVerticalGroup(
             pCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pCardapioLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
+                .addGap(3, 3, 3)
                 .addComponent(jCardapioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addGap(58, 58, 58)
                 .addComponent(jScrollCardapioPane, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pCardapioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jAdcionaCardapio)
                     .addComponent(jRemoveCardapio))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(105, 105, 105))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -616,16 +630,16 @@ public class Menu extends javax.swing.JFrame {
     private void jAdcionaCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAdcionaCardapioActionPerformed
 
         // TODO add your handling code here:
-     DefaultTableModel model =(DefaultTableModel)jTableCardapio.getModel(); 
-     JTextField nome = new JTextField();
-     JTextField preço = new JTextField();
-     Object[] novoItem = {"Nome:", nome, " Preço:", preço };
-     JOptionPane.showMessageDialog(null, novoItem);
-     //
-     //
-     //       
-     model.addRow(new Object[] {nome.getText(),preço.getText()});
-        
+        DefaultTableModel model =(DefaultTableModel)jTableCardapio.getModel();
+        JTextField nome = new JTextField();
+        JTextField preço = new JTextField();
+        Object[] novoItem = {"Nome:", nome, " Preço:", preço };
+        JOptionPane.showMessageDialog(null, novoItem);
+        //
+        //
+        //
+        model.addRow(new Object[] {nome.getText(),preço.getText()});
+
     }//GEN-LAST:event_jAdcionaCardapioActionPerformed
 
     /**
@@ -699,6 +713,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneComandas;
     private javax.swing.JSeparator jSeparador_Comanda;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableCaixa;
     private javax.swing.JTable jTableCardapio;
