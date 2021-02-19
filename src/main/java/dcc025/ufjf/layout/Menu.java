@@ -10,9 +10,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author bruno
+/*
+ 
+ * @author
+
+ *  Bruno de Oliveira Jucá - 201965013A
+
+ *  Thales Brito de Souza Fonseca Rodrigues - 201965191A
+
+ *  Rômulo Chrispim de Mello - 201935038
+
+ *  Lowrran Durao Matias - 201935036
+
+ *  Pedro Henrique Moreira Raad - 201965215A
+ 
  */
 public class Menu extends javax.swing.JFrame {
 

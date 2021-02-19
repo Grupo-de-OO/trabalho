@@ -9,9 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author thales
+/*
+ 
+ * @author
+
+ *  Bruno de Oliveira Jucá - 201965013A
+
+ *  Thales Brito de Souza Fonseca Rodrigues - 201965191A
+
+ *  Rômulo Chrispim de Mello - 201935038
+
+ *  Lowrran Durao Matias - 201935036
+
+ *  Pedro Henrique Moreira Raad - 201965215A
+ 
  */
 public class  Estoque
 {
