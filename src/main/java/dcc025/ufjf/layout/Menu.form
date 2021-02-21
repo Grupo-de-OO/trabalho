@@ -427,6 +427,9 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pCaixa">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="pCaixa.setVisible(false);"/>
+              </AuxValues>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -653,6 +656,9 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pEstoque">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="pEstoque.setVisible(false);"/>
+              </AuxValues>
 
               <Layout>
                 <DimensionLayout dim="0">
@@ -848,6 +854,9 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pCardapio">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="pCardapio.setVisible(false);"/>
+              </AuxValues>
 
               <Layout>
                 <DimensionLayout dim="0">
