@@ -31,6 +31,8 @@ public class NewMenu {
         frame.setLayout(new BorderLayout());
         frame.setTitle("Restaurante");
         
+        JPanel pDireita = new Painel();
+        frame.add(BorderLayout.CENTER, pDireita);
         
         
         
