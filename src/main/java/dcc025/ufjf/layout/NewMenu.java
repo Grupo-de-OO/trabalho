@@ -53,7 +53,12 @@ public class NewMenu {
         JPanel pEsquerda = new JPanel(); //main panel da esquerda
         JPanel pEsquerdaBotoes = new JPanel();
         JPanel pEsquerdaAux = new JPanel();
-        pEsquerdaAux.setBackground(Color.red);
+        
+        float []hotPink = Color.RGBtoHSB(252, 15,192 , null);
+      
+        
+        pEsquerdaAux.setBackground(Color.getHSBColor(hotPink[0],hotPink[1], hotPink[2]));
+        
         
         pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes,BoxLayout.Y_AXIS));
         pEsquerdaBotoes.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -77,7 +82,7 @@ public class NewMenu {
         
         //adcionando botoes pEsquerdaBotoes
         
-        //pEsquerdaBotoes.add(Box.createVerticalStrut(300));
+        pEsquerdaBotoes.add(Box.createVerticalStrut(300));
        // pEsquerdaBotoes.add(Box.createRigidArea(new Dimension(50,0)));
         
        /*
@@ -116,7 +121,9 @@ public class NewMenu {
         pEsquerda.add(pEsquerdaTitulo);
         pEsquerda.add(pEsquerdaAux);
         pEsquerda.add(pEsquerdaBotoes);
+        pEsquerda.add(pEsquerdaAux);
         pEsquerda.setBackground(Color.green);
+        
         
         
         //barra do canto esquerdo do Jframe 
