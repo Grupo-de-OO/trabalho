@@ -6,6 +6,9 @@
 package dcc025.ufjf.layout;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,8 +22,17 @@ import javax.swing.JPanel;
  * @author thales
  */
 public class NewMenu {
-    
      
+    private static void addAButton(String text, Container container) {
+        JButton button = new JButton(text);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        container.add(button);
+    }
+ 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         
         JFrame frame = new JFrame();
@@ -38,11 +50,14 @@ public class NewMenu {
         //paineis da esquerda
         JPanel pEsquerda = new JPanel(); //main panel da esquerda
         JPanel pEsquerdaBotoes = new JPanel();
+        JPanel pEsquerdaAux = new JPanel();
+        pEsquerdaAux.setBackground(Color.red);
+        
         pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes,BoxLayout.Y_AXIS));
+        pEsquerdaBotoes.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         JPanel pEsquerdaTitulo = new JPanel();
         pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo,BoxLayout.Y_AXIS));
-        
         
         
         
@@ -50,18 +65,20 @@ public class NewMenu {
         JButton botaoComandas = new JButton("Comandas");
         
         JButton botaoCaixa = new JButton("Caixa");
+       
+        botaoCaixa.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         JButton botaoEstoque = new JButton("Estoque");
         
         JButton botaoCardapio = new JButton("Cardápio");
+     
         
-        
-
         //adcionando botoes pEsquerdaBotoes
         
-        pEsquerdaBotoes.add(Box.createVerticalStrut(300));
-        pEsquerdaBotoes.add(Box.createRigidArea(new Dimension(50,0)));
+        //pEsquerdaBotoes.add(Box.createVerticalStrut(300));
+       // pEsquerdaBotoes.add(Box.createRigidArea(new Dimension(50,0)));
         
+       /*
         pEsquerdaBotoes.add(botaoComandas);
         
         pEsquerdaBotoes.add(Box.createVerticalStrut(20));
@@ -72,22 +89,32 @@ public class NewMenu {
         
         pEsquerdaBotoes.add(Box.createVerticalStrut(20));
         pEsquerdaBotoes.add(botaoCardapio);
-
+        */
+        addAButton("CAIXA", pEsquerdaBotoes);
+        addAButton("COMANDAS", pEsquerdaBotoes);
+        pEsquerdaBotoes.setBackground(Color.yellow);
 
         
         
         //setando pEsquerdaTitulo    
-        pEsquerdaTitulo.add(new JLabel("Nome do Restaurante"));
+        JLabel nomeRestaurante = new JLabel("NOME DO RESTAURANTE");
+        //pEsquerdaTitulo.add(Box.createVerticalStrut(200));
 
+       
+        pEsquerdaTitulo.add(nomeRestaurante);
+        
         
        
         
     
         //setando pEsquerda
+        pEsquerda.setAlignmentX(Component.CENTER_ALIGNMENT);
         pEsquerda.setLayout(new BoxLayout(pEsquerda,BoxLayout.Y_AXIS));
-        pEsquerda.add(pEsquerdaTitulo);
-        pEsquerda.add(pEsquerdaBotoes);
         
+        pEsquerda.add(pEsquerdaTitulo);
+        pEsquerda.add(pEsquerdaAux);
+        pEsquerda.add(pEsquerdaBotoes);
+        pEsquerda.setBackground(Color.green);
         
         
         //barra do canto esquerdo do Jframe 
