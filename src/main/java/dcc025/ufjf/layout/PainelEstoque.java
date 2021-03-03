@@ -12,9 +12,12 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,8 +29,11 @@ public class PainelEstoque extends JPanel {
     private JPanel main = new JPanel();
     private JTable tabela = new JTable();
     private JPanel buttonWrapper = new JPanel();
+    private Contexto contexto;
 
-    public PainelEstoque() {
+    public PainelEstoque(Contexto ctx) {
+        this.contexto = ctx;
+        //Object ingdts = new Object[][] {{this.contexto.estoque.estoqueItens.get(0)},}; 
 
         // A ideia seria desenvolver a pagina dentro do JPanel main, podendo alterar o layout dele
         // sem problemas, sem quebrar a pagina. nao setar o layout dos paineis diretamente pois  
@@ -40,35 +46,10 @@ public class PainelEstoque extends JPanel {
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
         //main.setPreferredSize(new Dimension(5000,5000));
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-        {"Massa de pizza", "30", "Unid."},
-        {"Brahma Litrão", "50", "Unid."},
-        {"Frango", "20", "Kg"},
-        {"Picanha", "15", "Kg"},
-        {"Molho de tomate", "20", "Latas"},
-        {"", null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null},
-        {null, null, null}
-    },
-    new String [] {
-        "Produtos", "Quantidade", "Unidade"
-    }
+                new Object[][]{this.contexto.estoque.estoqueItens.toArray()},
+                new String[]{
+                    "Produtos", "Quantidade", "Unidade"
+                }
         ));
         if (tabela.getColumnModel().getColumnCount() > 0) {
             tabela.getColumnModel().getColumn(0).setResizable(false);
@@ -76,17 +57,41 @@ public class PainelEstoque extends JPanel {
         tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
-        
+
         buttonWrapper.setLayout(new BoxLayout(buttonWrapper, BoxLayout.X_AXIS));
         buttonWrapper.add(new JButton("botao1"));
         buttonWrapper.add(Box.createHorizontalGlue());
-        buttonWrapper.add(new JButton("botao2"));
-        
+        JButton botao2 = new JButton("botao2");
+        buttonWrapper.add(botao2);
+
         main.add(buttonWrapper);
-        
+
         add(header);
         add(main);
 
+        botao2.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextField nome = new JTextField();
+                JTextField quantidade = new JTextField();
+                JTextField unidade = new JTextField();
+                Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
+                JOptionPane.showMessageDialog(null, novoIngrediente);
+                contexto.estoque.addEstoque(nome.getText(), Integer.parseInt(quantidade.getText()), unidade.getText());
+                contexto.estoque.verEstoque();
+                atualizaPainel();
+            }
+        });
+
+    }
+
+    public void atualizaPainel() {
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{this.contexto.estoque.estoqueItens.toArray()},
+                new String[]{
+                    "Produtos", "Quantidade", "Unidade"
+                }
+        ));
     }
 
 }

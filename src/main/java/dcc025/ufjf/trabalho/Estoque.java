@@ -27,12 +27,12 @@ import javax.swing.JOptionPane;
 public class  Estoque
 {
     
-    private ArrayList<Ingrediente> estoqueItens = new ArrayList<Ingrediente>();
+    public ArrayList<Ingrediente> estoqueItens = new ArrayList<Ingrediente>();
     
     public Estoque(){
         this.estoqueItens.add(new Ingrediente("BANANA",20,"Kg"));//pensar em como mudar o tipo da quantidade
         this.estoqueItens.add(new Ingrediente("ARROZ",30,"Kg")); // dependendo do tipo de ingrediente 
-        this.estoqueItens.add(new Ingrediente("MAÇÂ",30,"Kg")); // kilo, litro , etc  
+       // this.estoqueItens.add(new Ingrediente("MAÇÂ",30,"Kg")); // kilo, litro , etc  
     }
     
     public void verEstoque(){
