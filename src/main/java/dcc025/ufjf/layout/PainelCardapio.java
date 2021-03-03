@@ -26,8 +26,9 @@ public class PainelCardapio extends JPanel {
     private JPanel main = new JPanel();
     private JTable tabela = new JTable();
     private JPanel buttonWrapper = new JPanel();
+    private Contexto contexto = new Contexto();
 
-    public PainelCardapio() {
+    public PainelCardapio(Contexto ctx) {
 
         // A ideia seria desenvolver a pagina dentro do JPanel main, podendo alterar o layout dele
         // sem problemas, sem quebrar a pagina. nao setar o layout dos paineis diretamente pois  
@@ -39,23 +40,11 @@ public class PainelCardapio extends JPanel {
         //main.setBackground(Color.red);
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
         //main.setPreferredSize(new Dimension(5000,5000));
+        contexto = ctx;
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{
-                    {"primeira", null},
-                    {null, null},
-                    {null, null},
-                    {null, null},
-                    {null, null},
-                    {null, null},
-                    {null, null},
-                    {null, null},
-                    {null, null},
-                    {null, null},
-                    {null, null},
-
-                },
+                contexto.estoque.getEstoque(),
                 new String[]{
-                    "Nome", "Preço"
+                    "Nome", "Preço", "Unidade"
                 }
         ));
         if (tabela.getColumnModel().getColumnCount() > 0) {
@@ -75,6 +64,15 @@ public class PainelCardapio extends JPanel {
         add(header);
         add(main);
 
+    }
+    
+    public void atualizaPainel() {
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+                contexto.estoque.getEstoque(),
+                new String[]{
+                    "Produtos", "Quantidade", "Unidade"
+                }
+        ));
     }
 
 }

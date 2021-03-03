@@ -46,7 +46,7 @@ public class PainelEstoque extends JPanel {
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
         //main.setPreferredSize(new Dimension(5000,5000));
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{this.contexto.estoque.estoqueItens.toArray()},
+                contexto.estoque.getEstoque(),
                 new String[]{
                     "Produtos", "Quantidade", "Unidade"
                 }
@@ -78,7 +78,6 @@ public class PainelEstoque extends JPanel {
                 Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
                 JOptionPane.showMessageDialog(null, novoIngrediente);
                 contexto.estoque.addEstoque(nome.getText(), Integer.parseInt(quantidade.getText()), unidade.getText());
-                contexto.estoque.verEstoque();
                 atualizaPainel();
             }
         });
@@ -87,7 +86,7 @@ public class PainelEstoque extends JPanel {
 
     public void atualizaPainel() {
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{this.contexto.estoque.estoqueItens.toArray()},
+                contexto.estoque.getEstoque(),
                 new String[]{
                     "Produtos", "Quantidade", "Unidade"
                 }

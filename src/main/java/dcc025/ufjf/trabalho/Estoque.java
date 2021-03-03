@@ -29,6 +29,7 @@ public class  Estoque
     
     public ArrayList<Ingrediente> estoqueItens = new ArrayList<Ingrediente>();
     
+    
     public Estoque(){
         this.estoqueItens.add(new Ingrediente("BANANA",20,"Kg"));//pensar em como mudar o tipo da quantidade
         this.estoqueItens.add(new Ingrediente("ARROZ",30,"Kg")); // dependendo do tipo de ingrediente 
@@ -113,5 +114,15 @@ public class  Estoque
      
      public int getEstoqueSize (){
          return estoqueItens.size();
+     }
+     
+     public Object[][] getEstoque(){
+         Object[][] ingredientes = new Object[estoqueItens.size()][3];
+         for(int i=0;i<estoqueItens.size();i++) {
+             ingredientes[i][0] = estoqueItens.get(i).getNomeIngrediente();
+             ingredientes[i][1] = estoqueItens.get(i).getQuantidade();
+             ingredientes[i][2] = estoqueItens.get(i).getUnidade();
+         }
+         return ingredientes;
      }
 }

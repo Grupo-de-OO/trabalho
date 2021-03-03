@@ -37,7 +37,7 @@ public class NewMenu {
         PainelEstoque pEstoque = new PainelEstoque(contexto);
         PainelCaixa pCaixa = new PainelCaixa();
         PainelComandas pComandas = new PainelComandas();
-        PainelCardapio pCardapio = new PainelCardapio();
+        PainelCardapio pCardapio = new PainelCardapio(contexto);
         frame.add(BorderLayout.CENTER, pDireita);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(pDireita);
@@ -115,6 +115,7 @@ public class NewMenu {
         botaoCardapio.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pCardapio.atualizaPainel();
                 pComandas.setVisible(false);
                 pCaixa.setVisible(false);
                 pEstoque.setVisible(false);
