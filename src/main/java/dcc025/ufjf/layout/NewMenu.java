@@ -10,12 +10,16 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -23,10 +27,14 @@ import javax.swing.JPanel;
  */
 public class NewMenu {
      
-    private static void addAButton(String text, Container container) {
+   
+    
+    private static void addButton(String text, Container container) {
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
         container.add(button);
+        container.add(Box.createVerticalStrut(20));
     }
  
     /**
@@ -34,107 +42,60 @@ public class NewMenu {
      * @param args
      */
     public static void main(String[] args) {
-        
-        JFrame frame = new JFrame();
-        frame.setSize(700,700);
-        frame.setLocation(100,100);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);       
-        frame.setLayout(new BorderLayout());
-        frame.setTitle("Restaurante");
-        
-        JPanel pDireita = new Painel();
-        frame.add(BorderLayout.CENTER, pDireita);
-        
-        
-        
-        
-        //paineis da esquerda
-        JPanel pEsquerda = new JPanel(); //main panel da esquerda
-        JPanel pEsquerdaBotoes = new JPanel();
-        JPanel pEsquerdaAux = new JPanel();
-        
-        float []hotPink = Color.RGBtoHSB(252, 15,192 , null);
-      
-        
-        pEsquerdaAux.setBackground(Color.getHSBColor(hotPink[0],hotPink[1], hotPink[2]));
-        
-        
-        pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes,BoxLayout.Y_AXIS));
-        pEsquerdaBotoes.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        JPanel pEsquerdaTitulo = new JPanel();
-        pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo,BoxLayout.Y_AXIS));
-        
-        
-        
-        //setando os botões da esquerda
-        JButton botaoComandas = new JButton("Comandas");
-        
-        JButton botaoCaixa = new JButton("Caixa");
        
-        botaoCaixa.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        JButton botaoEstoque = new JButton("Estoque");
-        
-        JButton botaoCardapio = new JButton("Cardápio");
-     
-        
-        //adcionando botoes pEsquerdaBotoes
-        
-        pEsquerdaBotoes.add(Box.createVerticalStrut(300));
-       // pEsquerdaBotoes.add(Box.createRigidArea(new Dimension(50,0)));
-        
-       /*
-        pEsquerdaBotoes.add(botaoComandas);
-        
-        pEsquerdaBotoes.add(Box.createVerticalStrut(20));
-        pEsquerdaBotoes.add(botaoCaixa);
-        
-        pEsquerdaBotoes.add(Box.createVerticalStrut(20));
-        pEsquerdaBotoes.add(botaoEstoque);
-        
-        pEsquerdaBotoes.add(Box.createVerticalStrut(20));
-        pEsquerdaBotoes.add(botaoCardapio);
-        */
-        addAButton("CAIXA", pEsquerdaBotoes);
-        addAButton("COMANDAS", pEsquerdaBotoes);
-        pEsquerdaBotoes.setBackground(Color.yellow);
+         
+ 
+    JFrame jframe = new JFrame("RESTAURANTE");  
+    jframe.setLayout(null);  
+    jframe.setSize(900,900);
+    jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 
 
-        
-        
-        //setando pEsquerdaTitulo    
-        JLabel nomeRestaurante = new JLabel("NOME DO RESTAURANTE");
-        //pEsquerdaTitulo.add(Box.createVerticalStrut(200));
-
-       
-        pEsquerdaTitulo.add(nomeRestaurante);
-        
-        
-       
-        
     
-        //setando pEsquerda
-        pEsquerda.setAlignmentX(Component.CENTER_ALIGNMENT);
-        pEsquerda.setLayout(new BoxLayout(pEsquerda,BoxLayout.Y_AXIS));
-        
-        pEsquerda.add(pEsquerdaTitulo);
-        pEsquerda.add(pEsquerdaAux);
-        pEsquerda.add(pEsquerdaBotoes);
-        pEsquerda.add(pEsquerdaAux);
-        pEsquerda.setBackground(Color.green);
-        
-        
-        
-        //barra do canto esquerdo do Jframe 
-        frame.add(BorderLayout.WEST,pEsquerda);
+    
+    JPanel pEsquerda = new JPanel(); //painel principal da esquerda 
+    
+    pEsquerda.setLayout(null);
+    pEsquerda.setBounds(0, 0,jframe.getWidth()/4,jframe.getHeight());
+    pEsquerda.setBackground(Color.red);
+    
+    
+    JPanel pEsquerdaTitulo = new JPanel();
+    pEsquerdaTitulo.setLayout(null);
+    pEsquerdaTitulo.setBackground(Color.pink);
+    pEsquerdaTitulo.setBounds(0,0,pEsquerda.getWidth(),pEsquerda.getHeight()/3);
+    
+    JLabel nomeRestaurante = new JLabel("NOME RESTAURANTE");
+    
+    nomeRestaurante.setBounds(50,pEsquerdaTitulo.getHeight() - pEsquerdaTitulo.getHeight()/6,pEsquerdaTitulo.getWidth(),pEsquerdaTitulo.getHeight()/6);
+    nomeRestaurante.setAlignmentX(Component.CENTER_ALIGNMENT);
+    pEsquerdaTitulo.add(nomeRestaurante);
 
-        
-        
-        
-        
-        
-        
+    
+    JPanel pEsquerdaBotoes = new JPanel();
+    pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes,BoxLayout.Y_AXIS));
+    pEsquerdaBotoes.setBounds(pEsquerda.getWidth()/5,(pEsquerda.getHeight()*4)/10,(pEsquerda.getWidth()*3)/5,(pEsquerda.getHeight()*2)/3);
+    pEsquerdaBotoes.setBackground(Color.green);
+    addButton("CAIXA",pEsquerdaBotoes);
+    addButton("COMANDAS",pEsquerdaBotoes);
+    addButton("ESTOQUE",pEsquerdaBotoes);
+    addButton("CARDAPIO",pEsquerdaBotoes);
+    
+    
+    pEsquerda.add(pEsquerdaTitulo);
+    pEsquerda.add(pEsquerdaBotoes);
+    jframe.add(pEsquerda);  
+    jframe.setVisible(true);
+   
+        jframe.addComponentListener(new ComponentAdapter() {
+
+            public void componentResized(ComponentEvent componentEvent) {
+                //do stuf
+            }
+        });
+
+    
+    
     
     }
     
