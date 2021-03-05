@@ -24,19 +24,18 @@ import java.util.*;
 public class ItemCardapio {
     
     private String nome;
-    private String descricao;
     private float preco;
     private List<Ingrediente> ingredientesNecessarios = new ArrayList<Ingrediente>();
 
-    public ItemCardapio(String nome, String descricao, float preco) {
+    public ItemCardapio(String nome, float preco) {
         this.nome = nome;
-        this.descricao = descricao;
+        
         this.preco = preco;
     }
     
     @Override
     public String toString (){
-        return nome + "\n  " + descricao + "\n  R$" + preco;
+        return nome + "\n  " + "\n  R$" + preco;
     }
 
     public String getNome() {
@@ -45,14 +44,6 @@ public class ItemCardapio {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getDescrição() {
-        return descricao;
-    }
-
-    public void setDescrição(String descricao) {
-        this.descricao = descricao;
     }
 
     public float getPreço() {

@@ -7,6 +7,7 @@ package dcc025.ufjf.trabalho;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTextField;
 
 /*
  
@@ -27,29 +28,27 @@ public class Cardapio {
     
     private ArrayList<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
     
-    public Cardapio () {
-        Itens.add(new ItemCardapio("a","a",100.50f));
-        Itens.add(new ItemCardapio("b","b",150.50f));
-        Itens.add(new ItemCardapio("c","c",50.50f));
+   
+    public void addCardapio(String nome, int preco){
+      ItemCardapio item = new ItemCardapio(nome,preco);
+      this.Itens.add(item);
         
     }
     
-    public void addItem(){}
-    public void removeItem(){}
     
     
+    public Object[][] getCardapio(){
+         Object[][] itensCardapio = new Object[Itens.size()][3];
+         for(int i=0;i<Itens.size();i++) {
+             itensCardapio[i][0] = Itens.get(i).getNome();
+             itensCardapio[i][1] = Itens.get(i).getPreço();}
+         return itensCardapio;
+     }
     
-    public void verCardapio (){
-    /*
-        System.out.println("Cardapio -------------------");
-        int i = 1;
-        for(ItemCardapio item : Itens){
-            System.out.println(i + " " + item);
-            i++;
-        }
+    public void removeItem(){
+    //criar um remove de acordo com o nome que se deseja remover
     }
-    */ 
-       Generica imprimeCardapio = new Generica("CARDAPIO");
-       imprimeCardapio.ver(this.Itens);
-    }
+    
+    
+
 }

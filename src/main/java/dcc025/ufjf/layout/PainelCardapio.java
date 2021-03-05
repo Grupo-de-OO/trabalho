@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,29 +37,49 @@ public class PainelCardapio extends JPanel {
         // dessa forma quebraria.
         // Ex: main.setLayout(new blablaLayout());
         // e a partir dai add os componentes com main.add(Component);
-        //setBackground(Color.green);
-        //header.setBackground(Color.pink);
-        //main.setBackground(Color.red);
+      
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
-        //main.setPreferredSize(new Dimension(5000,5000));
         contexto = ctx;
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                contexto.estoque.getEstoque(),
+                contexto.cardapio.getCardapio(),
                 new String[]{
-                    "Nome", "Preço", "Unidade"
+                    "Nome", "Preço"
                 }
         ));
         if (tabela.getColumnModel().getColumnCount() > 0) {
             tabela.getColumnModel().getColumn(0).setResizable(false);
         }
+        
+        
         tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
         
         buttonWrapper.setLayout(new BoxLayout(buttonWrapper, BoxLayout.X_AXIS));
-        buttonWrapper.add(new JButton("botao1"));
+        JButton adiciona = new JButton("Adicionar no cardapio");
+        buttonWrapper.add(adiciona);
+        
+        JButton retira = new JButton("Retirar do cardápio");
         buttonWrapper.add(Box.createHorizontalGlue());
-        buttonWrapper.add(new JButton("botao2"));
+        buttonWrapper.add(retira);
+        
+        
+        
+        //action buttons
+        
+        adiciona.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextField nome = new JTextField();
+                JTextField preco = new JTextField();
+                Object[] novoItem = {"Nome:", nome, "Preço:",preco};
+                JOptionPane.showMessageDialog(null, novoItem);
+                contexto.cardapio.addCardapio(nome.getText(), Integer.parseInt(preco.getText()));
+                atualizaPainel();
+            }
+        });
+        
+        
         
         main.add(buttonWrapper);
         
@@ -68,9 +90,9 @@ public class PainelCardapio extends JPanel {
     
     public void atualizaPainel() {
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                contexto.estoque.getEstoque(),
+                contexto.cardapio.getCardapio(),
                 new String[]{
-                    "Produtos", "Quantidade", "Unidade"
+                    "Nome", "Preço"
                 }
         ));
     }

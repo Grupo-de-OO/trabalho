@@ -29,5 +29,7 @@ public class PainelCaixa extends JPanel {
         
         add(header);
         add(main);
+   
+    
     }
 }

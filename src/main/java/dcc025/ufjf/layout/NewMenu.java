@@ -110,12 +110,17 @@ public class NewMenu {
         frame.setTitle("Restaurante");
 
         JPanel pDireita = new JPanel();
+        frame.add(BorderLayout.CENTER, pDireita);
+        
+        
+        
+        //setando paineis secundários
         PainelEstoque pEstoque = new PainelEstoque(contexto);
         PainelCaixa pCaixa = new PainelCaixa();
         PainelComandas pComandas = new PainelComandas();
         PainelCardapio pCardapio = new PainelCardapio(contexto);
-        frame.add(BorderLayout.CENTER, pDireita);
-
+        
+        
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(pDireita);
         pDireita.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -142,49 +147,24 @@ public class NewMenu {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(pCardapio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
+        
+        
         pCaixa.setVisible(false);
         pComandas.setVisible(false);
         pEstoque.setVisible(true);
         pCardapio.setVisible(false);
-
-        //paineis da esquerda
-        
-        /*
-        JPanel pEsquerda = new JPanel(); //main panel da esquerda
-        pEsquerda.setLayout(n JPanel pEsquerdaTitulo = new JPanel();
-        pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo,BoxLayout.Y_AXIS));
-        pEsquerdaTitulo.setBackground(Color.pink);
-ew BoxLayout(pEsquerda, BoxLayout.Y_AXIS));
-        pEsquerda.setPreferredSize(new Dimension(250, 0));
-        JPanel pEsquerdaBotoes = new JPanel();
-        //pEsquerdaBotoes.setBackground(Color.red);
-        pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes, BoxLayout.Y_AXIS));
-
-        JPanel pEsquerdaTitulo = new JPanel();
-        pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo, BoxLayout.Y_AXIS));
-        */
-        
-        
-        
+      
     JPanel pEsquerda = new JPanel(); //painel principal da esquerda 
-    
+        
     pEsquerda.setLayout(null);
-   // pEsquerda.setBounds(0, 0,frame.getWidth()/3,frame.getHeight());
-    pEsquerda.setBackground(Color.red);
-    pEsquerda.setPreferredSize(new Dimension(200,frame.getHeight()));
-    
+    pEsquerda.setPreferredSize(new Dimension(150,frame.getHeight()));
+
     JPanel pEsquerdaTitulo = new JPanel();
     pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo,BoxLayout.Y_AXIS));
-    pEsquerdaTitulo.setBackground(Color.pink);
-    //pEsquerdaTitulo.setBounds(0,0,pEsquerda.getWidth(),pEsquerda.getHeight()/3);
     
-    
-    
+   
     JPanel pEsquerdaBotoes = new JPanel();
     pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes,BoxLayout.Y_AXIS));
-    //pEsquerdaBotoes.setBounds(pEsquerda.getWidth()/5,(pEsquerda.getHeight()*4)/10,(pEsquerda.getWidth()*3)/5,(pEsquerda.getHeight()*2)/3);
-    pEsquerdaBotoes.setBackground(Color.green);
         
         
         
@@ -194,6 +174,8 @@ ew BoxLayout(pEsquerda, BoxLayout.Y_AXIS));
         JButton botaoEstoque = formataBotao("ESTOQUE");   
         JButton botaoCardapio = formataBotao("CARDAPIO");
     
+        
+        
         // Comandos dos botoes
         botaoEstoque.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -217,6 +199,35 @@ ew BoxLayout(pEsquerda, BoxLayout.Y_AXIS));
             }
         });
 
+        botaoCaixa.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pCardapio.atualizaPainel();
+                pComandas.setVisible(false);
+                pCaixa.setVisible(true);
+                pEstoque.setVisible(false);
+                pCardapio.setVisible(false);
+            }
+        });
+        
+        
+        botaoComandas.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pCardapio.atualizaPainel();
+                pComandas.setVisible(true);
+                pCaixa.setVisible(false);
+                pEstoque.setVisible(false);
+                pCardapio.setVisible(false);
+            }
+        });
+        
+        
+        
+        
+        
+        
+        
         //adcionando botoes pEsquerdaBotoes
         pEsquerdaBotoes.add(Box.createVerticalStrut(200));
         //pEsquerdaBotoes.add(Box.createRigidArea(new Dimension(50,0)));

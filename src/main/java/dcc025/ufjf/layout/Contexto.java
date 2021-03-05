@@ -6,7 +6,7 @@
 package dcc025.ufjf.layout;
 
 import dcc025.ufjf.trabalho.Estoque;
-
+import dcc025.ufjf.trabalho.Cardapio;
 /**
  *
  * @author bruno
@@ -14,8 +14,12 @@ import dcc025.ufjf.trabalho.Estoque;
 public class Contexto {
     
     Estoque estoque;
+    Cardapio cardapio;
     
     public Contexto() {
         estoque = new Estoque();
+        cardapio = new Cardapio();
+        
     }
+
 }
