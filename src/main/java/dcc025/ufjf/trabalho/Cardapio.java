@@ -29,7 +29,7 @@ public class Cardapio {
     private ArrayList<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
     
    
-    public void addCardapio(String nome, int preco){
+    public void addCardapio(String nome, float preco){
       ItemCardapio item = new ItemCardapio(nome,preco);
       this.Itens.add(item);
         

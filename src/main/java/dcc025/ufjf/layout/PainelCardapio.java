@@ -8,6 +8,7 @@ package dcc025.ufjf.layout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.text.DecimalFormat;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -74,7 +75,8 @@ public class PainelCardapio extends JPanel {
                 JTextField preco = new JTextField();
                 Object[] novoItem = {"Nome:", nome, "Preço:",preco};
                 JOptionPane.showMessageDialog(null, novoItem);
-                contexto.cardapio.addCardapio(nome.getText(), Integer.parseInt(preco.getText()));
+                DecimalFormat df = new DecimalFormat("0,00");
+                contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
                 atualizaPainel();
             }
         });
