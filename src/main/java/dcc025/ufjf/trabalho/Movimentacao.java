@@ -5,6 +5,8 @@
  */
 package dcc025.ufjf.trabalho;
 
+import java.util.Date;
+
 /*
  
  * @author
@@ -22,10 +24,26 @@ package dcc025.ufjf.trabalho;
  */
 public class Movimentacao { 
     
+    private Date data;
     private String nome;
     private String descricao;
-    private String valor;
+    private Float valor;
 
+    public Movimentacao(String nome, String descricao, Float valor) {
+        this.data = new Date();
+        this.nome = nome;
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+    
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -42,11 +60,11 @@ public class Movimentacao {
         this.descricao = descricao;
     }
 
-    public String getValor() {
+    public Float getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
     

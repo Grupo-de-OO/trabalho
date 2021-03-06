@@ -75,7 +75,10 @@ public class  Estoque
         }
     }
     
-    public void remEstoque(Ingrediente ingrediente, int quantidade){
+    public void remEstoque(String ingredienteNome, int quantidade){
+        
+        Ingrediente ingrediente = new Ingrediente(ingredienteNome, quantidade, " ");
+        
         boolean itemExiste = false;
         for(Ingrediente ingredienteEst : estoqueItens){
             if(ingredienteEst.getNomeIngrediente().equals(ingrediente.getNomeIngrediente())){
