@@ -5,6 +5,7 @@
  */
 package dcc025.ufjf.trabalho;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,13 +37,19 @@ public class Caixa {
         transacoes.add(novaEntrada);
     }
     
+    public void addSaida(String nome, String descricao, Float valor) {
+        Saida novaSaida = new Saida(nome, descricao, valor);
+        valorEmCaixa -= valor;
+        transacoes.add(novaSaida);
+    }
+    
     public Object[][] getCaixa(){
          Object[][] caixa = new Object[transacoes.size()][4];
          for(int i=0;i<transacoes.size();i++) {
              caixa[i][0] = transacoes.get(i).getData();
              caixa[i][1] = transacoes.get(i).getNome();
              caixa[i][2] = transacoes.get(i).getDescricao();
-             caixa[i][3] = transacoes.get(i).getValor();
+             caixa[i][3] = "R$" + (new DecimalFormat("0.00").format(transacoes.get(i).getValor()));
          }
          return caixa;
     }

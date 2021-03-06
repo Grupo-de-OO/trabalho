@@ -27,13 +27,13 @@ import javax.swing.JOptionPane;
 public class  Estoque
 {
     
-    public ArrayList<Ingrediente> estoqueItens = new ArrayList<Ingrediente>();
+    public ArrayList<ItemEstoque> estoqueItens = new ArrayList<ItemEstoque>();
     
     
     public Estoque(){
-        this.estoqueItens.add(new Ingrediente("BANANA",20,"Kg"));//pensar em como mudar o tipo da quantidade
-        this.estoqueItens.add(new Ingrediente("ARROZ",30,"Kg")); // dependendo do tipo de ingrediente 
-       // this.estoqueItens.add(new Ingrediente("MAÇÂ",30,"Kg")); // kilo, litro , etc  
+        this.estoqueItens.add(new ItemEstoque("BANANA",20,"Kg"));//pensar em como mudar o tipo da quantidade
+        this.estoqueItens.add(new ItemEstoque("ARROZ",30,"Kg")); // dependendo do tipo de ingrediente 
+       // this.estoqueItens.add(new ItemEstoque("MAÇÂ",30,"Kg")); // kilo, litro , etc  
     }
     
     public void verEstoque(){
@@ -41,12 +41,12 @@ public class  Estoque
         imprimeEstoque.ver(estoqueItens);                  
     }
     
-    public void addEstoque(Ingrediente ingrediente){
+    public void addEstoque(ItemEstoque ingrediente){
         boolean w = true;
         boolean jaExiste = false;
         int i = 0;
         while(w && i<estoqueItens.size()){
-            if(ingrediente.getNomeIngrediente().equals(estoqueItens.get(i).getNomeIngrediente())){
+            if(ingrediente.getNomeItemEstoque().equals(estoqueItens.get(i).getNomeItemEstoque())){
                 estoqueItens.get(i).setQuantidade(estoqueItens.get(i).getQuantidade() + ingrediente.getQuantidade());
                 jaExiste = true;
                 w = false;
@@ -63,7 +63,7 @@ public class  Estoque
         boolean jaExiste = false;
         int i = 0;
         while(w && i<estoqueItens.size()){
-            if(nome.equals(estoqueItens.get(i).getNomeIngrediente())){
+            if(nome.equals(estoqueItens.get(i).getNomeItemEstoque())){
                 estoqueItens.get(i).setQuantidade(estoqueItens.get(i).getQuantidade() + quantidade);
                 jaExiste = true;
                 w = false;
@@ -71,17 +71,17 @@ public class  Estoque
             i++;
         }
         if(!jaExiste){
-            estoqueItens.add(new Ingrediente(nome,quantidade, unidade));
+            estoqueItens.add(new ItemEstoque(nome,quantidade, unidade));
         }
     }
     
     public void remEstoque(String ingredienteNome, int quantidade){
         
-        Ingrediente ingrediente = new Ingrediente(ingredienteNome, quantidade, " ");
+        ItemEstoque ingrediente = new ItemEstoque(ingredienteNome, quantidade, " ");
         
         boolean itemExiste = false;
-        for(Ingrediente ingredienteEst : estoqueItens){
-            if(ingredienteEst.getNomeIngrediente().equals(ingrediente.getNomeIngrediente())){
+        for(ItemEstoque ingredienteEst : estoqueItens){
+            if(ingredienteEst.getNomeItemEstoque().equals(ingrediente.getNomeItemEstoque())){
                 if(ingredienteEst.getQuantidade() - quantidade >= 0){
                     ingredienteEst.setQuantidade(ingredienteEst.getQuantidade() - quantidade);
                     System.out.println("Foram removidos " + quantidade + ingredienteEst.getUnidade() + " do estoque.");
@@ -100,19 +100,19 @@ public class  Estoque
             remEstoque(ingrediente);
     }
     
-     public void remEstoque(Ingrediente ingrediente){
+     public void remEstoque(ItemEstoque ingrediente){
          boolean itemExiste = false;
-         for(Ingrediente ingredienteEst : estoqueItens){
-             if(ingredienteEst.getNomeIngrediente().equals(ingrediente.getNomeIngrediente())){
+         for(ItemEstoque ingredienteEst : estoqueItens){
+             if(ingredienteEst.getNomeItemEstoque().equals(ingrediente.getNomeItemEstoque())){
                  ingrediente = ingredienteEst;
                  itemExiste = true;
              }
          }
          if(itemExiste){
             estoqueItens.remove(ingrediente);
-            JOptionPane.showMessageDialog(null, ingrediente.getNomeIngrediente() + " removido do estoque.");
+            JOptionPane.showMessageDialog(null, ingrediente.getNomeItemEstoque() + " removido do estoque.");
          }else
-            JOptionPane.showMessageDialog(null, "Não existe " + ingrediente.getNomeIngrediente() + " no estoque.");
+            JOptionPane.showMessageDialog(null, "Não existe " + ingrediente.getNomeItemEstoque() + " no estoque.");
      }
      
      public int getEstoqueSize (){
@@ -122,7 +122,7 @@ public class  Estoque
      public Object[][] getEstoque(){
          Object[][] ingredientes = new Object[estoqueItens.size()][3];
          for(int i=0;i<estoqueItens.size();i++) {
-             ingredientes[i][0] = estoqueItens.get(i).getNomeIngrediente();
+             ingredientes[i][0] = estoqueItens.get(i).getNomeItemEstoque();
              ingredientes[i][1] = estoqueItens.get(i).getQuantidade();
              ingredientes[i][2] = estoqueItens.get(i).getUnidade();
          }

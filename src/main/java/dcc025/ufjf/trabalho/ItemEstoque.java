@@ -20,31 +20,31 @@ package dcc025.ufjf.trabalho;
  *  Pedro Henrique Moreira Raad - 201965215A
  
  */
-public class Ingrediente {
+public class ItemEstoque {
     
-    private String nomeIngrediente;
+    private String nomeItemEstoque;
     private int quantidade;
     private String unidade;
     
-    public Ingrediente(String nome, int quantidade, String unidade)
+    public ItemEstoque(String nome, int quantidade, String unidade)
     {
-        this.nomeIngrediente = nome;
+        this.nomeItemEstoque = nome;
         this.quantidade = quantidade;
         this.unidade = unidade;
     }
 
 @Override
     public String toString (){
-        return nomeIngrediente +" :   " + quantidade;
+        return nomeItemEstoque +" :   " + quantidade;
     }
     
     //Getters e Setters--------------------------------------
-    public String getNomeIngrediente() {
-        return nomeIngrediente;
+    public String getNomeItemEstoque() {
+        return nomeItemEstoque;
     }
 
-    public void setNomeIngrediente(String nomeIngrediente) {
-        this.nomeIngrediente = nomeIngrediente;
+    public void setNomeItemEstoque(String nomeItemEstoque) {
+        this.nomeItemEstoque = nomeItemEstoque;
     }
 
     public int getQuantidade() {

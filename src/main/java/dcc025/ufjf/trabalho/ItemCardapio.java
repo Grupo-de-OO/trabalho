@@ -25,11 +25,10 @@ public class ItemCardapio {
     
     private String nome;
     private float preco;
-    private List<Ingrediente> ingredientesNecessarios = new ArrayList<Ingrediente>(); //pensar do item estoque antes de adicionar no cardapio
+    private List<ItemEstoque> ingredientesNecessarios = new ArrayList<ItemEstoque>(); //pensar no item estoque antes de adicionar no cardapio
 
     public ItemCardapio(String nome, float preco) {
         this.nome = nome;
-        
         this.preco = preco;
     }
     
@@ -54,11 +53,11 @@ public class ItemCardapio {
         this.preco = preco;
     }
 
-    public List<Ingrediente> getIngredientesNecessarios() {
+    public List<ItemEstoque> getIngredientesNecessarios() {
         return ingredientesNecessarios;
     }
 
-    public void setIngredientesNecessarios(List<Ingrediente> ingredientesNecessarios) {
+    public void setIngredientesNecessarios(List<ItemEstoque> ingredientesNecessarios) {
         this.ingredientesNecessarios = ingredientesNecessarios;
     }
     

@@ -34,8 +34,9 @@ public class PainelCaixa extends JPanel {
     private JTable tabela = new JTable();
     private Contexto contexto = new Contexto();
     private JPanel bottomWrapper = new JPanel();
-    private JButton novaTransacao = new JButton("Nova transação");
-    private JLabel saldo = formataLabel("Saldo do dia: ");
+    private JButton novaEntrada = new JButton("Nova Entrada");
+    private JButton novaSaida = new JButton("Nova Saída");
+//    private JLabel saldo = formataLabel("Saldo do dia: ");
 
             
     public PainelCaixa(Contexto ctx) {
@@ -54,9 +55,9 @@ public class PainelCaixa extends JPanel {
         tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
         
         bottomWrapper.setLayout(new BoxLayout(bottomWrapper, BoxLayout.X_AXIS));
-        bottomWrapper.add(novaTransacao);
+        bottomWrapper.add(novaEntrada);
         bottomWrapper.add(Box.createHorizontalGlue());
-        bottomWrapper.add(saldo);
+        bottomWrapper.add(novaSaida);
         
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
         
@@ -69,7 +70,7 @@ public class PainelCaixa extends JPanel {
         add(main);
         atualizaPainel();
         
-        novaTransacao.addActionListener(
+        novaEntrada.addActionListener(
                 new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt
@@ -77,9 +78,25 @@ public class PainelCaixa extends JPanel {
                 JTextField nome = new JTextField();
                 JTextField descricao = new JTextField();
                 JTextField valor = new JTextField();
-                Object[] novaTransacao = {"Nome:", nome, "Descrição:", descricao, "Valor:", valor};
-                JOptionPane.showMessageDialog(null, novaTransacao);
+                Object[] novaEntrada = {"Nome:", nome, "Descrição:", descricao, "Valor:", valor};
+                JOptionPane.showMessageDialog(null, novaEntrada);
                 contexto.caixa.addEntrada(nome.getText(), descricao.getText(), Float.parseFloat(valor.getText()));
+                atualizaPainel();
+            }
+        }
+        );
+        
+        novaSaida.addActionListener(
+                new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt
+            ) {
+                JTextField nome = new JTextField();
+                JTextField descricao = new JTextField();
+                JTextField valor = new JTextField();
+                Object[] novaSaida = {"Nome:", nome, "Descrição:", descricao, "Valor:", valor};
+                JOptionPane.showMessageDialog(null, novaSaida);
+                contexto.caixa.addSaida(nome.getText(), descricao.getText(), Float.parseFloat(valor.getText()));
                 atualizaPainel();
             }
         }
