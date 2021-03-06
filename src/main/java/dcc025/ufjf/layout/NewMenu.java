@@ -36,69 +36,14 @@ public class NewMenu {
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
-        
         return button;
+        
     }
- /*
-    /**
-     *
-     * @param args
-     */
-    /*
-    public static void main(String[] args) {
-       
-       
     
     
-    JPanel pEsquerda = new JPanel(); //painel principal da esquerda 
-    
-    pEsquerda.setLayout(null);
-    pEsquerda.setBounds(0, 0,jframe.getWidth()/4,jframe.getHeight());
-    pEsquerda.setBackground(Color.red);
-    
-    
-    JPanel pEsquerdaTitulo = new JPanel();
-    pEsquerdaTitulo.setLayout(null);
-    pEsquerdaTitulo.setBackground(Color.pink);
-    pEsquerdaTitulo.setBounds(0,0,pEsquerda.getWidth(),pEsquerda.getHeight()/3);
-    
-    JLabel nomeRestaurante = new JLabel("NOME RESTAURANTE");
-    
-    nomeRestaurante.setBounds(50,pEsquerdaTitulo.getHeight() - pEsquerdaTitulo.getHeight()/6,pEsquerdaTitulo.getWidth(),pEsquerdaTitulo.getHeight()/6);
-    nomeRestaurante.setAlignmentX(Component.CENTER_ALIGNMENT);
-    pEsquerdaTitulo.add(nomeRestaurante);
-
-    
-    JPanel pEsquerdaBotoes = new JPanel();
-    pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes,BoxLayout.Y_AXIS));
-    pEsquerdaBotoes.setBounds(pEsquerda.getWidth()/5,(pEsquerda.getHeight()*4)/10,(pEsquerda.getWidth()*3)/5,(pEsquerda.getHeight()*2)/3);
-    pEsquerdaBotoes.setBackground(Color.green);
-    
-    formataBotao("CAIXA");
-    formataBotao("COMANDAS");
-    formataBotao("ESTOQUE");
-    formataBotao("CARDAPIO");
-    
-    
-    pEsquerda.add(pEsquerdaTitulo);
-    pEsquerda.add(pEsquerdaBotoes);
-    jframe.add(pEsquerda);  
-    jframe.setVisible(true);
-   
-        jframe.addComponentListener(new ComponentAdapter() {
-
-            public void componentResized(ComponentEvent componentEvent) {
-                //do stuf
-            }
-        });
-
-    
-    
-    */
-
-
     private static Contexto contexto = new Contexto();
 
+    
     public static void main(String[] args) {
 
         JFrame frame = new JFrame();

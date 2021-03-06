@@ -75,11 +75,38 @@ public class PainelCardapio extends JPanel {
                 JTextField preco = new JTextField();
                 Object[] novoItem = {"Nome:", nome, "Preço:",preco};
                 JOptionPane.showMessageDialog(null, novoItem);
-                DecimalFormat df = new DecimalFormat("0,00");
-                contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
+                //DecimalFormat df = new DecimalFormat("0,00");
+                //contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
+                contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(preco.getText()));
+               
+                
                 atualizaPainel();
             }
         });
+        
+        retira.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextField nomeRetira = new JTextField();
+                Object[] itemRetira = {"Digite o nome do item pra retirar: ", nomeRetira};
+                JOptionPane.showMessageDialog(null, itemRetira);
+                //DecimalFormat df = new DecimalFormat("0,00");
+                //contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
+               
+                while(!contexto.cardapio.remItem(nomeRetira.getText())){
+                   
+                   
+               }
+               
+               
+                atualizaPainel();
+            }
+        });
+        
+        
+        
+        
+        
         
         
         
