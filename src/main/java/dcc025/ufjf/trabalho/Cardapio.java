@@ -52,25 +52,24 @@ public class Cardapio {
  
          for(int i = 0 ; i <Itens.size();i++)
          {
-             if(this.Itens.get(i).getNome().equals(nome)){
+             if(this.Itens.get(i).getNome().toLowerCase().equals(nome)){
                  ItemCardapio aux;
                  aux = Itens.get(i);
                  itemExiste = true;
                  this.Itens.remove(aux);
-                 JOptionPane.showMessageDialog(null, aux.getNome()+ " removido do cardápio.");
-                 return true;
+                 JOptionPane.showMessageDialog(null, aux.getNome() + " REMOVIDO DO CARDÁPIO");
                  
              
              }
              else{   
-            JTextField newNome = new JTextField();
-            Object[] novoItem = {"Não existe" + nome+ " no cardápio, digite um item existe: ",newNome};
-            JOptionPane.showMessageDialog(null, novoItem);
-            return remItem(newNome.getText());
-                 
+               itemExiste = false;
+         
+                
+             
+             }
+             
                 }
-            
-    }
-     
+             return itemExiste;
+    
 }
 }
