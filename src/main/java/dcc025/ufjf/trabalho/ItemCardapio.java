@@ -25,7 +25,7 @@ public class ItemCardapio {
     
     private String nome;
     private float preco;
-    private List<Ingrediente> ingredientesNecessarios = new ArrayList<Ingrediente>();
+    private List<Ingrediente> ingredientesNecessarios = new ArrayList<Ingrediente>(); //pensar do item estoque antes de adicionar no cardapio
 
     public ItemCardapio(String nome, float preco) {
         this.nome = nome;
