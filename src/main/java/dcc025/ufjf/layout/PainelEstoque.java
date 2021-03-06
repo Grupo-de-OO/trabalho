@@ -45,31 +45,25 @@ public class PainelEstoque extends JPanel {
         //main.setBackground(Color.red);
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
         //main.setPreferredSize(new Dimension(5000,5000));
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
-                contexto.estoque.getEstoque(),
-                new String[]{
-                    "Produtos", "Quantidade", "Unidade"
-                }
-        ));
-        if (tabela.getColumnModel().getColumnCount() > 0) {
-            tabela.getColumnModel().getColumn(0).setResizable(false);
-        }
+        
         tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
 
         buttonWrapper.setLayout(new BoxLayout(buttonWrapper, BoxLayout.X_AXIS));
-        buttonWrapper.add(new JButton("botao1"));
+        JButton addItem = new JButton("Adiciona Item");
+        buttonWrapper.add(addItem);
         buttonWrapper.add(Box.createHorizontalGlue());
-        JButton botao2 = new JButton("botao2");
-        buttonWrapper.add(botao2);
+        JButton rmItem = new JButton("Remove Item");
+        buttonWrapper.add(rmItem);
 
         main.add(buttonWrapper);
 
         add(header);
         add(main);
+        atualizaPainel();
 
-        botao2.addActionListener(new java.awt.event.ActionListener() {
+        addItem.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextField nome = new JTextField();
@@ -78,6 +72,18 @@ public class PainelEstoque extends JPanel {
                 Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
                 JOptionPane.showMessageDialog(null, novoIngrediente);
                 contexto.estoque.addEstoque(nome.getText(), Integer.parseInt(quantidade.getText()), unidade.getText());
+                atualizaPainel();
+            }
+        });
+        
+        rmItem.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextField nome = new JTextField();
+                JTextField quantidade = new JTextField();
+                Object[] ingrediente = {"Nome:", nome, "Quantidade:", quantidade};
+                JOptionPane.showMessageDialog(null, ingrediente);
+                contexto.estoque.remEstoque(nome.getText(), Integer.parseInt(quantidade.getText()));
                 atualizaPainel();
             }
         });

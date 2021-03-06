@@ -6,6 +6,7 @@
 package dcc025.ufjf.trabalho;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -29,8 +30,20 @@ public class Caixa {
     private float valorEmCaixa = 0;
     private List<Movimentacao> transacoes = new ArrayList<Movimentacao>();
     
-    private void addMovimentacao(){}
-    private void limpaCaixa(){}
     
+    public void addEntrada(String nome, String descricao, Float valor) {
+        Entrada novaEntrada = new Entrada(nome, descricao, valor);
+        transacoes.add(novaEntrada);
+    }
     
+    public Object[][] getCaixa(){
+         Object[][] caixa = new Object[transacoes.size()][4];
+         for(int i=0;i<transacoes.size();i++) {
+             caixa[i][0] = transacoes.get(i).getData();
+             caixa[i][1] = transacoes.get(i).getNome();
+             caixa[i][2] = transacoes.get(i).getDescricao();
+             caixa[i][3] = transacoes.get(i).getValor();
+         }
+         return caixa;
+    }
 }
