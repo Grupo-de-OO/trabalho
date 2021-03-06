@@ -7,6 +7,7 @@ package dcc025.ufjf.trabalho;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /*
@@ -45,10 +46,31 @@ public class Cardapio {
          return itensCardapio;
      }
     
-    public void removeItem(){
-    //criar um remove de acordo com o nome que se deseja remover
+    
+    public boolean remItem(String nome){
+         boolean itemExiste = false;
+ 
+         for(int i = 0 ; i <Itens.size();i++)
+         {
+             if(this.Itens.get(i).getNome().equals(nome)){
+                 ItemCardapio aux;
+                 aux = Itens.get(i);
+                 itemExiste = true;
+                 this.Itens.remove(aux);
+                 JOptionPane.showMessageDialog(null, aux.getNome()+ " removido do cardápio.");
+                 return true;
+                 
+             
+             }
+             else{   
+            JTextField newNome = new JTextField();
+            Object[] novoItem = {"Não existe" + nome+ " no cardápio, digite um item existe: ",newNome};
+            JOptionPane.showMessageDialog(null, novoItem);
+            return remItem(newNome.getText());
+                 
+                }
+            
     }
-    
-    
-
+     
+}
 }
