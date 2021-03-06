@@ -30,9 +30,9 @@ public class Caixa {
     private float valorEmCaixa = 0;
     private List<Movimentacao> transacoes = new ArrayList<Movimentacao>();
     
-    
     public void addEntrada(String nome, String descricao, Float valor) {
         Entrada novaEntrada = new Entrada(nome, descricao, valor);
+        valorEmCaixa += valor;
         transacoes.add(novaEntrada);
     }
     
@@ -46,4 +46,29 @@ public class Caixa {
          }
          return caixa;
     }
+
+    public float getSaldoDoDia() {
+        return saldoDoDia;
+    }
+
+    public void setSaldoDoDia(float saldoDoDia) {
+        this.saldoDoDia = saldoDoDia;
+    }
+
+    public float getValorEmCaixa() {
+        return valorEmCaixa;
+    }
+
+    public void setValorEmCaixa(float valorEmCaixa) {
+        this.valorEmCaixa = valorEmCaixa;
+    }
+
+    public List<Movimentacao> getTransacoes() {
+        return transacoes;
+    }
+
+    public void setTransacoes(List<Movimentacao> transacoes) {
+        this.transacoes = transacoes;
+    }
+    
 }

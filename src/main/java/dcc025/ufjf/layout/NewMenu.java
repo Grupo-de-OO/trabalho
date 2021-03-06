@@ -99,17 +99,17 @@ public class NewMenu {
         pEstoque.setVisible(true);
         pCardapio.setVisible(false);
       
-    JPanel pEsquerda = new JPanel(); //painel principal da esquerda 
-        
-    pEsquerda.setLayout(null);
-    pEsquerda.setPreferredSize(new Dimension(150,frame.getHeight()));
+        JPanel pEsquerda = new JPanel(); //painel principal da esquerda 
 
-    JPanel pEsquerdaTitulo = new JPanel();
-    pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo,BoxLayout.Y_AXIS));
-    
-   
-    JPanel pEsquerdaBotoes = new JPanel();
-    pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes,BoxLayout.Y_AXIS));
+        pEsquerda.setLayout(null);
+        pEsquerda.setPreferredSize(new Dimension(150,frame.getHeight()));
+
+        JPanel pEsquerdaTitulo = new JPanel();
+        pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo,BoxLayout.Y_AXIS));
+
+
+        JPanel pEsquerdaBotoes = new JPanel();
+        pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes,BoxLayout.Y_AXIS));
         
         
         

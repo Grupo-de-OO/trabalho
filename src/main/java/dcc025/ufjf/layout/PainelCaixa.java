@@ -8,6 +8,7 @@ package dcc025.ufjf.layout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.text.DecimalFormat;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -58,7 +59,6 @@ public class PainelCaixa extends JPanel {
         bottomWrapper.add(saldo);
         
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
-
         
         main.add(statusWrapper);
         main.add(Box.createVerticalStrut(20));
@@ -93,6 +93,7 @@ public class PainelCaixa extends JPanel {
             "Data", "Nome", "Descrição", "Preço"
             }
         ));
+        emCaixa.setText("Em caixa: R$" + new DecimalFormat("0.00").format(contexto.caixa.getValorEmCaixa()));
     }
     
     private static JLabel formataLabel(String text) {
