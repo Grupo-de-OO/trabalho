@@ -18,7 +18,11 @@ public class PainelComandas extends JPanel {
 
     private JPanel header = new Header("Comandas");
     private JPanel main = new JPanel();
+    
     private JComboBox<Integer> comandas = new JComboBox<Integer>();
+    
+    
+    
     private JPanel wrapper1 = new JPanel();
 
     public PainelComandas() {
