@@ -90,8 +90,11 @@ public class PainelComandas extends JPanel {
         //Add wrapperBotoes
         wrapperBotoes.setLayout(new BoxLayout(wrapperBotoes, BoxLayout.Y_AXIS));
         wrapperBotoes.add(adicionaComanda);
+        wrapperBotoes.add(Box.createVerticalStrut(10));
         wrapperBotoes.add(adicionaPedido);
+        wrapperBotoes.add(Box.createVerticalStrut(10));
         wrapperBotoes.add(removePedido);
+        wrapperBotoes.add(Box.createVerticalStrut(10));
         wrapperBotoes.add(fechaComanda);
         wrapperBotoes.add(Box.createGlue());
         wrapper2.add(wrapperBotoes);

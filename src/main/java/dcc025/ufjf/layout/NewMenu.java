@@ -7,15 +7,11 @@ package dcc025.ufjf.layout;
 
 import java.awt.BorderLayout;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,7 +28,7 @@ public class NewMenu {
     private static JButton formataBotao(String text) {
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
+        button.setMaximumSize(new Dimension(150,30));
         return button;
         
     }
@@ -43,9 +39,10 @@ public class NewMenu {
 
         JFrame frame = new JFrame();
         frame.setSize(900, 600);
+        frame.setMinimumSize(frame.getSize());
         frame.setLocation(100, 100);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+//        frame.setVisible(true);
         frame.setLayout(new BorderLayout());
         frame.setTitle("Restaurante");
 
@@ -96,7 +93,7 @@ public class NewMenu {
         JPanel pEsquerda = new JPanel(); //painel principal da esquerda 
 
         pEsquerda.setLayout(null);
-        pEsquerda.setPreferredSize(new Dimension(150,frame.getHeight()));
+        pEsquerda.setPreferredSize(new Dimension(200,frame.getHeight()));
         
         JPanel pEsquerdaTitulo = new JPanel();
         pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo,BoxLayout.Y_AXIS));
@@ -168,7 +165,7 @@ public class NewMenu {
         
         
         //adcionando botoes pEsquerdaBotoes
-        pEsquerdaBotoes.add(Box.createVerticalStrut(200));
+//        pEsquerdaBotoes.add(Box.createVerticalStrut(200));
         //pEsquerdaBotoes.add(Box.createRigidArea(new Dimension(50,0)));
 
         pEsquerdaBotoes.add(botaoComandas);
@@ -183,18 +180,32 @@ public class NewMenu {
         pEsquerdaBotoes.add(botaoCardapio);
 
         //setando pEsquerdaTitulo    
-         JLabel nomeRestaurante = new JLabel("NOME RESTAURANTE");
-         nomeRestaurante.setAlignmentX(Component.CENTER_ALIGNMENT);
-         pEsquerdaTitulo.add(nomeRestaurante);
+        ImageIcon image = new ImageIcon("restaurante.png");
+        JLabel imagem = new JLabel(image);
+        imagem.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel nomeRestaurante = new JLabel("THALEZIN DO CAPA");
+        nomeRestaurante.setAlignmentX(Component.CENTER_ALIGNMENT);
+        pEsquerdaTitulo.add(imagem);
+        pEsquerdaTitulo.add(Box.createVerticalStrut(50));
+        pEsquerdaTitulo.add(nomeRestaurante);
+        pEsquerdaTitulo.add(Box.createVerticalStrut(100));
 
         //setando pEsquerda
         pEsquerda.setLayout(new BoxLayout(pEsquerda, BoxLayout.Y_AXIS));
         pEsquerda.add(pEsquerdaTitulo);
         pEsquerda.add(pEsquerdaBotoes);
+        JPanel pEsquerdaAux = new JPanel();
+        pEsquerdaAux.setLayout(new BoxLayout(pEsquerdaAux, BoxLayout.X_AXIS));
+        pEsquerdaAux.add(pEsquerda);
+        JSeparator separador = new JSeparator(SwingConstants.VERTICAL);
+        pEsquerdaAux.add(separador);
+        pEsquerdaAux.add(Box.createGlue());
+        
 
         //Add pEsquerda
-        frame.add(BorderLayout.WEST, pEsquerda);
-
+        frame.add(BorderLayout.WEST, pEsquerdaAux);
+        
+        frame.setVisible(true);
 
     }
 

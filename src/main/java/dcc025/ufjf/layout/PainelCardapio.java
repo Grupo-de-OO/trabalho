@@ -106,11 +106,11 @@ public class PainelCardapio extends JPanel {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextField nomeRetira = new JTextField();
-                Object[] itemRetira = {"DIGITE O NOME DO ITEM PARA RETIRAR DO CARDÁPIO: ", nomeRetira};
+                Object[] itemRetira = {"Digite o nome do item para retirar do cardápio: ", nomeRetira};
                 JOptionPane.showMessageDialog(null, itemRetira);
                 //DecimalFormat df = new DecimalFormat("0,00");
                 //contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
-                 boolean aux = contexto.cardapio.remItem(nomeRetira.getText().toLowerCase());
+                 boolean aux = contexto.cardapio.remItem(nomeRetira.getText().toLowerCase().trim());
                 
                  do{
                     if(aux){
@@ -118,7 +118,7 @@ public class PainelCardapio extends JPanel {
                         }
                     else{
                     JTextField newnomeRetira = new JTextField();
-                    Object[] newitemRetira = {"ITEM NÃO ENCONTRADO, DIGITE UM ITEM QUE TENHA NO CARDÁPIO :", newnomeRetira};
+                    Object[] newitemRetira = {"Item não encontrado, digite um item que tenha no cardápio :", newnomeRetira};
                     JOptionPane.showMessageDialog(null, newitemRetira);
                      aux = contexto.cardapio.remItem(newnomeRetira.getText());
                         
