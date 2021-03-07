@@ -26,50 +26,46 @@ import javax.swing.JTextField;
  
  */
 public class Cardapio {
-    
+
     private ArrayList<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
-    
-   
-    public void addCardapio(String nome, float preco){
-      ItemCardapio item = new ItemCardapio(nome,preco);
-      this.Itens.add(item);
-        
+
+    public void addCardapio(String nome, float preco) {
+        ItemCardapio item = new ItemCardapio(nome, preco);
+        this.Itens.add(item);
+        Itens.add(new ItemCardapio("Banana", 150));
+        Itens.add(new ItemCardapio("Maçâ", 20));
     }
-    
-    
-    
-    public Object[][] getCardapio(){
-         Object[][] itensCardapio = new Object[Itens.size()][3];
-         for(int i=0;i<Itens.size();i++) {
-             itensCardapio[i][0] = Itens.get(i).getNome();
-             itensCardapio[i][1] = Itens.get(i).getPreço();}
-         return itensCardapio;
-     }
-    
-    
-    public boolean remItem(String nome){
-         boolean itemExiste = false;
- 
-         for(int i = 0 ; i <Itens.size();i++)
-         {
-             if(this.Itens.get(i).getNome().toLowerCase().equals(nome)){
-                 ItemCardapio aux;
-                 aux = Itens.get(i);
-                 itemExiste = true;
-                 this.Itens.remove(aux);
-                 JOptionPane.showMessageDialog(null, aux.getNome() + " REMOVIDO DO CARDÁPIO");
-                 
-             
-             }
-             else{   
-               itemExiste = false;
-         
-                
-             
-             }
-             
-                }
-             return itemExiste;
-    
-}
+
+    public Object getNomeCardapio() {
+        Object[] nomes = new Object[Itens.size()];
+        for (int i = 0; i < Itens.size(); i++) {
+            nomes[i] = Itens.get(i).getNome();
+        }
+        return nomes;
+    }
+
+    public Object[][] getCardapio() {
+        Object[][] itensCardapio = new Object[Itens.size()][3];
+        for (int i = 0; i < Itens.size(); i++) {
+            itensCardapio[i][0] = Itens.get(i).getNome();
+            itensCardapio[i][1] = Itens.get(i).getPreco();
+        }
+        return itensCardapio;
+    }
+
+    public boolean remItem(String nome) {
+        boolean itemExiste = false;
+        for (int i = 0; i < Itens.size(); i++) {
+            if (this.Itens.get(i).getNome().toLowerCase().equals(nome)) {
+                ItemCardapio aux;
+                aux = Itens.get(i);
+                itemExiste = true;
+                this.Itens.remove(aux);
+                JOptionPane.showMessageDialog(null, aux.getNome() + " REMOVIDO DO CARDÁPIO");
+            } else {
+                itemExiste = false;
+            }
+        }
+        return itemExiste;
+    }
 }

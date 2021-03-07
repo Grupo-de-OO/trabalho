@@ -6,8 +6,10 @@
 package dcc025.ufjf.trabalho;
 
 import dcc025.ufjf.layout.Contexto;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /*
  
@@ -27,17 +29,32 @@ import java.util.List;
 public class Comanda {
     
     private int id;
-    private float valorTotal= 0 ;
-    private List<ItemCardapio> pedidos = new ArrayList<ItemCardapio>();
+    private float valorTotal = 0 ;
+    private List<ItemComanda> pedidos = new ArrayList<ItemComanda>();
     
     public Comanda(Contexto contexto){
         id = ListaComandas.totalComandas++;
         
     }
     
-    public void inserePedido(){}
+    public void inserePedido(){
+        //Pedidos teste
+        pedidos.add(new ItemComanda(new ItemCardapio("Banana", 150), 3));
+        valorTotal += 450;
+        pedidos.add(new ItemComanda(new ItemCardapio("Maçâ", 20), 5));
+        valorTotal += 100;
+    }
+    
     public void removePedido(){}
     
+    public Object[][] getComanda(){
+         Object[][] itensComanda = new Object[pedidos.size()][3];
+         for(int i=0;i<pedidos.size();i++) {
+             itensComanda[i][0] = pedidos.get(i).getItemCardapio().getNome();
+             itensComanda[i][1] = pedidos.get(i).getQuantidade();
+             itensComanda[i][2] = "R$" + new DecimalFormat("0.00").format(pedidos.get(i).getItemCardapio().getPreco());}
+         return itensComanda;
+     }
     
     public int getId() {
         return id;
@@ -55,11 +72,11 @@ public class Comanda {
         this.valorTotal = valorTotal;
     }
 
-    public List<ItemCardapio> getPedidos() {
+    public List<ItemComanda> getPedidos() {
         return pedidos;
     }
 
-    public void setPedidos(List<ItemCardapio> pedidos) {
+    public void setPedidos(List<ItemComanda> pedidos) {
         this.pedidos = pedidos;
     }
     

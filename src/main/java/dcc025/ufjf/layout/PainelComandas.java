@@ -5,10 +5,21 @@
  */
 package dcc025.ufjf.layout;
 
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.text.DecimalFormat;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -16,30 +27,126 @@ import javax.swing.JPanel;
  */
 public class PainelComandas extends JPanel {
 
+    private Contexto contexto;
     private JPanel header = new Header("Comandas");
     private JPanel main = new JPanel();
-    
-    private JComboBox<Integer> comandas = new JComboBox<Integer>();
 
-    private Contexto contexto;
+
     private JPanel wrapper1 = new JPanel();
+    private JPanel wrapper2 = new JPanel();
+    private JPanel wrapperBotoes = new JPanel();
+    private JPanel wrapper3 = new JPanel();
+    private JComboBox<Integer> comandas = new JComboBox<Integer>();
+    private JButton adicionaComanda = formataBotao("Adiciona Comanda");
+    private JButton fechaComanda = formataBotao("Fecha Comanda");
+    private JButton adicionaPedido = formataBotao("Adiciona Pedido");
+    private JButton removePedido = formataBotao("Remove Pedido");
+    private JTable tabela = new JTable();
+    private JLabel total = new JLabel();
 
     public PainelComandas(Contexto ctx) {
 
-        // A ideia seria desenvolver a pagina dentro do JPanel main, podendo alterar o layout dele
-        // sem problemas, sem quebrar a pagina. nao setar o layout dos paineis diretamente pois  
-        // dessa forma quebraria.
-        // Ex: main.setLayout(new blablaLayout());
-        // e a partir dai add os componentes com main.add(Component);
+        main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
         contexto = ctx;
         
+        //Método para atualizar a tabela quando é trocado o número do ComboBox
+        comandas.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent ie) {
+                if((int)ie.getItem()==comandas.getSelectedIndex())
+                    trocaTabela();
+            }
+        });
+        
+        adicionaComanda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                contexto.listaComandas.insereComanda();
+                atualizaComboBox();
+                comandas.setSelectedIndex(comandas.getItemCount()-1);
+            }
+        });
+
+        adicionaPedido.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).inserePedido();
+                trocaTabela();
+            }
+        });
+        
+        //Add wrapper1
         wrapper1.setLayout(new BoxLayout(wrapper1, BoxLayout.X_AXIS));
+        wrapper1.add(new JLabel("Comanda: "));
+        comandas.setMaximumSize(new Dimension(45, 20));
         wrapper1.add(comandas);
+        wrapper1.add(Box.createGlue());
         main.add(wrapper1);
         
+        //Add tabela
+        tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
+        wrapper2.add(new JScrollPane(tabela));
+        
+        //Add wrapperBotoes
+        wrapperBotoes.setLayout(new BoxLayout(wrapperBotoes, BoxLayout.Y_AXIS));
+        wrapperBotoes.add(adicionaComanda);
+        wrapperBotoes.add(adicionaPedido);
+        wrapperBotoes.add(removePedido);
+        wrapperBotoes.add(fechaComanda);
+        wrapperBotoes.add(Box.createGlue());
+        wrapper2.add(wrapperBotoes);
+        
+        //Add wrapper2
+        wrapper2.setLayout(new BoxLayout(wrapper2, BoxLayout.X_AXIS));
+        main.add(wrapper2);
+        
+        //Add wrapper3
+        wrapper3.setLayout(new BoxLayout(wrapper3, BoxLayout.X_AXIS));
+        wrapper3.add(total);
+        wrapper3.add(Box.createGlue());
+        main.add(wrapper3);
+        
+        //Add header e main
         add(header);
         add(main);
     }
     
+    private static JButton formataBotao(String text) {
+        JButton button = new JButton(text);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
+        return button;
+        
+    }
+
+    private void atualizaComboBox() {
+        comandas.removeAllItems();
+        for (int i = 0; i < contexto.listaComandas.getListaComandas().size(); i++) {
+            comandas.addItem(contexto.listaComandas.getListaComandas().get(i).getId());
+        }
+    }
+
+    private void trocaTabela() {
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+                contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getComanda(),
+                new String[]{
+                    "Nome", "Quantidade", "Preço"
+                }
+        ));
+        total.setText("TOTAL: R$" + new DecimalFormat("0.00").format(contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getValorTotal()));
+        
+    }
     
+    //Não sei se vai ser usado mas ta ai
+    private void atualizaPainel() {
+        int i;
+        if(contexto.listaComandas.getListaComandas().size()>0)
+            i = comandas.getSelectedIndex();
+        else
+            i = 0;
+        atualizaComboBox();
+        trocaTabela();
+        comandas.setSelectedIndex(i);
+    }
+
 }
