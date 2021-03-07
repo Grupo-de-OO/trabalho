@@ -29,11 +29,11 @@ public class Cardapio {
 
     private ArrayList<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
 
-    public void addCardapio(String nome, float preco) {
-        ItemCardapio item = new ItemCardapio(nome, preco);
+    public void addCardapio(String nome, float preco,int quantidade) {
+        ItemCardapio item = new ItemCardapio(nome, preco,quantidade);
         this.Itens.add(item);
-        Itens.add(new ItemCardapio("Banana", 150));
-        Itens.add(new ItemCardapio("Maçâ", 20));
+        Itens.add(new ItemCardapio("Banana", 150,1));
+        Itens.add(new ItemCardapio("Maçâ", 20,1));
     }
 
     public Object getNomeCardapio() {
@@ -49,6 +49,7 @@ public class Cardapio {
         for (int i = 0; i < Itens.size(); i++) {
             itensCardapio[i][0] = Itens.get(i).getNome();
             itensCardapio[i][1] = Itens.get(i).getPreco();
+            itensCardapio[i][2] = Itens.get(i).getQuantidade();
         }
         return itensCardapio;
     }

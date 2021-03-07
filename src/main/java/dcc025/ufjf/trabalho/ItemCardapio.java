@@ -25,11 +25,23 @@ public class ItemCardapio {
     
     private String nome;
     private float preco;
+    private int quantidade;//quantidade a ser vendida
+
+    
     private List<ItemEstoque> ingredientesNecessarios = new ArrayList<ItemEstoque>(); //pensar no item estoque antes de adicionar no cardapio
 
-    public ItemCardapio(String nome, float preco) {
+    public ItemCardapio(String nome, float preco,int quantidade) {
         this.nome = nome;
         this.preco = preco;
+        this.quantidade = quantidade;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
  
     public String getNome() {

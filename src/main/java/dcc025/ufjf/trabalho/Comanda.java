@@ -32,16 +32,16 @@ public class Comanda {
     private float valorTotal = 0 ;
     private List<ItemComanda> pedidos = new ArrayList<ItemComanda>();
     
-    public Comanda(Contexto contexto){
+    public Comanda(){
         id = ListaComandas.totalComandas++;
         
     }
     
     public void inserePedido(){
         //Pedidos teste
-        pedidos.add(new ItemComanda(new ItemCardapio("Banana", 150), 3));
+        pedidos.add(new ItemComanda(new ItemCardapio("Banana", 150,1), 3));
         valorTotal += 450;
-        pedidos.add(new ItemComanda(new ItemCardapio("Maçâ", 20), 5));
+        pedidos.add(new ItemComanda(new ItemCardapio("Maçâ", 20,1), 5));
         valorTotal += 100;
     }
     

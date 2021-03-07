@@ -33,10 +33,10 @@ public class ListaComandas {
     
     public void fechaComanda(int id){}
     
-    public void insereComanda(){
-
-       
+   public void insereComanda(){
+        listaComandas.add(new Comanda());
     }
+
 
     public int getTotalComandas() {
         return totalComandas;

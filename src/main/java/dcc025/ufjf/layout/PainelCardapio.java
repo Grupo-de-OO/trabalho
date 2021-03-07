@@ -70,11 +70,13 @@ public class PainelCardapio extends JPanel {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextField nome = new JTextField();
                 JTextField preco = new JTextField();
-                Object[] novoItem = {"Nome:", nome, "Preço:",preco};
+                JTextField quantidade = new JTextField();
+                
+                Object[] novoItem = {"Nome:", nome, "Preço:",preco,"Porção:",quantidade};
                 JOptionPane.showMessageDialog(null, novoItem);
                 //DecimalFormat df = new DecimalFormat("0,00");
                 //contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
-                contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(preco.getText()));
+                contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(preco.getText()),Integer.parseInt(quantidade.getText()));
                 atualizaPainel();
             }
         });
@@ -116,7 +118,7 @@ public class PainelCardapio extends JPanel {
         tabela.setModel(new javax.swing.table.DefaultTableModel(
                 contexto.cardapio.getCardapio(),
                 new String[]{
-                    "Nome", "Preço"
+                    "Nome", "Preço","Porção"
                 }
         ));
     }
