@@ -25,14 +25,13 @@ import java.util.List;
  */
 public class ListaComandas {
     
-    private int totalComandas = 0;
+    static int totalComandas = 0;
     
     List<Comanda> listaComandas = new ArrayList<Comanda>();
     
     public void fechaComanda(int id){}
+    
     public void insereComanda(){
-        Comanda comanda = new Comanda();
-        listaComandas.add(comanda);
     }
 
     public int getTotalComandas() {

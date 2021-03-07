@@ -31,12 +31,7 @@ public class ItemCardapio {
         this.nome = nome;
         this.preco = preco;
     }
-    
-    @Override
-    public String toString (){
-        return nome + "\n  " + "\n  R$" + preco;
-    }
-
+ 
     public String getNome() {
         return nome;
     }

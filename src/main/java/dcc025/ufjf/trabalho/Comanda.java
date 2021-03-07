@@ -5,6 +5,7 @@
  */
 package dcc025.ufjf.trabalho;
 
+import dcc025.ufjf.layout.Contexto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,11 @@ public class Comanda {
     private int id;
     private float valorTotal= 0 ;
     private List<ItemCardapio> pedidos = new ArrayList<ItemCardapio>();
+    
+    public Comanda(Contexto contexto){
+        id = ListaComandas.totalComandas++;
+        
+    }
     
     public void inserePedido(){}
     public void removePedido(){}

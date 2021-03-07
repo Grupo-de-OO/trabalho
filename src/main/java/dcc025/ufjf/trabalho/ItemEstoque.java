@@ -33,11 +33,7 @@ public class ItemEstoque {
         this.unidade = unidade;
     }
 
-@Override
-    public String toString (){
-        return nomeItemEstoque +" :   " + quantidade;
-    }
-    
+
     //Getters e Setters--------------------------------------
     public String getNomeItemEstoque() {
         return nomeItemEstoque;

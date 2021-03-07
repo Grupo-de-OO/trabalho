@@ -62,7 +62,7 @@ public class NewMenu {
         //setando paineis secundários
         PainelEstoque pEstoque = new PainelEstoque(contexto);
         PainelCaixa pCaixa = new PainelCaixa(contexto);
-        PainelComandas pComandas = new PainelComandas();
+        PainelComandas pComandas = new PainelComandas(contexto);
         PainelCardapio pCardapio = new PainelCardapio(contexto);
         
         
