@@ -23,17 +23,21 @@ package dcc025.ufjf.trabalho;
 public class ItemEstoque {
     
     private String nomeItemEstoque;
-    private int quantidade;
+    private float quantidade;
     private String unidade;
     
-    public ItemEstoque(String nome, int quantidade, String unidade)
+    public ItemEstoque(String nome, float quantidade, String unidade)
     {
         this.nomeItemEstoque = nome;
         this.quantidade = quantidade;
         this.unidade = unidade;
     }
 
-
+    @Override
+    public String toString() {
+        return ("Nome: " + this.nomeItemEstoque + " Quantidade: " + this.quantidade + " Unidade: " + this.unidade); //To change body of generated methods, choose Tools | Templates.
+    }
+  
     //Getters e Setters--------------------------------------
     public String getNomeItemEstoque() {
         return nomeItemEstoque;
@@ -43,11 +47,11 @@ public class ItemEstoque {
         this.nomeItemEstoque = nomeItemEstoque;
     }
 
-    public int getQuantidade() {
+    public float getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(float quantidade) {
         this.quantidade = quantidade;
     }
 

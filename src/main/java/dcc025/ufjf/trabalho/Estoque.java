@@ -58,7 +58,7 @@ public class  Estoque
         }
     }
     
-    public void addEstoque(String nome, int quantidade, String unidade){
+    public void addEstoque(String nome, float quantidade, String unidade){
         boolean w = true;
         boolean jaExiste = false;
         int i = 0;

@@ -35,6 +35,10 @@ public class Cardapio {
         Itens.add(new ItemCardapio("Banana", 150,1));
         Itens.add(new ItemCardapio("Maçâ", 20,1));
     }
+    
+    public void addCardapio(ItemCardapio item) {
+        this.Itens.add(item);
+    }
 
     public Object getNomeCardapio() {
         Object[] nomes = new Object[Itens.size()];
@@ -50,6 +54,21 @@ public class Cardapio {
             itensCardapio[i][0] = Itens.get(i).getNome();
             itensCardapio[i][1] = Itens.get(i).getPreco();
             itensCardapio[i][2] = Itens.get(i).getQuantidade();
+        }
+        return itensCardapio;
+    }
+    
+    public Object[][] getCardapioTemp() {
+        Object[][] itensCardapio = new Object[Itens.size()][4];
+        for (int i = 0; i < Itens.size(); i++) {
+            itensCardapio[i][0] = Itens.get(i).getNome();
+            itensCardapio[i][1] = Itens.get(i).getPreco();
+            itensCardapio[i][2] = Itens.get(i).getQuantidade();
+            String ingString = "";
+            for (ItemEstoque ingrediente : Itens.get(i).getIngredientesNecessarios()) {
+                ingString = ingString + ingrediente.toString() + ", ";
+            }
+            itensCardapio[i][3] = ingString;          
         }
         return itensCardapio;
     }
@@ -69,4 +88,4 @@ public class Cardapio {
         }
         return itemExiste;
     }
-}
+    }
