@@ -25,11 +25,30 @@ import java.util.List;
  */
 public class ListaComandas {
     
+    private int totalComandas = 0;
+    
     List<Comanda> listaComandas = new ArrayList<Comanda>();
     
     public void fechaComanda(int id){}
-    public void insereComanda(){}
- 
-    
+    public void insereComanda(){
+        Comanda comanda = new Comanda();
+        listaComandas.add(comanda);
+    }
+
+    public int getTotalComandas() {
+        return totalComandas;
+    }
+
+    public void setTotalComandas(int totalComandas) {
+        this.totalComandas = totalComandas;
+    }
+
+    public List<Comanda> getListaComandas() {
+        return listaComandas;
+    }
+
+    public void setListaComandas(List<Comanda> listaComandas) {
+        this.listaComandas = listaComandas;
+    }
     
 }

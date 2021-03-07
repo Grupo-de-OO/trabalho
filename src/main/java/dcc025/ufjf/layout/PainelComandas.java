@@ -7,6 +7,7 @@ package dcc025.ufjf.layout;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 /**
@@ -17,6 +18,8 @@ public class PainelComandas extends JPanel {
 
     private JPanel header = new Header("Comandas");
     private JPanel main = new JPanel();
+    private JComboBox<Integer> comandas = new JComboBox<Integer>();
+    private JPanel wrapper1 = new JPanel();
 
     public PainelComandas() {
 
@@ -25,8 +28,14 @@ public class PainelComandas extends JPanel {
         // dessa forma quebraria.
         // Ex: main.setLayout(new blablaLayout());
         // e a partir dai add os componentes com main.add(Component);
+        comandas.addItem(1);
+        comandas.addItem(2);
+        comandas.addItem(3);
+        comandas.addItem(4);
         
-        main.add(new JButton("Teste"));
+        wrapper1.setLayout(new BoxLayout(wrapper1, BoxLayout.X_AXIS));
+        wrapper1.add(comandas);
+        main.add(wrapper1);
         
         add(header);
         add(main);

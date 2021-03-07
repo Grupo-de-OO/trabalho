@@ -18,7 +18,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>dcc025.ufjf.trabalho.Restaurante</mainClass>
+                            <mainClass>dcc025.ufjf.layout.NewMenu</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

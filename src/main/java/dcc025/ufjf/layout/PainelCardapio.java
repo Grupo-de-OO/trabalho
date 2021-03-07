@@ -51,7 +51,6 @@ public class PainelCardapio extends JPanel {
             tabela.getColumnModel().getColumn(0).setResizable(false);
         }
         
-        
         tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
@@ -63,8 +62,6 @@ public class PainelCardapio extends JPanel {
         JButton retira = new JButton("Retirar do cardápio");
         buttonWrapper.add(Box.createHorizontalGlue());
         buttonWrapper.add(retira);
-        
-        
         
         //action buttons
         
@@ -78,8 +75,6 @@ public class PainelCardapio extends JPanel {
                 //DecimalFormat df = new DecimalFormat("0,00");
                 //contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
                 contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(preco.getText()));
-               
-                
                 atualizaPainel();
             }
         });
@@ -95,10 +90,8 @@ public class PainelCardapio extends JPanel {
                  boolean aux = contexto.cardapio.remItem(nomeRetira.getText().toLowerCase());
                 
                  do{
-                    
                     if(aux){
                     break;
-           
                         }
                     else{
                     JTextField newnomeRetira = new JTextField();
@@ -109,25 +102,9 @@ public class PainelCardapio extends JPanel {
                         
                     }
                 }while(!aux);
-            
-                 
-                
-                 
-                 
-                 
-                 
-                 
                 atualizaPainel();
             }
         });
-        
-        
-        
-        
-        
-        
-        
-        
         main.add(buttonWrapper);
         
         add(header);

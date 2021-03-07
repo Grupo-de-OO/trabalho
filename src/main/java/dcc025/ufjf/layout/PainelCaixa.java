@@ -111,6 +111,7 @@ public class PainelCaixa extends JPanel {
             }
         ));
         emCaixa.setText("Em caixa: R$" + new DecimalFormat("0.00").format(contexto.caixa.getValorEmCaixa()));
+        emAberto.setText("Comandas em aberto: " + contexto.listaComandas.getListaComandas().size());
     }
     
     private static JLabel formataLabel(String text) {
