@@ -5,12 +5,13 @@
  */
 package dcc025.ufjf.layout;
 
-import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.text.DecimalFormat;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -31,10 +32,15 @@ public class PainelComandas extends JPanel {
     private JPanel main = new JPanel();
     private JPanel wrapper1 = new JPanel();
     private JPanel wrapper2 = new JPanel();
+    private JPanel wrapperBotoes = new JPanel();
+    private JPanel wrapper3 = new JPanel();
     private JComboBox<Integer> comandas = new JComboBox<Integer>();
-    private JButton adicionaComanda = new JButton("Adiciona Comanda");
-    private JButton adicionaPedido = new JButton("Adiciona Pedido");
+    private JButton adicionaComanda = formataBotao("Adiciona Comanda");
+    private JButton fechaComanda = formataBotao("Fecha Comanda");
+    private JButton adicionaPedido = formataBotao("Adiciona Pedido");
+    private JButton removePedido = formataBotao("Remove Pedido");
     private JTable tabela = new JTable();
+    private JLabel total = new JLabel();
 
     public PainelComandas(Contexto ctx) {
 
@@ -77,17 +83,38 @@ public class PainelComandas extends JPanel {
         
         //Add tabela
         tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
-        main.add(new JScrollPane(tabela));
+        wrapper2.add(new JScrollPane(tabela));
+        
+        //Add wrapperBotoes
+        wrapperBotoes.setLayout(new BoxLayout(wrapperBotoes, BoxLayout.Y_AXIS));
+        wrapperBotoes.add(adicionaComanda);
+        wrapperBotoes.add(adicionaPedido);
+        wrapperBotoes.add(removePedido);
+        wrapperBotoes.add(fechaComanda);
+        wrapperBotoes.add(Box.createGlue());
+        wrapper2.add(wrapperBotoes);
         
         //Add wrapper2
         wrapper2.setLayout(new BoxLayout(wrapper2, BoxLayout.X_AXIS));
-        wrapper2.add(adicionaComanda);
-        wrapper2.add(adicionaPedido);
         main.add(wrapper2);
+        
+        //Add wrapper3
+        wrapper3.setLayout(new BoxLayout(wrapper3, BoxLayout.X_AXIS));
+        wrapper3.add(total);
+        wrapper3.add(Box.createGlue());
+        main.add(wrapper3);
         
         //Add header e main
         add(header);
         add(main);
+    }
+    
+    private static JButton formataBotao(String text) {
+        JButton button = new JButton(text);
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setMaximumSize(new Dimension(Integer.MAX_VALUE,30));
+        return button;
+        
     }
 
     private void atualizaComboBox() {
@@ -104,6 +131,8 @@ public class PainelComandas extends JPanel {
                     "Nome", "Quantidade", "Preço"
                 }
         ));
+        total.setText("TOTAL: R$" + new DecimalFormat("0.00").format(contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getValorTotal()));
+        
     }
     
     //Não sei se vai ser usado mas ta ai

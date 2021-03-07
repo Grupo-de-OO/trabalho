@@ -39,7 +39,9 @@ public class Comanda {
     public void inserePedido(){
         //Pedidos teste
         pedidos.add(new ItemComanda(new ItemCardapio("Banana", 150), 3));
+        valorTotal += 450;
         pedidos.add(new ItemComanda(new ItemCardapio("Maçâ", 20), 5));
+        valorTotal += 100;
     }
     
     public void removePedido(){}
