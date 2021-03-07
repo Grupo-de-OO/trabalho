@@ -5,6 +5,7 @@
  */
 package dcc025.ufjf.trabalho;
 
+import dcc025.ufjf.layout.Contexto;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +32,7 @@ public class ListaComandas {
     
     public void fechaComanda(int id){}
     public void insereComanda(){
-        Comanda comanda = new Comanda();
-        listaComandas.add(comanda);
+        listaComandas.add(new Comanda());
     }
 
     public int getTotalComandas() {

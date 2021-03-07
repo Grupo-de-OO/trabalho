@@ -28,9 +28,6 @@ import javax.swing.SwingConstants;
  * @author thales
  */
 public class NewMenu {
-
-     
-   
     
     private static JButton formataBotao(String text) {
         JButton button = new JButton(text);
@@ -40,9 +37,7 @@ public class NewMenu {
         
     }
     
-    
     private static Contexto contexto = new Contexto();
-
     
     public static void main(String[] args) {
 
@@ -55,9 +50,6 @@ public class NewMenu {
         frame.setTitle("Restaurante");
 
         JPanel pDireita = new JPanel();
-        frame.add(BorderLayout.CENTER, pDireita);
-        
-        
         
         //setando paineis secundários
         PainelEstoque pEstoque = new PainelEstoque(contexto);
@@ -93,6 +85,8 @@ public class NewMenu {
                                 .addComponent(pCardapio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         
+        //Add pDireita
+        frame.add(BorderLayout.CENTER, pDireita);
         
         pCaixa.setVisible(false);
         pComandas.setVisible(false);
@@ -103,7 +97,7 @@ public class NewMenu {
 
         pEsquerda.setLayout(null);
         pEsquerda.setPreferredSize(new Dimension(150,frame.getHeight()));
-
+        
         JPanel pEsquerdaTitulo = new JPanel();
         pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo,BoxLayout.Y_AXIS));
 
@@ -198,7 +192,7 @@ public class NewMenu {
         pEsquerda.add(pEsquerdaTitulo);
         pEsquerda.add(pEsquerdaBotoes);
 
-        //barra do canto esquerdo do Jframe 
+        //Add pEsquerda
         frame.add(BorderLayout.WEST, pEsquerda);
 
 
