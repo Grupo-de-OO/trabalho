@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class ListaComandas {
     
-    private int totalComandas = 0;
+    static int totalComandas = 0;
     
     List<Comanda> listaComandas = new ArrayList<Comanda>();
     

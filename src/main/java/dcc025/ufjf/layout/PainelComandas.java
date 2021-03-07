@@ -19,19 +19,17 @@ public class PainelComandas extends JPanel {
     private JPanel header = new Header("Comandas");
     private JPanel main = new JPanel();
     private JComboBox<Integer> comandas = new JComboBox<Integer>();
+    private Contexto contexto;
     private JPanel wrapper1 = new JPanel();
 
-    public PainelComandas() {
+    public PainelComandas(Contexto ctx) {
 
         // A ideia seria desenvolver a pagina dentro do JPanel main, podendo alterar o layout dele
         // sem problemas, sem quebrar a pagina. nao setar o layout dos paineis diretamente pois  
         // dessa forma quebraria.
         // Ex: main.setLayout(new blablaLayout());
         // e a partir dai add os componentes com main.add(Component);
-        comandas.addItem(1);
-        comandas.addItem(2);
-        comandas.addItem(3);
-        comandas.addItem(4);
+        contexto = ctx;
         
         wrapper1.setLayout(new BoxLayout(wrapper1, BoxLayout.X_AXIS));
         wrapper1.add(comandas);
@@ -40,4 +38,6 @@ public class PainelComandas extends JPanel {
         add(header);
         add(main);
     }
+    
+    
 }

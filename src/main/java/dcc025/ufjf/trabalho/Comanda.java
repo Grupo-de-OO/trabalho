@@ -29,6 +29,10 @@ public class Comanda {
     private float valorTotal= 0 ;
     private List<ItemCardapio> pedidos = new ArrayList<ItemCardapio>();
     
+    public Comanda(){
+        id = ListaComandas.totalComandas++;
+    }
+    
     public void inserePedido(){}
     public void removePedido(){}
     
