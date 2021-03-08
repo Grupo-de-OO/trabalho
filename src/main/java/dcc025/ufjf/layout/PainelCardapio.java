@@ -105,13 +105,12 @@ public class PainelCardapio extends JPanel {
         retira.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                 if(contexto.cardapio.getCardapio().length!=0){
                 JTextField nomeRetira = new JTextField();
                 Object[] itemRetira = {"Digite o nome do item para retirar do cardápio: ", nomeRetira};
                 JOptionPane.showMessageDialog(null, itemRetira);
-                //DecimalFormat df = new DecimalFormat("0,00");
-                //contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
-                 boolean aux = contexto.cardapio.remItem(nomeRetira.getText().toLowerCase().trim());
                 
+                 boolean aux = contexto.cardapio.remItem(nomeRetira.getText().toLowerCase().trim());
                  do{
                     if(aux){
                     break;
@@ -120,14 +119,23 @@ public class PainelCardapio extends JPanel {
                     JTextField newnomeRetira = new JTextField();
                     Object[] newitemRetira = {"Item não encontrado, digite um item que tenha no cardápio :", newnomeRetira};
                     JOptionPane.showMessageDialog(null, newitemRetira);
-                     aux = contexto.cardapio.remItem(newnomeRetira.getText());
+                     aux = contexto.cardapio.remItem(newnomeRetira.getText().toLowerCase().trim());
                         
                         
                     }
                 }while(!aux);
                 atualizaPainel();
             }
-        });
+                 else{
+                     JOptionPane.showMessageDialog(null, "Cardápio Vazio","ERROR",JOptionPane.ERROR_MESSAGE);
+                     
+                 }   
+                 
+                 
+            }
+            });
+        
+        
         main.add(buttonWrapper);
         
         add(header);

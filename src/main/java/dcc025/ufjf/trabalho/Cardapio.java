@@ -81,7 +81,7 @@ public class Cardapio {
                 ItemCardapio aux = Itens.get(i);
                 itemExiste = true;
                 Itens.remove(aux);
-                JOptionPane.showMessageDialog(null, aux.getNome() + " removido do cardápio");
+                JOptionPane.showMessageDialog(null, aux.getNome() + " removido do cardápio","Item Removido",JOptionPane.WARNING_MESSAGE);
             } else {
                 itemExiste = false;
             }
