@@ -5,6 +5,7 @@
  */
 package dcc025.ufjf.trabalho;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -52,7 +53,7 @@ public class Cardapio {
         Object[][] itensCardapio = new Object[Itens.size()][3];
         for (int i = 0; i < Itens.size(); i++) {
             itensCardapio[i][0] = Itens.get(i).getNome();
-            itensCardapio[i][1] = Itens.get(i).getPreco();
+            itensCardapio[i][1] = "R$" + new DecimalFormat("0.00").format(Itens.get(i).getPreco());
             itensCardapio[i][2] = Itens.get(i).getQuantidade();
         }
         return itensCardapio;
@@ -62,7 +63,7 @@ public class Cardapio {
         Object[][] itensCardapio = new Object[Itens.size()][4];
         for (int i = 0; i < Itens.size(); i++) {
             itensCardapio[i][0] = Itens.get(i).getNome();
-            itensCardapio[i][1] = Itens.get(i).getPreco();
+            itensCardapio[i][1] = "R$" + new DecimalFormat("0.00").format(Itens.get(i).getPreco());
             itensCardapio[i][2] = Itens.get(i).getQuantidade();
             String ingString = "";
             for (ItemEstoque ingrediente : Itens.get(i).getIngredientesNecessarios()) {
@@ -76,16 +77,15 @@ public class Cardapio {
     public boolean remItem(String nome) {
         boolean itemExiste = false;
         for (int i = 0; i < Itens.size(); i++) {
-            if (this.Itens.get(i).getNome().toLowerCase().equals(nome)) {
-                ItemCardapio aux;
-                aux = Itens.get(i);
+            if (Itens.get(i).getNome().toLowerCase().trim().equals(nome)) {
+                ItemCardapio aux = Itens.get(i);
                 itemExiste = true;
-                this.Itens.remove(aux);
-                JOptionPane.showMessageDialog(null, aux.getNome() + " REMOVIDO DO CARDÁPIO");
+                Itens.remove(aux);
+                JOptionPane.showMessageDialog(null, aux.getNome() + " removido do cardápio","Item Removido",JOptionPane.WARNING_MESSAGE);
             } else {
                 itemExiste = false;
             }
         }
         return itemExiste;
     }
-    }
+}
