@@ -71,7 +71,7 @@ public class PainelEstoque extends JPanel {
                 JTextField unidade = new JTextField();
                 Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
                 JOptionPane.showMessageDialog(null, novoIngrediente);
-                contexto.estoque.addEstoque(nome.getText(), Integer.parseInt(quantidade.getText()), unidade.getText());
+                contexto.estoque.addEstoque(nome.getText(), Float.parseFloat(quantidade.getText()), unidade.getText());
                 atualizaPainel();
             }
         });

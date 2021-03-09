@@ -68,4 +68,8 @@ public class ItemCardapio {
         this.ingredientesNecessarios = ingredientesNecessarios;
     }
     
+    public void addIngrediente(String nome, float quantidade, String unidade) {
+        ItemEstoque novoIng = new ItemEstoque(nome, quantidade, unidade);
+        ingredientesNecessarios.add(novoIng);
+    }   
 }

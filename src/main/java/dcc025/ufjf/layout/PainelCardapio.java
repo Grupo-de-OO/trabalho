@@ -5,6 +5,7 @@
  */
 package dcc025.ufjf.layout;
 
+import dcc025.ufjf.trabalho.ItemCardapio;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -74,9 +75,29 @@ public class PainelCardapio extends JPanel {
                 
                 Object[] novoItem = {"Nome:", nome, "Preço:",preco,"Porção:",quantidade};
                 JOptionPane.showMessageDialog(null, novoItem);
+                
+                ItemCardapio novoItemCardapio = new ItemCardapio(nome.getText(), Float.parseFloat(preco.getText()),Integer.parseInt(quantidade.getText()));
+                
+                int option = 0;
+                JTextField nomeIng = new JTextField();
+                JTextField qtdIng = new JTextField();
+                JTextField unidadeIng = new JTextField();
+                
+                while (option != 1 && option != -1) {
+                    Object[] options = { "Adicionar Ingrediente", "Terminar"};
+                    Object[] novoIng = {"Adicione um igrediente que seja necessário para a preparo final do novo item", " ", "Nome:", nomeIng, "Quantidade:", qtdIng, "Unidade:",unidadeIng};
+                    option = JOptionPane.showOptionDialog(null, novoIng, "Adicione um ingrediente", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    if (option == 0) {
+                        novoItemCardapio.addIngrediente(nomeIng.getText(), Float.parseFloat(qtdIng.getText()), unidadeIng.getText());
+                    }
+                    nomeIng.setText("");
+                    qtdIng.setText("");
+                    unidadeIng.setText("");
+                }         
+                
                 //DecimalFormat df = new DecimalFormat("0,00");
                 //contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
-                contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(preco.getText()),Integer.parseInt(quantidade.getText()));
+                contexto.cardapio.addCardapio(novoItemCardapio);
                 atualizaPainel();
             }
         });
@@ -116,9 +137,9 @@ public class PainelCardapio extends JPanel {
     
     public void atualizaPainel() {
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                contexto.cardapio.getCardapio(),
+                contexto.cardapio.getCardapioTemp(), // Apos testes, voltar para getCardapio() e remover coluna "Ingredientes"
                 new String[]{
-                    "Nome", "Preço","Porção"
+                    "Nome", "Preço","Porção", "Ingredientes" // ingredientes temporariamente inseridos
                 }
         ));
     }
