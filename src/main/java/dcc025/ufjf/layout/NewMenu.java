@@ -9,14 +9,22 @@ import java.awt.BorderLayout;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSeparator;
+import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 
 /**
@@ -48,7 +56,9 @@ public class NewMenu {
         frame.setTitle("Restaurante");
        // frame.addWindowListener(new frameEvent(contexto));
         
-        
+       
+       //toolbar 
+
         JPanel pDireita = new JPanel();
         
         //setando paineis secundários
@@ -208,8 +218,40 @@ public class NewMenu {
         //Add pEsquerda
         frame.add(BorderLayout.WEST, pEsquerdaAux);
         
-        frame.setVisible(true);
-
+        
+        
+       //toolBar 
+       JMenuBar menuBar = new JMenuBar();
+       frame.setJMenuBar(menuBar);
+       
+    
+       //menus
+       JMenu menu  = new JMenu("Configurações");
+       
+       //menu itens
+       JMenu menuItens = new JMenu("Carregar arquivos");
+       ButtonGroup escolheArquivo = new ButtonGroup();
+       
+       
+       JRadioButton escolheEstoque = new JRadioButton("Carregar estoque");
+       menuItens.add(escolheEstoque);
+       
+       JRadioButton escolheCardapio = new JRadioButton("Carregar cardápio");
+       menuItens.add(escolheCardapio);
+       
+       
+       JRadioButton escolheCaixa = new JRadioButton("Carregar caixa");
+       menuItens.add(escolheCaixa);
+       
+       
+       menu.add(menuItens);
+       menuBar.add(menu);
+       
+       
+       
+       
+       frame.setVisible(true);
+            
     }
 
 }
