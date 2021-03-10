@@ -80,7 +80,8 @@ public class PainelCaixa extends JPanel {
                 JTextField valor = new JTextField();
                 Object[] novaEntrada = {"Nome:", nome, "Descrição:", descricao, "Valor:", valor};
                 JOptionPane.showMessageDialog(null, novaEntrada);
-                contexto.caixa.addEntrada(nome.getText(), descricao.getText(), Float.parseFloat(valor.getText()));
+                if(!nome.getText().isEmpty() || !descricao.getText().isEmpty() || !valor.getText().isEmpty())
+                    contexto.caixa.addEntrada(nome.getText(), descricao.getText(), Float.parseFloat(valor.getText()));
                 atualizaPainel();
             }
         }

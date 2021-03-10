@@ -45,7 +45,7 @@ public class PainelEstoque extends JPanel {
         //main.setBackground(Color.red);
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
         //main.setPreferredSize(new Dimension(5000,5000));
-        
+
         tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
@@ -72,16 +72,15 @@ public class PainelEstoque extends JPanel {
                 Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
                 JOptionPane.showMessageDialog(null, novoIngrediente);
                 //arrumar esse tratamento para null
-                if(nome!=null && quantidade!= null && unidade != null){ 
-                    contexto.estoque.addEstoque(nome.getText(), Float.parseFloat(quantidade.getText()), unidade.getText());
+                if (nome.getText().isEmpty() || quantidade.getText().isEmpty() || unidade.getText().isEmpty()) {
+                    //JOptionPane.showMessageDialog(null, "Você deixou algum campo sem preencher informação.", "ERRO", JOptionPane.ERROR_MESSAGE);   
                 } else {
-                    JOptionPane.showMessageDialog(null, "Você deixou algum campo sem preencher informação.", "ERRO", JOptionPane.ERROR_MESSAGE);   
+                    contexto.estoque.addEstoque(nome.getText(), Float.parseFloat(quantidade.getText()), unidade.getText());
                 }
-                
                 atualizaPainel();
             }
         });
-        
+
         rmItem.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,11 +88,15 @@ public class PainelEstoque extends JPanel {
                 JTextField quantidade = new JTextField();
                 Object[] ingrediente = {"Nome:", nome, "Quantidade:", quantidade};
                 JOptionPane.showMessageDialog(null, ingrediente);
-                contexto.estoque.remEstoque(nome.getText(), Integer.parseInt(quantidade.getText()));
+                if (nome.getText().isEmpty() || quantidade.getText().isEmpty()) {
+                    //JOptionPane.showMessageDialog(null, "Você deixou algum campo sem preencher informação.", "ERRO", JOptionPane.ERROR_MESSAGE);                       
+                } else {
+                    contexto.estoque.remEstoque(nome.getText(), Integer.parseInt(quantidade.getText()));
+                }
                 atualizaPainel();
             }
         });
-    atualizaPainel();
+        atualizaPainel();
 
     }
 
