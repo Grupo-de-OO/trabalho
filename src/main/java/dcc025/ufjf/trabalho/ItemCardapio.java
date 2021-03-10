@@ -25,23 +25,23 @@ public class ItemCardapio {
     
     private String nome;
     private float preco;
-    private int quantidade;//quantidade a ser vendida
+    private Boolean disponivel;
 
     
     private List<ItemEstoque> ingredientesNecessarios = new ArrayList<ItemEstoque>(); //pensar no item estoque antes de adicionar no cardapio
 
-    public ItemCardapio(String nome, float preco,int quantidade) {
+    public ItemCardapio(String nome, float preco, Boolean disponivel) {
         this.nome = nome;
         this.preco = preco;
-        this.quantidade = quantidade;
+        this.disponivel = false;
     }
 
-    public int getQuantidade() {
-        return quantidade;
+    public Boolean getDisponivel() {
+        return disponivel;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
     }
  
     public String getNome() {
@@ -69,7 +69,7 @@ public class ItemCardapio {
     }
     
     public void addIngrediente(String nome, float quantidade, String unidade) {
-        ItemEstoque novoIng = new ItemEstoque(nome, quantidade, unidade);
+        ItemEstoque novoIng = new ItemEstoque(nome.trim(), quantidade, unidade);
         ingredientesNecessarios.add(novoIng);
     }   
 }

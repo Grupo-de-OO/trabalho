@@ -71,7 +71,7 @@ public class  Estoque
             i++;
         }
         if(!jaExiste){
-            estoqueItens.add(new ItemEstoque(nome,quantidade, unidade));
+            estoqueItens.add(new ItemEstoque(nome.trim(),quantidade, unidade));
         }
     }
     
@@ -81,7 +81,7 @@ public class  Estoque
         
         boolean itemExiste = false;
         for(ItemEstoque ingredienteEst : estoqueItens){
-            if(ingredienteEst.getNomeItemEstoque().equals(ingrediente.getNomeItemEstoque())){
+            if(ingredienteEst.getNomeItemEstoque().equalsIgnoreCase(ingrediente.getNomeItemEstoque())){
                 if(ingredienteEst.getQuantidade() - quantidade >= 0){
                     ingredienteEst.setQuantidade(ingredienteEst.getQuantidade() - quantidade);
                     System.out.println("Foram removidos " + quantidade + ingredienteEst.getUnidade() + " do estoque.");
@@ -103,7 +103,7 @@ public class  Estoque
      public void remEstoque(ItemEstoque ingrediente){
          boolean itemExiste = false;
          for(ItemEstoque ingredienteEst : estoqueItens){
-             if(ingredienteEst.getNomeItemEstoque().equals(ingrediente.getNomeItemEstoque())){
+             if(ingredienteEst.getNomeItemEstoque().equalsIgnoreCase(ingrediente.getNomeItemEstoque())){
                  ingrediente = ingredienteEst;
                  itemExiste = true;
              }
@@ -128,4 +128,9 @@ public class  Estoque
          }
          return ingredientes;
      }
+
+    public ArrayList<ItemEstoque> getEstoqueItens() {
+        return estoqueItens;
+    }
+     
 }
