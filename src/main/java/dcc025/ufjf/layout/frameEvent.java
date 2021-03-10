@@ -30,6 +30,7 @@ public class frameEvent implements WindowListener {
 
     @Override
     public void windowOpened(WindowEvent we) {
+        /*
         try{
             String lerArquivo = Arquivo.lerArquivo("jsons//estoque.json");
             List<ItemEstoque> itens = Json.toEstoque(lerArquivo);
@@ -40,10 +41,14 @@ public class frameEvent implements WindowListener {
         } catch (IOException e) {
             System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
         }
+    */
+        
+    
     }
 
     @Override
     public void windowClosing(WindowEvent we) {
+       
         
         ArrayList cardapio = ctx.cardapio.getItens();
         String json1 = Json.toJSON(cardapio);
@@ -53,12 +58,10 @@ public class frameEvent implements WindowListener {
         ArrayList estoque = ctx.estoque.getEstoqueItens();
         String json2 = Json.toJSON(estoque);
         Arquivo.escreverArquivo("jsons//estoque.json", json2);
+       
         
-        /*
-        ArrayList comandas = ctx.listaComandas.getListaComandas();
-        String json3 = Json.toJSON(comandas);
-        Arquivo.escreverArquivo("jsons//comandas.json", json3);
-        */
+        
+       
         
     }
 
