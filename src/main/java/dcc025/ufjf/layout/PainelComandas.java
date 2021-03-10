@@ -72,10 +72,15 @@ public class PainelComandas extends JPanel {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(contexto.listaComandas.getListaComandas().size()>0){
+                    if(contexto.cardapio.getItens().size()>0){
                     contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).inserePedido(contexto);
                     trocaTabela();
+                    }
+                    else{
+                     JOptionPane.showMessageDialog(null, "Não há nada cadastrado no cardapio.", "ERRO", JOptionPane.ERROR_MESSAGE);                   
+                    }
                 }else{
-                    JOptionPane.showMessageDialog(null, "Cardápio Vazio", "ERRO", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Você não possui comandas em aberto.", "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

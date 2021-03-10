@@ -71,7 +71,13 @@ public class PainelEstoque extends JPanel {
                 JTextField unidade = new JTextField();
                 Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
                 JOptionPane.showMessageDialog(null, novoIngrediente);
-                contexto.estoque.addEstoque(nome.getText(), Float.parseFloat(quantidade.getText()), unidade.getText());
+                //arrumar esse tratamento para null
+                if(nome!=null && quantidade!= null && unidade != null){ 
+                    contexto.estoque.addEstoque(nome.getText(), Float.parseFloat(quantidade.getText()), unidade.getText());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Você deixou algum campo sem preencher informação.", "ERRO", JOptionPane.ERROR_MESSAGE);   
+                }
+                
                 atualizaPainel();
             }
         });

@@ -32,6 +32,7 @@ import javax.swing.SwingConstants;
  * @author thales
  */
 public class NewMenu {
+        
     
     private static JButton formataBotao(String text) {
         JButton button = new JButton(text);
@@ -44,7 +45,12 @@ public class NewMenu {
     private static Contexto contexto = new Contexto();
     
     public static void main(String[] args) {
+        
+        
 
+        
+        
+        
         JFrame frame = new JFrame();
         frame.addWindowListener(new frameEvent(contexto));
 
