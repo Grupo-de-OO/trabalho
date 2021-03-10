@@ -30,11 +30,11 @@ public class Cardapio {
 
     private ArrayList<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
 
-    public void addCardapio(String nome, float preco,int quantidade) {
-        ItemCardapio item = new ItemCardapio(nome, preco,quantidade);
+    public void addCardapio(String nome, float preco, Boolean disponivel) {
+        ItemCardapio item = new ItemCardapio(nome.trim(), preco, disponivel);
         this.Itens.add(item);
-        Itens.add(new ItemCardapio("Banana", 150,1));
-        Itens.add(new ItemCardapio("Maçâ", 20,1));
+        Itens.add(new ItemCardapio("Banana", 150, disponivel));
+        Itens.add(new ItemCardapio("Maçâ", 20, disponivel));
     }
 
     public ArrayList<ItemCardapio> getItens() {
@@ -60,7 +60,7 @@ public class Cardapio {
         for (int i = 0; i < Itens.size(); i++) {
             itensCardapio[i][0] = Itens.get(i).getNome();
             itensCardapio[i][1] = "R$" + new DecimalFormat("0.00").format(Itens.get(i).getPreco());
-            itensCardapio[i][2] = Itens.get(i).getQuantidade();
+            itensCardapio[i][2] = Itens.get(i).getDisponivel();
         }
         return itensCardapio;
     }
@@ -70,7 +70,7 @@ public class Cardapio {
         for (int i = 0; i < Itens.size(); i++) {
             itensCardapio[i][0] = Itens.get(i).getNome();
             itensCardapio[i][1] = "R$" + new DecimalFormat("0.00").format(Itens.get(i).getPreco());
-            itensCardapio[i][2] = Itens.get(i).getQuantidade();
+            itensCardapio[i][2] = Itens.get(i).getDisponivel();
             String ingString = "";
             for (ItemEstoque ingrediente : Itens.get(i).getIngredientesNecessarios()) {
                 ingString = ingString + ingrediente.toString() + ", ";
@@ -94,4 +94,6 @@ public class Cardapio {
         }
         return itemExiste;
     }
+
+    
 }

@@ -6,6 +6,7 @@
 package dcc025.ufjf.layout;
 
 import dcc025.ufjf.trabalho.ItemCardapio;
+import dcc025.ufjf.trabalho.ItemEstoque;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -71,12 +72,11 @@ public class PainelCardapio extends JPanel {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextField nome = new JTextField();
                 JTextField preco = new JTextField();
-                JTextField quantidade = new JTextField();
                 
-                Object[] novoItem = {"Nome:", nome, "Preço:",preco,"Porção:",quantidade};
+                Object[] novoItem = {"Nome:", nome, "Preço:",preco};
                 JOptionPane.showMessageDialog(null, novoItem);
                 
-                ItemCardapio novoItemCardapio = new ItemCardapio(nome.getText(), Float.parseFloat(preco.getText()),Integer.parseInt(quantidade.getText()));
+                ItemCardapio novoItemCardapio = new ItemCardapio(nome.getText(), Float.parseFloat(preco.getText()), false);
                 
                 int option = 0;
                 JTextField nomeIng = new JTextField();
@@ -144,12 +144,30 @@ public class PainelCardapio extends JPanel {
     }
     
     public void atualizaPainel() {
+        checaDisponibilidade();
         tabela.setModel(new javax.swing.table.DefaultTableModel(
                 contexto.cardapio.getCardapioTemp(), // Apos testes, voltar para getCardapio() e remover coluna "Ingredientes"
                 new String[]{
-                    "Nome", "Preço","Porção", "Ingredientes" // ingredientes temporariamente inseridos
+                    "Nome", "Preço","Disponível", "Ingredientes" // ingredientes temporariamente inseridos
                 }
         ));
+    }
+    
+    public void checaDisponibilidade() {
+        for (ItemCardapio item : contexto.cardapio.getItens()) {
+            for (ItemEstoque ing : item.getIngredientesNecessarios()) {
+                for (ItemEstoque itemEstoque : contexto.estoque.getEstoqueItens()) {
+                    if (ing.getNomeItemEstoque().equalsIgnoreCase(itemEstoque.getNomeItemEstoque())) {
+                        if(ing.getQuantidade() <= itemEstoque.getQuantidade()) {
+                            item.setDisponivel(true);
+                        } else {
+                            item.setDisponivel(false);
+                            break;
+                        }
+                    }
+                }          
+            }
+        }
     }
 
 }
