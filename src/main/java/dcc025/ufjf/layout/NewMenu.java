@@ -44,7 +44,6 @@ public class NewMenu {
         frame.setMinimumSize(frame.getSize());
         frame.setLocation(100, 100);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setVisible(true);
         frame.setLayout(new BorderLayout());
         frame.setTitle("Restaurante");
        // frame.addWindowListener(new frameEvent(contexto));
@@ -142,7 +141,7 @@ public class NewMenu {
         botaoCaixa.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pCardapio.atualizaPainel();
+                pCaixa.atualizaPainel();
                 pComandas.setVisible(false);
                 pCaixa.setVisible(true);
                 pEstoque.setVisible(false);
@@ -154,7 +153,7 @@ public class NewMenu {
         botaoComandas.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pCardapio.atualizaPainel();
+                pComandas.atualizaPainel();
                 pComandas.setVisible(true);
                 pCaixa.setVisible(false);
                 pEstoque.setVisible(false);

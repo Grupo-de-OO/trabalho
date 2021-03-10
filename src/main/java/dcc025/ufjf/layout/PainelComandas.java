@@ -17,9 +17,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -62,14 +64,36 @@ public class PainelComandas extends JPanel {
                 contexto.listaComandas.insereComanda();
                 atualizaComboBox();
                 comandas.setSelectedIndex(comandas.getItemCount()-1);
+                
             }
         });
 
         adicionaPedido.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).inserePedido();
-                trocaTabela();
+                if(contexto.listaComandas.getListaComandas().size()>0){
+                    contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).inserePedido(contexto);
+                    trocaTabela();
+                }else{
+                    JOptionPane.showMessageDialog(null, "Cardápio Vazio", "ERRO", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        
+        removePedido.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                
+            }
+        });
+        
+        fechaComanda.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(JOptionPane.showConfirmDialog(main, "Tem certeza que deseja fechar a Comanda #" + comandas.getSelectedItem(), "ATENÇÃO", JOptionPane.YES_NO_OPTION)==0){
+                    contexto.listaComandas.fechaComanda(comandas.getSelectedIndex(), contexto);
+                }
+                atualizaPainel();
             }
         });
         
@@ -83,6 +107,7 @@ public class PainelComandas extends JPanel {
         
         //Add tabela
         tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
+        tabela.setRowSelectionAllowed(true);
         wrapper2.add(new JScrollPane(tabela));
         
         //Add wrapperBotoes
@@ -128,26 +153,32 @@ public class PainelComandas extends JPanel {
     }
 
     private void trocaTabela() {
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
-                contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getComanda(),
-                new String[]{
-                    "Nome", "Quantidade", "Preço"
-                }
-        ));
-        total.setText("TOTAL: R$" + new DecimalFormat("0.00").format(contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getValorTotal()));
-        
+        if(contexto.listaComandas.getListaComandas().size()>0){
+            tabela.setModel(new javax.swing.table.DefaultTableModel(
+                    contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getComanda(),
+                    new String[]{
+                        "Nome", "Quantidade", "Preço"
+                    }
+            ));
+            total.setText("TOTAL: R$" + new DecimalFormat("0.00").format(contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getValorTotal()));
+        }else{
+            tabela.setModel(new javax.swing.table.DefaultTableModel(null,new String[]{"Nome", "Quantidade", "Preço"}));
+            total.setText("TOTAL: R$0,00");
+        }
     }
     
     //Não sei se vai ser usado mas ta ai
-    private void atualizaPainel() {
+    public void atualizaPainel() {
         int i;
-        if(contexto.listaComandas.getListaComandas().size()>0)
+        if(contexto.listaComandas.getListaComandas().size()>0){
             i = comandas.getSelectedIndex();
-        else
-            i = 0;
-        atualizaComboBox();
-        trocaTabela();
-        comandas.setSelectedIndex(i);
+            atualizaComboBox();
+            trocaTabela();
+            comandas.setSelectedIndex(i);
+        }else{
+            atualizaComboBox();
+            trocaTabela();
+        }
     }
 
 }

@@ -37,16 +37,6 @@ public class Cardapio {
         Itens.add(new ItemCardapio("Maçâ", 20, disponivel));
     }
 
-    public ArrayList<ItemCardapio> getItens() {
-        return Itens;
-    }
-    
-    
-    
-    public void addCardapio(ItemCardapio item) {
-        this.Itens.add(item);
-    }
-
     public Object getNomeCardapio() {
         Object[] nomes = new Object[Itens.size()];
         for (int i = 0; i < Itens.size(); i++) {
@@ -94,6 +84,20 @@ public class Cardapio {
         }
         return itemExiste;
     }
-
     
+    public String[] getVetCardapio(){
+        String[] vet = new String[Itens.size()];
+        for (int i = 0; i < Itens.size(); i++) {
+            vet[i] = Itens.get(i).getNome();
+        }
+        return vet;
+    }
+
+    public ArrayList<ItemCardapio> getItens() {
+        return Itens;
+    }
+    
+    public void addCardapio(ItemCardapio item) {
+        this.Itens.add(item);
+    }
 }

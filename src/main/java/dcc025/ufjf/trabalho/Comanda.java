@@ -6,10 +6,20 @@
 package dcc025.ufjf.trabalho;
 
 import dcc025.ufjf.layout.Contexto;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /*
  
@@ -34,17 +44,42 @@ public class Comanda {
     
     public Comanda(){
         id = ListaComandas.totalComandas++;
-        
     }
     
-    
-    
-    public void inserePedido(){
-        //Pedidos teste
-        pedidos.add(new ItemComanda(new ItemCardapio("Banana", 150, false), 3));
-        valorTotal += 450;
-        pedidos.add(new ItemComanda(new ItemCardapio("Maçâ", 20, false), 5));
-        valorTotal += 100;
+    public void inserePedido(Contexto ctx){
+        JPanel painel1 = new JPanel();
+        JPanel painel2 = new JPanel();
+        JPanel cardapioAux = new JPanel();
+        painel1.setLayout(new BoxLayout(painel1, BoxLayout.X_AXIS));
+        painel2.setLayout(new BoxLayout(painel2, BoxLayout.Y_AXIS));
+        cardapioAux.setBorder(BorderFactory.createTitledBorder("Cardápio"));
+        cardapioAux.setLayout(new BorderLayout());
+        JList<String> cardapio = new JList<String>();
+        cardapio.setPreferredSize(new Dimension(150, 300));
+        cardapio.setMinimumSize(new Dimension(150, 300));
+        cardapio.setMaximumSize(new Dimension(150, 300));
+        cardapio.setListData(ctx.cardapio.getVetCardapio());
+        JLabel quantidadeLabel = new JLabel("Quantidade: ");
+        quantidadeLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        JTextField quantidadeField = new JTextField();
+        quantidadeField.setMaximumSize(new Dimension(120, 15));
+        quantidadeField.setAlignmentX(Component.LEFT_ALIGNMENT);
+        cardapioAux.add(cardapio);
+        painel2.add(quantidadeLabel);
+        painel2.add(quantidadeField);
+        painel2.add(Box.createGlue());
+        painel1.add(cardapioAux);
+        painel1.add(Box.createRigidArea(new Dimension(20, 300)));
+        painel1.add(painel2);
+        JOptionPane.showMessageDialog(null, painel1);
+        
+        pedidos.add(new ItemComanda(ctx.cardapio.getItens().get(cardapio.getSelectedIndex()), Integer.parseInt(quantidadeField.getText())));
+        valorTotal += ctx.cardapio.getItens().get(cardapio.getSelectedIndex()).getPreco()*Integer.parseInt(quantidadeField.getText());
+//        //Pedidos teste
+//        pedidos.add(new ItemComanda(new ItemCardapio("Banana", 150, false), 3));
+//        valorTotal += 450;
+//        pedidos.add(new ItemComanda(new ItemCardapio("Maçâ", 20, false), 5));
+//        valorTotal += 100;
     }
     
     public void removePedido(){}

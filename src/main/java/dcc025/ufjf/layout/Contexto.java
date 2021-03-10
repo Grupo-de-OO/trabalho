@@ -15,10 +15,10 @@ import dcc025.ufjf.trabalho.ListaComandas;
  */
 public class Contexto {
     
-    Estoque estoque;
-    Cardapio cardapio;
-    Caixa caixa;
-    ListaComandas listaComandas;
+    public Estoque estoque;
+    public Cardapio cardapio;
+    public Caixa caixa;
+    public ListaComandas listaComandas;
     
     public Contexto() {
         estoque = new Estoque();

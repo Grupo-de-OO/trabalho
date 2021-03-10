@@ -26,21 +26,19 @@ import dcc025.ufjf.trabalho.Comanda;
  
  */
 public class ListaComandas {
-    
+
     static int totalComandas = 0;
-    
+
     List<Comanda> listaComandas = new ArrayList<Comanda>();
-    
-    
-    
-    public void fechaComanda(int id){}
-    
-    
-    
-   public void insereComanda(){
-        listaComandas.add(new Comanda());
+
+    public void fechaComanda(int id, Contexto ctx) {
+        ctx.caixa.addEntrada("Conta #" + listaComandas.get(id).getId(), "Conta Paga", listaComandas.get(id).getValorTotal());
+        listaComandas.remove(id);
     }
 
+    public void insereComanda() {
+        listaComandas.add(new Comanda());
+    }
 
     public int getTotalComandas() {
         return totalComandas;
@@ -57,5 +55,5 @@ public class ListaComandas {
     public void setListaComandas(List<Comanda> listaComandas) {
         this.listaComandas = listaComandas;
     }
-    
+
 }
