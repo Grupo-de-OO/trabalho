@@ -52,6 +52,12 @@ public class Json {
     }
 
     
-    
+    public static List<ItemCardapio> toCardapio(String conteudo){
+        Gson gson = new Gson();
+         Type item= new TypeToken<ArrayList<ItemCardapio>>() {
+        }.getType();
+        List<ItemCardapio> itemCardapio = gson.fromJson(conteudo, item);
+        return itemCardapio;
+    }
     
 }

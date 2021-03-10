@@ -5,11 +5,20 @@
  */
 package dcc025.ufjf.layout;
 
+import dcc025.ufjf.trabalho.ItemCardapio;
+import dcc025.ufjf.trabalho.ItemEstoque;
+import dcc025.ufjf.utils.Arquivo;
+import dcc025.ufjf.utils.Json;
 import java.awt.BorderLayout;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.List;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -226,31 +235,73 @@ public class NewMenu {
         
         
         
-       //toolBar 
+       //////////toolBar/////////// 
        JMenuBar menuBar = new JMenuBar();
        frame.setJMenuBar(menuBar);
        
     
        //menus
-       JMenu menu  = new JMenu("Configurações");
+       JMenu menu  = new JMenu();
+       ImageIcon iconeConfig = new ImageIcon("confic_icon.png");
+       Image image2  = iconeConfig.getImage();
+       Image newimgIcon = image2.getScaledInstance(25, 25,  java.awt.Image.SCALE_SMOOTH);
+       iconeConfig = new ImageIcon(newimgIcon);
+       
+       menu.setIcon(iconeConfig);
        
        //menu itens
-       JMenu menuItens = new JMenu("Carregar arquivos");
-       ButtonGroup escolheArquivo = new ButtonGroup();
-       
-       
+       JMenu subMenu1 = new JMenu("Carregar arquivos");
+             
        JRadioButton escolheEstoque = new JRadioButton("Carregar estoque");
-       menuItens.add(escolheEstoque);
+       subMenu1.add(escolheEstoque);
+       
+       escolheEstoque.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                
+                try{
+            String lerArquivo = Arquivo.lerArquivo("jsons//estoque.json");
+            List<ItemEstoque> itens = Json.toEstoque(lerArquivo);
+
+            for(int i = 0;i<itens.size();i++){
+                contexto.estoque.addEstoque(itens.get(i).getNomeItemEstoque(),itens.get(i).getQuantidade(),itens.get(i).getUnidade());
+            }   
+        } catch (IOException r) {
+            System.err.println("Erro ao tentar escrever no arquivo: " + r.toString());
+        }
+
+                }
+            });
+       
+       
        
        JRadioButton escolheCardapio = new JRadioButton("Carregar cardápio");
-       menuItens.add(escolheCardapio);
+       subMenu1.add(escolheCardapio);
+       
+       
+       escolheCardapio.addActionListener(new ActionListener(){
+        public void actionPerformed(ActionEvent e) {
+        
+            try{
+            String lerArquivo = Arquivo.lerArquivo("jsons//cardapio.json");
+            List<ItemCardapio> itens = Json.toCardapio(lerArquivo);
+
+            for(int i = 0;i<itens.size();i++){
+                contexto.cardapio.addCardapio(itens.get(i).getNome(),itens.get(i).getPreco(),itens.get(i).getDisponivel());
+            }   
+        } catch (IOException i) {
+            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+        }
+        
+        }
+        });
+       
        
        
        JRadioButton escolheCaixa = new JRadioButton("Carregar caixa");
-       menuItens.add(escolheCaixa);
+       subMenu1.add(escolheCaixa);
        
        
-       menu.add(menuItens);
+       menu.add(subMenu1);
        menuBar.add(menu);
        
        

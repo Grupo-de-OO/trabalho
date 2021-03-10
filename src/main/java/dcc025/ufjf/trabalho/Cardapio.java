@@ -29,12 +29,13 @@ import javax.swing.JTextField;
 public class Cardapio {
 
     private ArrayList<ItemCardapio> Itens = new ArrayList<ItemCardapio>();
-
+    
+    /*
     public Cardapio() {
         this.Itens.add(new ItemCardapio("Banana", 150, true));
         this.Itens.add(new ItemCardapio("Maçâ", 20, true));
     }
-    
+    */
     
 
     public void addCardapio(String nome, float preco, Boolean disponivel) {
