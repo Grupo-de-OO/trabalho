@@ -37,6 +37,8 @@ public class Comanda {
         
     }
     
+    
+    
     public void inserePedido(){
         //Pedidos teste
         pedidos.add(new ItemComanda(new ItemCardapio("Banana", 150,1), 3));

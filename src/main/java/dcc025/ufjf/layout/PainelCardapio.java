@@ -36,8 +36,8 @@ public class PainelCardapio extends JPanel {
 
         // A ideia seria desenvolver a pagina dentro do JPanel main, podendo alterar o layout dele
         // sem problemas, sem quebrar a pagina. nao setar o layout dos paineis diretamente pois  
-        // dessa forma quebraria.
-        // Ex: main.setLayout(new blablaLayout());
+        // dessa forma quebraria.                                                                                                                                                                                   
+        // Ex: main.setLayout(new blablaLayout());                              
         // e a partir dai add os componentes com main.add(Component);
       
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));

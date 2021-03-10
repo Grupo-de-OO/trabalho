@@ -87,6 +87,7 @@ public class PainelEstoque extends JPanel {
                 atualizaPainel();
             }
         });
+    atualizaPainel();
 
     }
 

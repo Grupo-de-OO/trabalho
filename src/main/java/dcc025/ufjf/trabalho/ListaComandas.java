@@ -31,7 +31,11 @@ public class ListaComandas {
     
     List<Comanda> listaComandas = new ArrayList<Comanda>();
     
+    
+    
     public void fechaComanda(int id){}
+    
+    
     
    public void insereComanda(){
         listaComandas.add(new Comanda());

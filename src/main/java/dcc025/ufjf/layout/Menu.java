@@ -741,7 +741,6 @@ public class Menu extends javax.swing.JFrame {
         Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
         JOptionPane.showMessageDialog(null, novoIngrediente);
         estoque.addEstoque(nome.getText(), Integer.parseInt(quantidade.getText()), unidade.getText());
-        estoque.verEstoque();
         model.addRow(new Object[] {nome.getText(), quantidade.getText(), unidade.getText()});
     }//GEN-LAST:event_jButton5ActionPerformed
 

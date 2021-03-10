@@ -38,6 +38,8 @@ public class NewMenu {
     public static void main(String[] args) {
 
         JFrame frame = new JFrame();
+        frame.addWindowListener(new frameEvent(contexto));
+
         frame.setSize(900, 600);
         frame.setMinimumSize(frame.getSize());
         frame.setLocation(100, 100);
@@ -45,7 +47,9 @@ public class NewMenu {
 //        frame.setVisible(true);
         frame.setLayout(new BorderLayout());
         frame.setTitle("Restaurante");
-
+       // frame.addWindowListener(new frameEvent(contexto));
+        
+        
         JPanel pDireita = new JPanel();
         
         //setando paineis secundários
@@ -86,8 +90,8 @@ public class NewMenu {
         frame.add(BorderLayout.CENTER, pDireita);
         
         pCaixa.setVisible(false);
-        pComandas.setVisible(false);
-        pEstoque.setVisible(true);
+        pComandas.setVisible(true);
+        pEstoque.setVisible(false);
         pCardapio.setVisible(false);
       
         JPanel pEsquerda = new JPanel(); //painel principal da esquerda 

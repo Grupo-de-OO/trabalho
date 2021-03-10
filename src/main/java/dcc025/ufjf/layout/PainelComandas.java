@@ -30,8 +30,6 @@ public class PainelComandas extends JPanel {
     private Contexto contexto;
     private JPanel header = new Header("Comandas");
     private JPanel main = new JPanel();
-
-
     private JPanel wrapper1 = new JPanel();
     private JPanel wrapper2 = new JPanel();
     private JPanel wrapperBotoes = new JPanel();

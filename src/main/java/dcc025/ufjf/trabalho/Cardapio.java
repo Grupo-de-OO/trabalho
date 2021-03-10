@@ -36,6 +36,12 @@ public class Cardapio {
         Itens.add(new ItemCardapio("Banana", 150,1));
         Itens.add(new ItemCardapio("Maçâ", 20,1));
     }
+
+    public ArrayList<ItemCardapio> getItens() {
+        return Itens;
+    }
+    
+    
     
     public void addCardapio(ItemCardapio item) {
         this.Itens.add(item);

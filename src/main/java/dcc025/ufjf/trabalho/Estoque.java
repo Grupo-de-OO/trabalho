@@ -31,16 +31,16 @@ public class  Estoque
     
     
     public Estoque(){
-        this.estoqueItens.add(new ItemEstoque("BANANA",20,"Kg"));//pensar em como mudar o tipo da quantidade
-        this.estoqueItens.add(new ItemEstoque("ARROZ",30,"Kg")); // dependendo do tipo de ingrediente 
-       // this.estoqueItens.add(new ItemEstoque("MAÇÂ",30,"Kg")); // kilo, litro , etc  
+        //this.estoqueItens.add(new ItemEstoque("BANANA",20,"Kg"));//pensar em como mudar o tipo da quantidade
+        //this.estoqueItens.add(new ItemEstoque("ARROZ",30,"Kg")); // dependendo do tipo de ingrediente 
+        //this.estoqueItens.add(new ItemEstoque("MAÇÂ",30,"Kg")); // kilo, litro , etc  
+    }
+
+    public ArrayList<ItemEstoque> getEstoqueItens() {
+        return estoqueItens;
     }
     
-    public void verEstoque(){
-        Generica imprimeEstoque = new Generica("ESTOQUE");  
-        imprimeEstoque.ver(estoqueItens);                  
-    }
-    
+   
     public void addEstoque(ItemEstoque ingrediente){
         boolean w = true;
         boolean jaExiste = false;
