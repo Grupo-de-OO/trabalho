@@ -24,7 +24,7 @@ import javax.swing.JTextField;
  *
  * @author bruno
  */
-public class PainelCaixa extends JPanel {
+public class PainelCaixa extends JPanel implements InterfaceLayout {
 
     private JPanel header = new Header("Caixa");
     private JPanel main = new JPanel();
@@ -52,7 +52,7 @@ public class PainelCaixa extends JPanel {
         statusWrapper.add(Box.createHorizontalGlue());
         statusWrapper.add(emAberto);
         
-        tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
+        tabela.setPreferredScrollableViewportSize(InterfaceLayout.tableDimension);
         
         bottomWrapper.setLayout(new BoxLayout(bottomWrapper, BoxLayout.X_AXIS));
         bottomWrapper.add(novaEntrada);
@@ -104,6 +104,7 @@ public class PainelCaixa extends JPanel {
         );
     }
     
+    @Override
     public void atualizaPainel() {
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             contexto.caixa.getCaixa(),

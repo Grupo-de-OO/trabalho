@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
  *
  * @author bruno
  */
-public class PainelCardapio extends JPanel {
+public class PainelCardapio extends JPanel implements InterfaceLayout {
 
     private JPanel header = new Header("Cardápio");
     private JPanel main = new JPanel();
@@ -52,7 +52,7 @@ public class PainelCardapio extends JPanel {
             tabela.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
+        tabela.setPreferredScrollableViewportSize(InterfaceLayout.tableDimension);
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
 
@@ -137,7 +137,8 @@ public class PainelCardapio extends JPanel {
         add(main);
 
     }
-
+    
+    @Override
     public void atualizaPainel() {
         checaDisponibilidade();
         tabela.setModel(new javax.swing.table.DefaultTableModel(

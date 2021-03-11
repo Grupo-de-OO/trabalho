@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author bruno
  */
-public class PainelEstoque extends JPanel {
+public class PainelEstoque extends JPanel implements InterfaceLayout {
 
     private JPanel header = new Header("Estoque");
     private JPanel main = new JPanel();
@@ -99,7 +99,7 @@ public class PainelEstoque extends JPanel {
         atualizaPainel();
 
     }
-
+    @Override
     public void atualizaPainel() {
         tabela.setModel(new javax.swing.table.DefaultTableModel(
                 contexto.estoque.getEstoque(),
