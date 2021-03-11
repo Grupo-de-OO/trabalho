@@ -98,7 +98,7 @@ public class Comanda {
     }
     
     public void removePedido(int indice){
-        
+        valorTotal-=(pedidos.get(indice).getItemCardapio().getPreco())*(pedidos.get(indice).getQuantidade());
     }
     
     public Object[][] getComanda(){
