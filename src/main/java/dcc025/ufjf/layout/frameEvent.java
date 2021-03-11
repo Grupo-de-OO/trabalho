@@ -5,7 +5,9 @@
  */
 package dcc025.ufjf.layout;
 
+import dcc025.ufjf.trabalho.ItemCardapio;
 import dcc025.ufjf.trabalho.ItemEstoque;
+import dcc025.ufjf.trabalho.Movimentacao;
 import dcc025.ufjf.utils.Arquivo;
 import dcc025.ufjf.utils.Json;
 import java.awt.event.WindowEvent;
@@ -30,7 +32,7 @@ public class frameEvent implements WindowListener {
 
     @Override
     public void windowOpened(WindowEvent we) {
-        /*
+        // carrega estoque
         try{
             String lerArquivo = Arquivo.lerArquivo("jsons//estoque.json");
             List<ItemEstoque> itens = Json.toEstoque(lerArquivo);
@@ -41,8 +43,28 @@ public class frameEvent implements WindowListener {
         } catch (IOException e) {
             System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
         }
-    */
-        
+        // carrega cardapio
+        try {
+            String lerArquivo = Arquivo.lerArquivo("jsons//cardapio.json");
+            List<ItemCardapio> itens = Json.toCardapio(lerArquivo);
+
+            for (int i = 0; i < itens.size(); i++) {
+                ctx.cardapio.addCardapio(itens.get(i).getNome(), itens.get(i).getPreco(), itens.get(i).getDisponivel());
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+        }
+        // carrega caixa
+        try {
+            String lerArquivo = Arquivo.lerArquivo("jsons//caixa.json");
+            List<Movimentacao> itens = Json.toCaixa(lerArquivo);
+
+            for (int i = 0; i < itens.size(); i++) {
+                ctx.caixa.addMovimentacao(itens.get(i).getNome(), itens.get(i).getDescricao(), itens.get(i).getValor(), itens.get(i).getData());
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+        }
     
     }
 
@@ -58,11 +80,14 @@ public class frameEvent implements WindowListener {
         ArrayList estoque = ctx.estoque.getEstoqueItens();
         String json2 = Json.toJSON(estoque);
         Arquivo.escreverArquivo("jsons//estoque.json", json2);
+        
+        ArrayList transacoes = ctx.caixa.getTransacoes();
+        String json3 = Json.toJSON(transacoes);
+        Arquivo.escreverArquivo("jsons//caixa.json", json3);
        
         
         
-       
-        
+         
     }
 
     @Override

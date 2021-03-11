@@ -60,4 +60,12 @@ public class Json {
         return itemCardapio;
     }
     
+    public static List<Movimentacao> toCaixa(String conteudo){
+        Gson gson = new Gson();
+         Type item= new TypeToken<ArrayList<Movimentacao>>() {
+        }.getType();
+        List<Movimentacao> movimentacoes = gson.fromJson(conteudo, item);
+        return movimentacoes;
+    }
+    
 }

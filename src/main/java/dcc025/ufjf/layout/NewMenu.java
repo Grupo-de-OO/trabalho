@@ -258,22 +258,22 @@ public class NewMenu {
         JRadioButton escolheCardapio = new JRadioButton("Carregar cardápio");
         subMenu1.add(escolheCardapio);
 
-        escolheCardapio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                try {
-                    String lerArquivo = Arquivo.lerArquivo("jsons//cardapio.json");
-                    List<ItemCardapio> itens = Json.toCardapio(lerArquivo);
-
-                    for (int i = 0; i < itens.size(); i++) {
-                        contexto.cardapio.addCardapio(itens.get(i).getNome(), itens.get(i).getPreco(), itens.get(i).getDisponivel());
-                    }
-                } catch (IOException i) {
-                    System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
-                }
-
-            }
-        });
+//        escolheCardapio.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//
+//                try {
+//                    String lerArquivo = Arquivo.lerArquivo("jsons//cardapio.json");
+//                    List<ItemCardapio> itens = Json.toCardapio(lerArquivo);
+//
+//                    for (int i = 0; i < itens.size(); i++) {
+//                        contexto.cardapio.addCardapio(itens.get(i).getNome(), itens.get(i).getPreco(), itens.get(i).getDisponivel());
+//                    }
+//                } catch (IOException i) {
+//                    System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+//                }
+//
+//            }
+//        });
 
         JRadioButton escolheCaixa = new JRadioButton("Carregar caixa");
         subMenu1.add(escolheCaixa);
