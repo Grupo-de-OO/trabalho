@@ -71,18 +71,35 @@ public class Comanda {
         painel1.add(cardapioAux);
         painel1.add(Box.createRigidArea(new Dimension(20, 300)));
         painel1.add(painel2);
-        JOptionPane.showMessageDialog(null, painel1);
         
-        pedidos.add(new ItemComanda(ctx.cardapio.getItens().get(cardapio.getSelectedIndex()), Integer.parseInt(quantidadeField.getText())));
-        valorTotal += ctx.cardapio.getItens().get(cardapio.getSelectedIndex()).getPreco()*Integer.parseInt(quantidadeField.getText());
-//        //Pedidos teste
-//        pedidos.add(new ItemComanda(new ItemCardapio("Banana", 150, false), 3));
-//        valorTotal += 450;
-//        pedidos.add(new ItemComanda(new ItemCardapio("Maçâ", 20, false), 5));
-//        valorTotal += 100;
+        boolean w = true;
+        while(w){
+            try {
+                boolean existeItem = false;
+                JOptionPane.showMessageDialog(null, painel1);
+                for (int i = 0; i < pedidos.size(); i++) {
+                    if(pedidos.get(i).getItemCardapio().getNome().equals(cardapio.getSelectedValue())){
+                        pedidos.get(i).setQuantidade(pedidos.get(i).getQuantidade() + Float.parseFloat(quantidadeField.getText()));
+                        valorTotal += pedidos.get(i).getItemCardapio().getPreco()*Float.parseFloat(quantidadeField.getText());
+                        existeItem = true;
+                    }
+                }
+                if(!existeItem){
+                    pedidos.add(new ItemComanda(ctx.cardapio.getItens().get(cardapio.getSelectedIndex()), Float.parseFloat(quantidadeField.getText())));
+                    valorTotal += ctx.cardapio.getItens().get(cardapio.getSelectedIndex()).getPreco()*Integer.parseInt(quantidadeField.getText());
+                }
+                w = false;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                JOptionPane.showMessageDialog(null, "Selecione algum item", "Erro", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Insira um número válido no campo quantidade", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
     
-    public void removePedido(){}
+    public void removePedido(int indice){
+        
+    }
     
     public Object[][] getComanda(){
          Object[][] itensComanda = new Object[pedidos.size()][3];

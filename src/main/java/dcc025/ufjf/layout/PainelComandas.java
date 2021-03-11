@@ -88,7 +88,9 @@ public class PainelComandas extends JPanel {
         removePedido.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                
+                if(JOptionPane.showConfirmDialog(main, "Tem certeza que deseja remover " + contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().get(tabela.getSelectedRow()), "ATENÇÃO", JOptionPane.YES_NO_OPTION)==0){
+                    
+                }
             }
         });
         

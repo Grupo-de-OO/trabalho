@@ -17,8 +17,17 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -29,6 +38,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
@@ -41,25 +51,18 @@ import javax.swing.SwingConstants;
  * @author thales
  */
 public class NewMenu {
-        
-    
+
     private static JButton formataBotao(String text) {
         JButton button = new JButton(text);
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setMaximumSize(new Dimension(150,30));
+        button.setMaximumSize(new Dimension(150, 30));
         return button;
-        
-    }
-    
-    private static Contexto contexto = new Contexto();
-    
-    public static void main(String[] args) {
-        
-        
 
-        
-        
-        
+    }
+
+    private static Contexto contexto = new Contexto();
+
+    public static void main(String[] args) {
         JFrame frame = new JFrame();
         frame.addWindowListener(new frameEvent(contexto));
 
@@ -69,20 +72,17 @@ public class NewMenu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setTitle("Restaurante");
-       // frame.addWindowListener(new frameEvent(contexto));
-        
-       
-       //toolbar 
+        // frame.addWindowListener(new frameEvent(contexto));
 
+        //toolbar 
         JPanel pDireita = new JPanel();
-        
+
         //setando paineis secundários
         PainelEstoque pEstoque = new PainelEstoque(contexto);
         PainelCaixa pCaixa = new PainelCaixa(contexto);
         PainelComandas pComandas = new PainelComandas(contexto);
         PainelCardapio pCardapio = new PainelCardapio(contexto);
-        
-        
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(pDireita);
         pDireita.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -109,37 +109,32 @@ public class NewMenu {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(pCardapio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        
+
         //Add pDireita
         frame.add(BorderLayout.CENTER, pDireita);
-        
+
         pCaixa.setVisible(false);
         pComandas.setVisible(true);
         pEstoque.setVisible(false);
         pCardapio.setVisible(false);
-      
+
         JPanel pEsquerda = new JPanel(); //painel principal da esquerda 
 
         pEsquerda.setLayout(null);
-        pEsquerda.setPreferredSize(new Dimension(200,frame.getHeight()));
-        
-        JPanel pEsquerdaTitulo = new JPanel();
-        pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo,BoxLayout.Y_AXIS));
+        pEsquerda.setPreferredSize(new Dimension(200, frame.getHeight()));
 
+        JPanel pEsquerdaTitulo = new JPanel();
+        pEsquerdaTitulo.setLayout(new BoxLayout(pEsquerdaTitulo, BoxLayout.Y_AXIS));
 
         JPanel pEsquerdaBotoes = new JPanel();
-        pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes,BoxLayout.Y_AXIS));
-        
-        
-        
+        pEsquerdaBotoes.setLayout(new BoxLayout(pEsquerdaBotoes, BoxLayout.Y_AXIS));
+
         //setando os botões da esquerda
         JButton botaoComandas = formataBotao("COMANDAS");
         JButton botaoCaixa = formataBotao("CAIXA");
-        JButton botaoEstoque = formataBotao("ESTOQUE");   
+        JButton botaoEstoque = formataBotao("ESTOQUE");
         JButton botaoCardapio = formataBotao("CARDAPIO");
-    
-        
-        
+
         // Comandos dos botoes
         botaoEstoque.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -173,8 +168,7 @@ public class NewMenu {
                 pCardapio.setVisible(false);
             }
         });
-        
-        
+
         botaoComandas.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,17 +179,10 @@ public class NewMenu {
                 pCardapio.setVisible(false);
             }
         });
-        
-        
-        
-        
-        
-        
-        
+
         //adcionando botoes pEsquerdaBotoes
 //        pEsquerdaBotoes.add(Box.createVerticalStrut(200));
         //pEsquerdaBotoes.add(Box.createRigidArea(new Dimension(50,0)));
-
         pEsquerdaBotoes.add(botaoComandas);
 
         pEsquerdaBotoes.add(Box.createVerticalStrut(20));
@@ -217,7 +204,7 @@ public class NewMenu {
         pEsquerdaTitulo.add(Box.createVerticalStrut(50));
         pEsquerdaTitulo.add(nomeRestaurante);
         pEsquerdaTitulo.add(Box.createVerticalStrut(100));
-
+        
         //setando pEsquerda
         pEsquerda.setLayout(new BoxLayout(pEsquerda, BoxLayout.Y_AXIS));
         pEsquerda.add(pEsquerdaTitulo);
@@ -228,87 +215,89 @@ public class NewMenu {
         JSeparator separador = new JSeparator(SwingConstants.VERTICAL);
         pEsquerdaAux.add(separador);
         pEsquerdaAux.add(Box.createGlue());
-        
 
         //Add pEsquerda
         frame.add(BorderLayout.WEST, pEsquerdaAux);
-        
-        
-        
-       //////////toolBar/////////// 
-       JMenuBar menuBar = new JMenuBar();
-       frame.setJMenuBar(menuBar);
-       
-    
-       //menus
-       JMenu menu  = new JMenu();
-       ImageIcon iconeConfig = new ImageIcon("confic_icon.png");
-       Image image2  = iconeConfig.getImage();
-       Image newimgIcon = image2.getScaledInstance(25, 25,  java.awt.Image.SCALE_SMOOTH);
-       iconeConfig = new ImageIcon(newimgIcon);
-       
-       menu.setIcon(iconeConfig);
-       
-       //menu itens
-       JMenu subMenu1 = new JMenu("Carregar arquivos");
-             
-       JRadioButton escolheEstoque = new JRadioButton("Carregar estoque");
-       subMenu1.add(escolheEstoque);
-       
-       escolheEstoque.addActionListener(new ActionListener(){
+
+        //////////toolBar/////////// 
+        JMenuBar menuBar = new JMenuBar();
+        frame.setJMenuBar(menuBar);
+
+        //menus
+        JMenu menu = new JMenu();
+        ImageIcon iconeConfig = new ImageIcon("confic_icon.png");
+        Image image2 = iconeConfig.getImage();
+        Image newimgIcon = image2.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
+        iconeConfig = new ImageIcon(newimgIcon);
+
+        menu.setIcon(iconeConfig);
+
+        //menu itens
+        JMenu subMenu1 = new JMenu("Carregar arquivos");
+
+        JRadioButton escolheEstoque = new JRadioButton("Carregar estoque");
+        subMenu1.add(escolheEstoque);
+
+        escolheEstoque.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                
-                try{
-            String lerArquivo = Arquivo.lerArquivo("jsons//estoque.json");
-            List<ItemEstoque> itens = Json.toEstoque(lerArquivo);
 
-            for(int i = 0;i<itens.size();i++){
-                contexto.estoque.addEstoque(itens.get(i).getNomeItemEstoque(),itens.get(i).getQuantidade(),itens.get(i).getUnidade());
-            }   
-        } catch (IOException r) {
-            System.err.println("Erro ao tentar escrever no arquivo: " + r.toString());
-        }
+                try {
+                    String lerArquivo = Arquivo.lerArquivo("jsons//estoque.json");
+                    List<ItemEstoque> itens = Json.toEstoque(lerArquivo);
 
+                    for (int i = 0; i < itens.size(); i++) {
+                        contexto.estoque.addEstoque(itens.get(i).getNomeItemEstoque(), itens.get(i).getQuantidade(), itens.get(i).getUnidade());
+                    }
+                } catch (IOException r) {
+                    System.err.println("Erro ao tentar escrever no arquivo: " + r.toString());
                 }
-            });
-       
-       
-       
-       JRadioButton escolheCardapio = new JRadioButton("Carregar cardápio");
-       subMenu1.add(escolheCardapio);
-       
-       
-       escolheCardapio.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent e) {
-        
-            try{
-            String lerArquivo = Arquivo.lerArquivo("jsons//cardapio.json");
-            List<ItemCardapio> itens = Json.toCardapio(lerArquivo);
 
-            for(int i = 0;i<itens.size();i++){
-                contexto.cardapio.addCardapio(itens.get(i).getNome(),itens.get(i).getPreco(),itens.get(i).getDisponivel());
-            }   
-        } catch (IOException i) {
-            System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
-        }
-        
-        }
+            }
         });
-       
-       
-       
-       JRadioButton escolheCaixa = new JRadioButton("Carregar caixa");
-       subMenu1.add(escolheCaixa);
-       
-       
-       menu.add(subMenu1);
-       menuBar.add(menu);
-       
-       
-       
-       
-       frame.setVisible(true);
-            
+
+        JRadioButton escolheCardapio = new JRadioButton("Carregar cardápio");
+        subMenu1.add(escolheCardapio);
+
+        escolheCardapio.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    String lerArquivo = Arquivo.lerArquivo("jsons//cardapio.json");
+                    List<ItemCardapio> itens = Json.toCardapio(lerArquivo);
+
+                    for (int i = 0; i < itens.size(); i++) {
+                        contexto.cardapio.addCardapio(itens.get(i).getNome(), itens.get(i).getPreco(), itens.get(i).getDisponivel());
+                    }
+                } catch (IOException i) {
+                    System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
+                }
+
+            }
+        });
+
+        JRadioButton escolheCaixa = new JRadioButton("Carregar caixa");
+        subMenu1.add(escolheCaixa);
+        
+//        JButton renomeiaRestaurante = new JButton();
+//        renomeiaRestaurante.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent ae) {
+//                String novoNome = JOptionPane.showInputDialog(null, "Novo nome do restaurante:", "Novo Nome");
+//                try {
+//                    BufferedReader br = new BufferedReader(new FileReader(new File("NomeRestaurante")));
+//                    BufferedWriter bw = new BufferedWriter(new FileWriter(new File("NomeRestaurante")));
+//                    
+//                } catch (IOException ex) {
+//                    Logger.getLogger(NewMenu.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        });
+        
+        menu.add(subMenu1);
+        menuBar.add(menu);
+
+        frame.setVisible(true);
+
     }
 
 }
