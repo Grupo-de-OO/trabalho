@@ -36,6 +36,13 @@ public class Movimentacao {
         this.valor = valor;
     }
     
+    public Movimentacao(String nome, String descricao, Float valor, Date data) {
+        this.data = data;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.valor = valor;
+    }
+    
     public Date getData() {
         return data;
     }

@@ -41,8 +41,6 @@ public class Cardapio {
     public void addCardapio(String nome, float preco, Boolean disponivel) {
         ItemCardapio item = new ItemCardapio(nome.trim(), preco, disponivel);
         this.Itens.add(item);
-        Itens.add(new ItemCardapio("Banana", 150, disponivel));
-        Itens.add(new ItemCardapio("Maçâ", 20, disponivel));
     }
 
     public Object getNomeCardapio() {
