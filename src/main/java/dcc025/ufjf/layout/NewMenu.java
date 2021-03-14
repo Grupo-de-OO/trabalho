@@ -72,6 +72,8 @@ public class NewMenu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setTitle("Restaurante");
+        ImageIcon image = new ImageIcon("restaurante.png");
+        frame.setIconImage(image.getImage());
         // frame.addWindowListener(new frameEvent(contexto));
 
         //toolbar 
@@ -195,7 +197,6 @@ public class NewMenu {
         pEsquerdaBotoes.add(botaoCardapio);
 
         //setando pEsquerdaTitulo    
-        ImageIcon image = new ImageIcon("restaurante.png");
         JLabel imagem = new JLabel(image);
         imagem.setAlignmentX(Component.CENTER_ALIGNMENT);
         JLabel nomeRestaurante = new JLabel("THALEZIN DO CAPA");
