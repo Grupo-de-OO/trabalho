@@ -56,9 +56,17 @@ public class Cardapio {
         for (int i = 0; i < Itens.size(); i++) {
             itensCardapio[i][0] = Itens.get(i).getNome();
             itensCardapio[i][1] = "R$" + new DecimalFormat("0.00").format(Itens.get(i).getPreco());
-            itensCardapio[i][2] = Itens.get(i).getDisponivel();
-        }
-        return itensCardapio;
+            
+             if (Itens.get(i).getDisponivel()){ 
+            itensCardapio[i][2] = "Disponível";
+            }
+            else{
+            itensCardapio[i][2] = "Indisponível";
+            
+             }
+    }
+                return itensCardapio;
+
     }
     
     public Object[][] getCardapioTemp() {
@@ -66,7 +74,16 @@ public class Cardapio {
         for (int i = 0; i < Itens.size(); i++) {
             itensCardapio[i][0] = Itens.get(i).getNome();
             itensCardapio[i][1] = "R$" + new DecimalFormat("0.00").format(Itens.get(i).getPreco());
-            itensCardapio[i][2] = Itens.get(i).getDisponivel();
+            
+            if (Itens.get(i).getDisponivel()){ 
+            itensCardapio[i][2] = "Disponível";
+            }
+            else{
+            itensCardapio[i][2] = "Indisponível";
+           
+                
+            }
+            
             String ingString = "";
             for (ItemEstoque ingrediente : Itens.get(i).getIngredientesNecessarios()) {
                 ingString = ingString + ingrediente.toString() + ", ";
