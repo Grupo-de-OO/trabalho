@@ -94,8 +94,6 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
                         unidadeIng.setText("");
                     }
 
-                    //DecimalFormat df = new DecimalFormat("0,00");
-                    //contexto.cardapio.addCardapio(nome.getText(), Float.parseFloat(df.format(preco.getText())));
                     contexto.cardapio.addCardapio(novoItemCardapio);
                 }
                 atualizaPainel();

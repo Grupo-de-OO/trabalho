@@ -75,11 +75,12 @@ public class  Estoque
         }
     }
     
-    public void remEstoque(String ingredienteNome, float quantidade){
+    public void /*Talvez int*/ remEstoque(String ingredienteNome, float quantidade){
         
         ItemEstoque ingrediente = new ItemEstoque(ingredienteNome, quantidade, " ");
         
         boolean itemExiste = false;
+        int opcao = 0;
         for(ItemEstoque ingredienteEst : estoqueItens){
             if(ingredienteEst.getNomeItemEstoque().equalsIgnoreCase(ingrediente.getNomeItemEstoque())){
                 if(ingredienteEst.getQuantidade() - quantidade >= 0){
@@ -87,7 +88,7 @@ public class  Estoque
                     JOptionPane.showMessageDialog(null, "Foram removidos " + quantidade + ingredienteEst.getUnidade() + " do estoque.", "AVISO",JOptionPane.WARNING_MESSAGE);
                     itemExiste = true;
                 }else{
-                    int opcao = JOptionPane.showConfirmDialog(null,"Não foi possível remover " + quantidade + ingredienteEst.getUnidade() + " do estoque pois só tem " + ingredienteEst.getQuantidade() + ingredienteEst.getUnidade()
+                    opcao = JOptionPane.showConfirmDialog(null,"Não foi possível remover " + quantidade + ingredienteEst.getUnidade() + " do estoque pois só tem " + ingredienteEst.getQuantidade() + ingredienteEst.getUnidade()
                                       + "\nGostaria de remover mesmo assim?");
                     if(opcao==JOptionPane.YES_OPTION)
                         ingredienteEst.setQuantidade(0);
@@ -96,6 +97,7 @@ public class  Estoque
         }
 //        if(!itemExiste)
 //            remEstoque(ingrediente);
+//        return opcao;
     }
     
      public void remEstoque(ItemEstoque ingrediente){
