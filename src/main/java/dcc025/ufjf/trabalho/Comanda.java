@@ -73,6 +73,7 @@ public class Comanda {
         painel1.add(painel2);
         
         boolean w = true;
+        ItemComanda novoItemComanda = new ItemComanda(null, 0);
         while(w){
             try {
                 boolean existeItem = false;
@@ -82,11 +83,13 @@ public class Comanda {
                         pedidos.get(i).setQuantidade(pedidos.get(i).getQuantidade() + Float.parseFloat(quantidadeField.getText()));
                         valorTotal += pedidos.get(i).getItemCardapio().getPreco()*Float.parseFloat(quantidadeField.getText());
                         existeItem = true;
+                        novoItemComanda = pedidos.get(i);
                     }
                 }
                 if(!existeItem){
                     pedidos.add(new ItemComanda(ctx.cardapio.getItens().get(cardapio.getSelectedIndex()), Float.parseFloat(quantidadeField.getText())));
                     valorTotal += ctx.cardapio.getItens().get(cardapio.getSelectedIndex()).getPreco()*Integer.parseInt(quantidadeField.getText());
+                    novoItemComanda =  pedidos.get(pedidos.size()-1);
                 }
                 w = false;
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -94,11 +97,14 @@ public class Comanda {
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Insira um número válido no campo quantidade", "Erro", JOptionPane.ERROR_MESSAGE);
             }
+            for(int i = 0; i < novoItemComanda.getItemCardapio().getIngredientesNecessarios().size();i++)
+            ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(i).getNomeItemEstoque(),novoItemComanda.getQuantidade()*novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(i).getQuantidade());
         }
     }
     
     public void removePedido(int indice){
         valorTotal-=(pedidos.get(indice).getItemCardapio().getPreco())*(pedidos.get(indice).getQuantidade());
+        pedidos.remove(indice);
     }
     
     public Object[][] getComanda(){

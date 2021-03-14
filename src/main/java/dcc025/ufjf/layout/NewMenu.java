@@ -219,44 +219,44 @@ public class NewMenu {
         //Add pEsquerda
         frame.add(BorderLayout.WEST, pEsquerdaAux);
 
-        //////////toolBar/////////// 
-        JMenuBar menuBar = new JMenuBar();
-        frame.setJMenuBar(menuBar);
-
-        //menus
-        JMenu menu = new JMenu();
-        ImageIcon iconeConfig = new ImageIcon("confic_icon.png");
-        Image image2 = iconeConfig.getImage();
-        Image newimgIcon = image2.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
-        iconeConfig = new ImageIcon(newimgIcon);
-
-        menu.setIcon(iconeConfig);
-
-        //menu itens
-        JMenu subMenu1 = new JMenu("Carregar arquivos");
-
-        JRadioButton escolheEstoque = new JRadioButton("Carregar estoque");
-        subMenu1.add(escolheEstoque);
-
-        escolheEstoque.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                try {
-                    String lerArquivo = Arquivo.lerArquivo("jsons//estoque.json");
-                    List<ItemEstoque> itens = Json.toEstoque(lerArquivo);
-
-                    for (int i = 0; i < itens.size(); i++) {
-                        contexto.estoque.addEstoque(itens.get(i).getNomeItemEstoque(), itens.get(i).getQuantidade(), itens.get(i).getUnidade());
-                    }
-                } catch (IOException r) {
-                    System.err.println("Erro ao tentar escrever no arquivo: " + r.toString());
-                }
-
-            }
-        });
-
-        JRadioButton escolheCardapio = new JRadioButton("Carregar cardápio");
-        subMenu1.add(escolheCardapio);
+//        //////////toolBar/////////// 
+//        JMenuBar menuBar = new JMenuBar();
+//        frame.setJMenuBar(menuBar);
+//
+//        //menus
+//        JMenu menu = new JMenu();
+//        ImageIcon iconeConfig = new ImageIcon("confic_icon.png");
+//        Image image2 = iconeConfig.getImage();
+//        Image newimgIcon = image2.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
+//        iconeConfig = new ImageIcon(newimgIcon);
+//
+//        menu.setIcon(iconeConfig);
+//
+//        //menu itens
+//        JMenu subMenu1 = new JMenu("Carregar arquivos");
+//
+//        JRadioButton escolheEstoque = new JRadioButton("Carregar estoque");
+//        subMenu1.add(escolheEstoque);
+//
+//        escolheEstoque.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//
+//                try {
+//                    String lerArquivo = Arquivo.lerArquivo("jsons//estoque.json");
+//                    List<ItemEstoque> itens = Json.toEstoque(lerArquivo);
+//
+//                    for (int i = 0; i < itens.size(); i++) {
+//                        contexto.estoque.addEstoque(itens.get(i).getNomeItemEstoque(), itens.get(i).getQuantidade(), itens.get(i).getUnidade());
+//                    }
+//                } catch (IOException r) {
+//                    System.err.println("Erro ao tentar escrever no arquivo: " + r.toString());
+//                }
+//
+//            }
+//        });
+//
+//        JRadioButton escolheCardapio = new JRadioButton("Carregar cardápio");
+//        subMenu1.add(escolheCardapio);
 
 //        escolheCardapio.addActionListener(new ActionListener() {
 //            public void actionPerformed(ActionEvent e) {
@@ -271,12 +271,11 @@ public class NewMenu {
 //                } catch (IOException i) {
 //                    System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
 //                }
-//
 //            }
 //        });
 
-        JRadioButton escolheCaixa = new JRadioButton("Carregar caixa");
-        subMenu1.add(escolheCaixa);
+//        JRadioButton escolheCaixa = new JRadioButton("Carregar caixa");
+//        subMenu1.add(escolheCaixa);
         
 //        JButton renomeiaRestaurante = new JButton();
 //        renomeiaRestaurante.addActionListener(new ActionListener() {
@@ -293,8 +292,8 @@ public class NewMenu {
 //            }
 //        });
         
-        menu.add(subMenu1);
-        menuBar.add(menu);
+//        menu.add(subMenu1);
+//        menuBar.add(menu);
 
         frame.setVisible(true);
 

@@ -75,7 +75,7 @@ public class  Estoque
         }
     }
     
-    public void remEstoque(String ingredienteNome, int quantidade){
+    public void remEstoque(String ingredienteNome, float quantidade){
         
         ItemEstoque ingrediente = new ItemEstoque(ingredienteNome, quantidade, " ");
         

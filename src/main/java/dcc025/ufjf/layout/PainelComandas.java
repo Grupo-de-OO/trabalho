@@ -88,11 +88,21 @@ public class PainelComandas extends JPanel {
         removePedido.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (JOptionPane.showConfirmDialog(main, "Tem certeza que deseja remover " + contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().get(tabela.getSelectedRow()), "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0) {
-                    //contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).removePedido(contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().get(tabela.getSelectedRow()).getItemCardapio().getClass());
-                    contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().remove(tabela.getSelectedRow());
-                        
-                }
+                if (contexto.listaComandas.getListaComandas().size() > 0 && contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().size() > 0) {
+                    if(tabela.getSelectedRow() != -1){    
+                        if (JOptionPane.showConfirmDialog(main, "Tem certeza que deseja remover " + contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().get(tabela.getSelectedRow()).getItemCardapio().getNome(), "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0) {
+                            contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).removePedido(tabela.getSelectedRow());
+//                            if(JOptionPane.showConfirmDialog(main, "Deseja volta com os itens para o estoque?", "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0){
+//                                for(int i = 0; i < contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().get(tabela.getSelectedRow()).getItemCardapio().getIngredientesNecessarios().size(); i++){
+//                                    System.out.println("Teste");
+//                                    contexto.estoque.addEstoque(contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().get(tabela.getSelectedRow()).getItemCardapio().getIngredientesNecessarios().get(i));
+//                                }
+//                            }
+                        }
+                    }else
+                        JOptionPane.showMessageDialog(main, "Selecione o item que deseja remover.", "ATENÇÃO", JOptionPane.ERROR_MESSAGE);
+                }else
+                    JOptionPane.showMessageDialog(main, "Nenhuma comanda aberta ou nenhum item adicionado.", "ATENÇÃO!", JOptionPane.ERROR_MESSAGE);
                 trocaTabela();
                 atualizaPainel();
             }
