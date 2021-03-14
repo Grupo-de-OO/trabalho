@@ -98,7 +98,7 @@ public class Comanda {
                 JOptionPane.showMessageDialog(null, "Insira um número válido no campo quantidade", "Erro", JOptionPane.ERROR_MESSAGE);
             }
             for(int i = 0; i < novoItemComanda.getItemCardapio().getIngredientesNecessarios().size();i++)
-            ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(i).getNomeItemEstoque(),novoItemComanda.getQuantidade()*novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(i).getQuantidade());
+            ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(i).getNomeItemEstoque(),Float.parseFloat(quantidadeField.getText())*novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(i).getQuantidade());
         }
     }
     

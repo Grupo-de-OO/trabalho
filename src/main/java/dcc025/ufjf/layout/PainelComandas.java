@@ -27,7 +27,7 @@ import javax.swing.ListSelectionModel;
  *
  * @author bruno
  */
-public class PainelComandas extends JPanel {
+public class PainelComandas extends JPanel implements InterfaceLayout {
 
     private Contexto contexto;
     private JPanel header = new Header("Comandas");
@@ -127,7 +127,7 @@ public class PainelComandas extends JPanel {
         main.add(wrapper1);
 
         //Add tabela
-        tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
+        tabela.setPreferredScrollableViewportSize(InterfaceLayout.tableDimension);
         tabela.setRowSelectionAllowed(true);
         wrapper2.add(new JScrollPane(tabela));
 
@@ -189,6 +189,7 @@ public class PainelComandas extends JPanel {
     }
 
     //Não sei se vai ser usado mas ta ai
+    @Override
     public void atualizaPainel() {
         int i;
         if (contexto.listaComandas.getListaComandas().size() > 0) {
