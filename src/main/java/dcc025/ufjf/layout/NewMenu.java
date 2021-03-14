@@ -64,22 +64,21 @@ public class NewMenu {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        frame.addWindowListener(new frameEvent(contexto));
+        frame.addWindowListener(new frameEvent(contexto,frame));
 
         frame.setSize(900, 600);
         frame.setMinimumSize(frame.getSize());
         frame.setLocation(100, 100);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setLayout(new BorderLayout());
         frame.setTitle("Restaurante");
         ImageIcon image = new ImageIcon("restaurante.png");
         frame.setIconImage(image.getImage());
-        // frame.addWindowListener(new frameEvent(contexto));
 
-        //toolbar 
+        //Toolbar 
         JPanel pDireita = new JPanel();
 
-        //setando paineis secundários
+        //Setando paineis secundários
         PainelEstoque pEstoque = new PainelEstoque(contexto);
         PainelCaixa pCaixa = new PainelCaixa(contexto);
         PainelComandas pComandas = new PainelComandas(contexto);
@@ -120,7 +119,8 @@ public class NewMenu {
         pEstoque.setVisible(false);
         pCardapio.setVisible(false);
 
-        JPanel pEsquerda = new JPanel(); //painel principal da esquerda 
+        //Setando painel principal da esquerda
+        JPanel pEsquerda = new JPanel(); 
 
         pEsquerda.setLayout(null);
         pEsquerda.setPreferredSize(new Dimension(200, frame.getHeight()));
@@ -182,9 +182,7 @@ public class NewMenu {
             }
         });
 
-        //adcionando botoes pEsquerdaBotoes
-//        pEsquerdaBotoes.add(Box.createVerticalStrut(200));
-        //pEsquerdaBotoes.add(Box.createRigidArea(new Dimension(50,0)));
+        //Adcionando botões pEsquerdaBotoes
         pEsquerdaBotoes.add(botaoComandas);
 
         pEsquerdaBotoes.add(Box.createVerticalStrut(20));
@@ -196,7 +194,7 @@ public class NewMenu {
         pEsquerdaBotoes.add(Box.createVerticalStrut(20));
         pEsquerdaBotoes.add(botaoCardapio);
 
-        //setando pEsquerdaTitulo    
+        //Setando pEsquerdaTitulo    
         JLabel imagem = new JLabel(image);
         imagem.setAlignmentX(Component.CENTER_ALIGNMENT);
         JLabel nomeRestaurante = new JLabel("THALEZIN DO CAPA");

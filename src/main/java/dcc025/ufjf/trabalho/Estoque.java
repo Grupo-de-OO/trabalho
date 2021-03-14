@@ -89,15 +89,13 @@ public class  Estoque
                 }else{
                     int opcao = JOptionPane.showConfirmDialog(null,"Não foi possível remover " + quantidade + ingredienteEst.getUnidade() + " do estoque pois só tem " + ingredienteEst.getQuantidade() + ingredienteEst.getUnidade()
                                       + "\nGostaria de remover mesmo assim?");
-                    if(opcao==JOptionPane.YES_OPTION){
-                        itemExiste = false;
-                        ingrediente = ingredienteEst;
-                    }
+                    if(opcao==JOptionPane.YES_OPTION)
+                        ingredienteEst.setQuantidade(0);
                 }
             }
         }
-        if(!itemExiste)
-            remEstoque(ingrediente);
+//        if(!itemExiste)
+//            remEstoque(ingrediente);
     }
     
      public void remEstoque(ItemEstoque ingrediente){

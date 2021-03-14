@@ -10,11 +10,17 @@ import dcc025.ufjf.trabalho.ItemEstoque;
 import dcc025.ufjf.trabalho.Movimentacao;
 import dcc025.ufjf.utils.Arquivo;
 import dcc025.ufjf.utils.Json;
+import java.awt.Component;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.ListModel;
 
 /**
@@ -24,10 +30,11 @@ import javax.swing.ListModel;
 public class frameEvent implements WindowListener {
 
     private Contexto ctx;
+    private JFrame frame;
     
-    public frameEvent(Contexto ctx) {
+    public frameEvent(Contexto ctx, JFrame frame) {
         this.ctx = ctx;
-    
+        this.frame = frame;
     }
 
     @Override
@@ -70,24 +77,30 @@ public class frameEvent implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent we) {
-       
-        
-        ArrayList cardapio = ctx.cardapio.getItens();
-        String json1 = Json.toJSON(cardapio);
-        Arquivo.escreverArquivo("jsons//cardapio.json", json1);
-        
-        
-        ArrayList estoque = ctx.estoque.getEstoqueItens();
-        String json2 = Json.toJSON(estoque);
-        Arquivo.escreverArquivo("jsons//estoque.json", json2);
-        
-        ArrayList transacoes = ctx.caixa.getTransacoes();
-        String json3 = Json.toJSON(transacoes);
-        Arquivo.escreverArquivo("jsons//caixa.json", json3);
-       
-        
-        
-         
+        JLabel txt = new JLabel("Se você fechar o programa perderá as comandas.");
+        JLabel txt2 = new JLabel("Deseja fechar o programa mesmo assim ?");
+        txt.setAlignmentX(Component.CENTER_ALIGNMENT);
+        txt2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JPanel texto = new JPanel();
+        texto.setLayout(new BoxLayout(texto, BoxLayout.Y_AXIS));
+        texto.add(txt);
+        texto.add(txt2);
+        if(JOptionPane.showConfirmDialog(frame, texto, "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0){
+            ArrayList cardapio = ctx.cardapio.getItens();
+            String json1 = Json.toJSON(cardapio);
+            Arquivo.escreverArquivo("jsons//cardapio.json", json1);
+
+            ArrayList estoque = ctx.estoque.getEstoqueItens();
+            String json2 = Json.toJSON(estoque);
+            Arquivo.escreverArquivo("jsons//estoque.json", json2);
+
+            ArrayList transacoes = ctx.caixa.getTransacoes();
+            String json3 = Json.toJSON(transacoes);
+            Arquivo.escreverArquivo("jsons//caixa.json", json3);
+            
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }else
+            frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     @Override
