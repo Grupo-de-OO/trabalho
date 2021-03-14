@@ -1,1 +1,1 @@
-[]
+[{"nome":"a","preco":1.0,"disponivel":false,"ingredientesNecessarios":[]},{"nome":"c","preco":1.0,"disponivel":false,"ingredientesNecessarios":[{"nomeItemEstoque":"d","quantidade":1.0,"unidade":"kg"}]}]

@@ -49,7 +49,7 @@ public class frameEvent implements WindowListener {
             List<ItemCardapio> itens = Json.toCardapio(lerArquivo);
 
             for (int i = 0; i < itens.size(); i++) {
-                ctx.cardapio.addCardapio(itens.get(i).getNome(), itens.get(i).getPreco(), itens.get(i).getDisponivel());
+                ctx.cardapio.addCardapio(itens.get(i));
             }
         } catch (IOException e) {
             System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
