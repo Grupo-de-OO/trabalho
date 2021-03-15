@@ -104,7 +104,7 @@ public class Comanda {
                             JOptionPane.showMessageDialog(null, "Quantidade insuficiente para servir " + Float.parseFloat(quantidadeField.getText()) + " pedidos de " + cardapio.getSelectedValue(), "ERRO", JOptionPane.ERROR_MESSAGE);
                         }
                     }else{
-                        JOptionPane.showMessageDialog(null, "Digite um valor maior que 0ss", "ERRO", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Digite um valor maior que 0", "ERRO", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Pedido cancelado", "AVISO", JOptionPane.WARNING_MESSAGE);
