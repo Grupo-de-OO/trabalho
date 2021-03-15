@@ -97,7 +97,8 @@ public class PainelCaixa extends JPanel implements InterfaceLayout {
                 JTextField valor = new JTextField();
                 Object[] novaSaida = {"Nome:", nome, "Descrição:", descricao, "Valor:", valor};
                 JOptionPane.showMessageDialog(null, novaSaida);
-                contexto.caixa.addSaida(nome.getText(), descricao.getText(), Float.parseFloat(valor.getText()));
+                if(!nome.getText().isEmpty() || !descricao.getText().isEmpty() || !valor.getText().isEmpty())
+                    contexto.caixa.addSaida(nome.getText(), descricao.getText(), Float.parseFloat(valor.getText()));
                 atualizaPainel();
             }
         }
