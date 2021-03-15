@@ -85,7 +85,7 @@ public class  Estoque
             if(ingredienteEst.getNomeItemEstoque().equalsIgnoreCase(ingrediente.getNomeItemEstoque())){
                 if(ingredienteEst.getQuantidade() - quantidade >= 0){
                     ingredienteEst.setQuantidade(ingredienteEst.getQuantidade() - quantidade);
-                    JOptionPane.showMessageDialog(null, "Foram removidos " + quantidade + ingredienteEst.getUnidade() + " do estoque.", "AVISO",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Foram removidos " + quantidade + ingredienteEst.getUnidade() + " de " + ingredienteEst.getNomeItemEstoque() +" do estoque.", "AVISO",JOptionPane.WARNING_MESSAGE);
                     itemExiste = true;
                 }else{
                     opcao = JOptionPane.showConfirmDialog(null,"Não foi possível remover " + quantidade + ingredienteEst.getUnidade() + " do estoque pois só tem " + ingredienteEst.getQuantidade() + ingredienteEst.getUnidade()
