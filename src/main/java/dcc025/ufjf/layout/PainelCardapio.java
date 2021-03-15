@@ -60,10 +60,10 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
                         }
                         JOptionPane.showMessageDialog(null, ingString,contexto.cardapio.getItens().get(tabela.getSelectedRow()).getNome(),JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        JOptionPane.showMessageDialog(null, "Nenhum item selecionado, selecione um item.");
+                        JOptionPane.showMessageDialog(null, "Nenhum item selecionado, selecione um item.","AVISO",JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Não existe itens no cardapio.");
+                    JOptionPane.showMessageDialog(null, "Não existe itens no cardapio.","AVISO",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
