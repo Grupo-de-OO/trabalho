@@ -21,7 +21,7 @@ public class FrameEvent implements WindowListener {
 
     private Contexto ctx;
     private JFrame frame;
-    
+
     public FrameEvent(Contexto ctx, JFrame frame) {
         this.ctx = ctx;
         this.frame = frame;
@@ -30,13 +30,13 @@ public class FrameEvent implements WindowListener {
     @Override
     public void windowOpened(WindowEvent we) {
         // carrega estoque
-        try{
+        try {
             String lerArquivo = Arquivo.lerArquivo("jsons//estoque.json");
             List<ItemEstoque> itens = Json.toEstoque(lerArquivo);
 
-            for(int i = 0;i<itens.size();i++){
-                ctx.estoque.addEstoque(itens.get(i).getNomeItemEstoque(),itens.get(i).getQuantidade(),itens.get(i).getUnidade());
-            }   
+            for (int i = 0; i < itens.size(); i++) {
+                ctx.estoque.addEstoque(itens.get(i).getNomeItemEstoque(), itens.get(i).getQuantidade(), itens.get(i).getUnidade());
+            }
         } catch (IOException e) {
             System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
         }
@@ -57,12 +57,12 @@ public class FrameEvent implements WindowListener {
             List<Movimentacao> itens = Json.toCaixa(lerArquivo);
 
             for (int i = 0; i < itens.size(); i++) {
-                ctx.caixa.addMovimentacao(itens.get(i).getNome(), itens.get(i).getDescricao(), itens.get(i).getValor(), itens.get(i).getData());
+                ctx.caixa.addMovimentacao(itens.get(i).getNome(), itens.get(i).getDescricao(), itens.get(i).getValor(), itens.get(i).getData().getTime());
             }
         } catch (IOException e) {
             System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
         }
-    
+
     }
 
     @Override
@@ -75,15 +75,18 @@ public class FrameEvent implements WindowListener {
         texto.setLayout(new BoxLayout(texto, BoxLayout.Y_AXIS));
         texto.add(txt);
         texto.add(txt2);
-        if(ctx.listaComandas.getListaComandas().size() > 0 )
-            escreveArquivos();
-        if(JOptionPane.showConfirmDialog(frame, texto, "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0){
-            escreveArquivos();
-        }else
-            frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        if (ctx.listaComandas.getListaComandas().size() > 0) {
+            if (JOptionPane.showConfirmDialog(frame, texto, "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0) {
+                escreveArquivos();
+            } else {
+                frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            }
+        }else{
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
     }
-    
-    private void escreveArquivos(){
+
+    private void escreveArquivos() {
         ArrayList cardapio = ctx.cardapio.getItens();
         String json1 = Json.toJSON(cardapio);
         Arquivo.escreverArquivo("jsons//cardapio.json", json1);
@@ -118,5 +121,5 @@ public class FrameEvent implements WindowListener {
     @Override
     public void windowDeactivated(WindowEvent we) {
     }
-    
+
 }
