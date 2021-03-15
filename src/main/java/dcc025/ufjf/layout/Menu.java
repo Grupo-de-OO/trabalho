@@ -72,7 +72,15 @@ public class Menu {
         PainelCaixa pCaixa = new PainelCaixa(contexto);
         PainelComandas pComandas = new PainelComandas(contexto);
         PainelCardapio pCardapio = new PainelCardapio(contexto);
-
+        JPanel bemVindo = new JPanel(null);
+        JLabel bem_Vindo = new JLabel("BEM VINDO");
+        bem_Vindo.setFont(new java.awt.Font("Tahoma", 1, 36));
+        bem_Vindo.setBounds(bemVindo.getWidth()/2,bemVindo.getHeight()/2,100,50);
+        bemVindo.add(bem_Vindo);
+        pDireita.add(bemVindo);
+        
+        
+        
         javax.swing.GroupLayout grupoLayout = new javax.swing.GroupLayout(pDireita);
         pDireita.setLayout(grupoLayout);
         grupoLayout.setHorizontalGroup(
@@ -85,6 +93,7 @@ public class Menu {
                                 .addComponent(pEstoque))
                         .addGroup(grupoLayout.createParallelGroup()
                                 .addComponent(pCardapio))
+                        .addGroup(grupoLayout.createParallelGroup().addComponent(bemVindo))
         );
         grupoLayout.setVerticalGroup(
                 grupoLayout.createParallelGroup()
@@ -102,7 +111,7 @@ public class Menu {
         frame.add(BorderLayout.CENTER, pDireita);
 
         pCaixa.setVisible(false);
-        pComandas.setVisible(true);
+        pComandas.setVisible(false);
         pEstoque.setVisible(false);
         pCardapio.setVisible(false);
 
