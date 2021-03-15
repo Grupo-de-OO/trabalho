@@ -37,7 +37,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>dcc025.ufjf.layout.NewMenu</mainClass>
+                            <mainClass>dcc025.ufjf.layout.Menu</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

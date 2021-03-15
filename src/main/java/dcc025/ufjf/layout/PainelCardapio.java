@@ -1,32 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dcc025.ufjf.layout;
 
 import dcc025.ufjf.trabalho.ItemCardapio;
 import dcc025.ufjf.trabalho.ItemEstoque;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.text.DecimalFormat;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author bruno
- */
 public class PainelCardapio extends JPanel implements InterfaceLayout {
 
     private JPanel header = new Header("Cardápio");
@@ -37,11 +23,6 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
 
     public PainelCardapio(Contexto ctx) {
 
-        // A ideia seria desenvolver a pagina dentro do JPanel main, podendo alterar o layout dele
-        // sem problemas, sem quebrar a pagina. nao setar o layout dos paineis diretamente pois  
-        // dessa forma quebraria.                                                                                                                                                                                   
-        // Ex: main.setLayout(new blablaLayout());                              
-        // e a partir dai add os componentes com main.add(Component);
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
         contexto = ctx;
         tabela.setModel(new javax.swing.table.DefaultTableModel(
@@ -53,7 +34,7 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         if (tabela.getColumnModel().getColumnCount() > 0) {
             tabela.getColumnModel().getColumn(0).setResizable(false);
         }
-        
+
         tabela.setPreferredScrollableViewportSize(InterfaceLayout.tableDimension);
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
@@ -70,16 +51,22 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         ver.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                //contexto.cardapio.getItens().get(tabela.getSelectedRow());
-                String ingString = "";
-                for (ItemEstoque ingrediente : contexto.cardapio.getItens().get(tabela.getSelectedRow()).getIngredientesNecessarios()) {
-                ingString = ingString + ingrediente.toString() + "\n ";
+                if (contexto.cardapio.getItens().size() > 0) {
+                    if (tabela.getSelectedRow() != -1) {
+                        String ingString = "";
+                        for (ItemEstoque ingrediente : contexto.cardapio.getItens().get(tabela.getSelectedRow()).getIngredientesNecessarios()) {
+                            ingString = ingString + ingrediente.toString() + "\n ";
+                        }
+                        JOptionPane.showMessageDialog(null, ingString);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Nenhum item selecionado, selecione um item.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Não existe itens no cardapio.");
                 }
-                JOptionPane.showMessageDialog(null, ingString);
-                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
-        
+
         //action buttons
         adiciona.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -96,10 +83,9 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
                     int option = 0;
                     JTextField nomeIng = new JTextField();
                     JTextField qtdIng = new JTextField();
-                    //JTextField unidadeIng = new JTextField();
-                    String [] opcoesUnidade = {"Kg", "Unid"};
+                    String[] opcoesUnidade = {"Kg", "Unid"};
                     JComboBox unidadeIng = new JComboBox(opcoesUnidade);
-                                  
+
                     while (option != 1 && option != -1) {
                         Object[] options = {"Adicionar Ingrediente", "Terminar"};
                         Object[] novoIng = {"Adicione um igrediente que seja necessário para a preparo final do novo item", " ", "Nome:", nomeIng, "Quantidade:", qtdIng, "Unidade:", unidadeIng};
@@ -143,12 +129,9 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
 
             }
         });
-
         main.add(buttonWrapper);
-
         add(header);
         add(main);
-
     }
 
     @Override
@@ -157,7 +140,7 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         tabela.setModel(new javax.swing.table.DefaultTableModel(
                 contexto.cardapio.getCardapio(), // Apos testes, voltar para getCardapio() e remover coluna "Ingredientes"
                 new String[]{
-                    "Nome", "Preço", "Disponibilidade" // ingredientes temporariamente inseridos
+                    "Nome", "Preço", "Disponibilidade", // ingredientes temporariamente inseridos
                 }
         ));
     }

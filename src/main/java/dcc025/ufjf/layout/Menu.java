@@ -1,58 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dcc025.ufjf.layout;
 
-import dcc025.ufjf.trabalho.ItemCardapio;
-import dcc025.ufjf.trabalho.ItemEstoque;
-import dcc025.ufjf.utils.Arquivo;
-import dcc025.ufjf.utils.Json;
 import java.awt.BorderLayout;
-
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSeparator;
-import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
-/**
- *
- * @author thales
+/*
+ * @author
+ *  Bruno de Oliveira Jucá - 201965013A
+ *  Thales Brito de Souza Fonseca Rodrigues - 201965191A
+ *  Rômulo Chrispim de Mello - 201935038
+ *  Lowrran Durao Matias - 201935036
+ *  Pedro Henrique Moreira Raad - 201965215A
  */
-public class NewMenu {
+
+public class Menu {
 
     private static JButton formataBotao(String text) {
         JButton button = new JButton(text);
@@ -306,7 +278,7 @@ public class NewMenu {
 //                    BufferedWriter bw = new BufferedWriter(new FileWriter(new File("NomeRestaurante")));
 //                    
 //                } catch (IOException ex) {
-//                    Logger.getLogger(NewMenu.class.getName()).log(Level.SEVERE, null, ex);
+//                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
 //                }
 //            }
 //        });

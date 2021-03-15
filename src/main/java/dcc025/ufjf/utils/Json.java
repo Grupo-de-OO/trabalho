@@ -22,15 +22,7 @@ public class Json {
         String json = gson.toJson(genericType);
         return json;
     }
-/*
-    public static<T> T toContato(String conteudo,T ) {
-        Gson gson = new Gson();
-        T generic = gson.fromJson(conteudo,generic.clas);
-
-        return generic;
-    }
-*/
-    
+  
     
     public static<T> List<T> toGenerics(String conteudo) {
         Gson gson = new Gson();
