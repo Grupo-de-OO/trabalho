@@ -58,7 +58,7 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
                         for (ItemEstoque ingrediente : contexto.cardapio.getItens().get(tabela.getSelectedRow()).getIngredientesNecessarios()) {
                             ingString = ingString + ingrediente.toString() + "\n ";
                         }
-                        JOptionPane.showMessageDialog(null, ingString);
+                        JOptionPane.showMessageDialog(null, ingString,contexto.cardapio.getItens().get(tabela.getSelectedRow()).getNome(),JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         JOptionPane.showMessageDialog(null, "Nenhum item selecionado, selecione um item.");
                     }

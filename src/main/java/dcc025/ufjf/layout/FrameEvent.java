@@ -17,12 +17,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class frameEvent implements WindowListener {
+public class FrameEvent implements WindowListener {
 
     private Contexto ctx;
     private JFrame frame;
     
-    public frameEvent(Contexto ctx, JFrame frame) {
+    public FrameEvent(Contexto ctx, JFrame frame) {
         this.ctx = ctx;
         this.frame = frame;
     }
