@@ -9,7 +9,7 @@ public class ItemCardapio {
     private Boolean disponivel;
 
     
-    private List<ItemEstoque> ingredientesNecessarios = new ArrayList<ItemEstoque>(); //pensar no item estoque antes de adicionar no cardapio
+    private List<ItemEstoque> ingredientesNecessarios = new ArrayList<ItemEstoque>();
 
     public ItemCardapio(String nome, float preco, Boolean disponivel) {
         this.nome = nome;

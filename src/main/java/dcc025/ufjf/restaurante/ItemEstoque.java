@@ -15,7 +15,7 @@ public class ItemEstoque {
 
     @Override
     public String toString() {
-        return (this.quantidade + " " + this.unidade + " de " + this.nomeItemEstoque); //To change body of generated methods, choose Tools | Templates.
+        return (this.quantidade + " " + this.unidade + " de " + this.nomeItemEstoque);
     }
   
     public String getNomeItemEstoque() {
