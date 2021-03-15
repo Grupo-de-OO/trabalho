@@ -1,7 +1,9 @@
 package dcc025.ufjf.layout;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.text.DecimalFormat;
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -11,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.BevelBorder;
 
 public class PainelCaixa extends JPanel implements InterfaceLayout {
 
