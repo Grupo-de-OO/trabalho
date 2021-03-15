@@ -15,7 +15,9 @@ public class ItemEstoque {
 
     @Override
     public String toString() {
-        return (this.quantidade + " " + this.unidade + " de " + this.nomeItemEstoque); 
+
+        return (this.quantidade + " " + this.unidade + " de " + this.nomeItemEstoque);
+
     }
   
     public String getNomeItemEstoque() {
