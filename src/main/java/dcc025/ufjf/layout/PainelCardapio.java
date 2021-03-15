@@ -14,6 +14,7 @@ import java.text.DecimalFormat;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -51,7 +52,7 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         if (tabela.getColumnModel().getColumnCount() > 0) {
             tabela.getColumnModel().getColumn(0).setResizable(false);
         }
-
+        
         tabela.setPreferredScrollableViewportSize(InterfaceLayout.tableDimension);
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
@@ -80,18 +81,19 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
                     int option = 0;
                     JTextField nomeIng = new JTextField();
                     JTextField qtdIng = new JTextField();
-                    JTextField unidadeIng = new JTextField();
-
+                    //JTextField unidadeIng = new JTextField();
+                    String [] opcoesUnidade = {"Kg", "Unid"};
+                    JComboBox unidadeIng = new JComboBox(opcoesUnidade);
+                                  
                     while (option != 1 && option != -1) {
                         Object[] options = {"Adicionar Ingrediente", "Terminar"};
                         Object[] novoIng = {"Adicione um igrediente que seja necessário para a preparo final do novo item", " ", "Nome:", nomeIng, "Quantidade:", qtdIng, "Unidade:", unidadeIng};
                         option = JOptionPane.showOptionDialog(null, novoIng, "Adicione um ingrediente", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                        if (option == 0 && (!nomeIng.getText().isEmpty() || !qtdIng.getText().isEmpty() || !unidadeIng.getText().isEmpty())) {
-                            novoItemCardapio.addIngrediente(nomeIng.getText(), Float.parseFloat(qtdIng.getText()), unidadeIng.getText());
+                        if (option == 0 && (!nomeIng.getText().isEmpty() || !qtdIng.getText().isEmpty())) {
+                            novoItemCardapio.addIngrediente(nomeIng.getText(), Float.parseFloat(qtdIng.getText()), unidadeIng.getSelectedItem().toString());
                         }
                         nomeIng.setText("");
                         qtdIng.setText("");
-                        unidadeIng.setText("");
                     }
 
                     contexto.cardapio.addCardapio(novoItemCardapio);

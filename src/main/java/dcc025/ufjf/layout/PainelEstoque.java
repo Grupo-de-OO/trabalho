@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -68,14 +69,16 @@ public class PainelEstoque extends JPanel implements InterfaceLayout {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextField nome = new JTextField();
                 JTextField quantidade = new JTextField();
-                JTextField unidade = new JTextField();
+                //JTextField unidade = new JTextField();
+                String [] opcoesUnidade = {"Kg", "Unid"};
+                JComboBox unidade = new JComboBox(opcoesUnidade);
                 Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
                 JOptionPane.showMessageDialog(null, novoIngrediente);
                 //arrumar esse tratamento para null
-                if (nome.getText().isEmpty() || quantidade.getText().isEmpty() || unidade.getText().isEmpty()) {
+                if (nome.getText().isEmpty() || quantidade.getText().isEmpty() || unidade.getSelectedItem().toString().equals("")) {
                     //JOptionPane.showMessageDialog(null, "Você deixou algum campo sem preencher informação.", "ERRO", JOptionPane.ERROR_MESSAGE);   
                 } else {
-                    contexto.estoque.addEstoque(nome.getText(), Float.parseFloat(quantidade.getText()), unidade.getText());
+                    contexto.estoque.addEstoque(nome.getText(), Float.parseFloat(quantidade.getText()), unidade.getSelectedItem().toString());
                 }
                 atualizaPainel();
             }
