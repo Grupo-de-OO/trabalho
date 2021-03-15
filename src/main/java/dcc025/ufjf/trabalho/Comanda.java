@@ -78,29 +78,38 @@ public class Comanda {
             try {
                 boolean existeItem = false;
                 if (JOptionPane.showConfirmDialog(null, painel1, "Faça o pedido", JOptionPane.OK_CANCEL_OPTION) == 0) {
-                    for (int i = 0; i < pedidos.size(); i++) {
-                        if (pedidos.get(i).getItemCardapio().getNome().equals(cardapio.getSelectedValue())) {
-                            pedidos.get(i).setQuantidade(pedidos.get(i).getQuantidade() + Float.parseFloat(quantidadeField.getText()));
-                            valorTotal += pedidos.get(i).getItemCardapio().getPreco() * Float.parseFloat(quantidadeField.getText());
-                            existeItem = true;
-                            novoItemComanda = pedidos.get(i);
-                            for (int j = 0; j < novoItemComanda.getItemCardapio().getIngredientesNecessarios().size(); j++) {
-                                ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getNomeItemEstoque(), Float.parseFloat(quantidadeField.getText()) * novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getQuantidade());
+                    if(Float.parseFloat(quantidadeField.getText()) > 0){
+                        if(getDisponibilidadeOf(ctx, cardapio.getSelectedValue(), Float.parseFloat(quantidadeField.getText()))){
+                            for (int i = 0; i < pedidos.size(); i++) {
+                                if (pedidos.get(i).getItemCardapio().getNome().equals(cardapio.getSelectedValue())) {
+                                    pedidos.get(i).setQuantidade(pedidos.get(i).getQuantidade() + Float.parseFloat(quantidadeField.getText()));
+                                    valorTotal += pedidos.get(i).getItemCardapio().getPreco() * Float.parseFloat(quantidadeField.getText());
+                                    existeItem = true;
+                                    novoItemComanda = pedidos.get(i);
+                                    for (int j = 0; j < novoItemComanda.getItemCardapio().getIngredientesNecessarios().size(); j++) {
+                                        ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getNomeItemEstoque(), Float.parseFloat(quantidadeField.getText()) * novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getQuantidade());
+                                    }
+                                }
                             }
+                            if (!existeItem) {
+                                pedidos.add(new ItemComanda(ctx.cardapio.getItens().get(cardapio.getSelectedIndex()), Float.parseFloat(quantidadeField.getText())));
+                                valorTotal += ctx.cardapio.getItens().get(cardapio.getSelectedIndex()).getPreco() * Integer.parseInt(quantidadeField.getText());
+                                novoItemComanda = pedidos.get(pedidos.size() - 1);
+                                for (int j = 0; j < novoItemComanda.getItemCardapio().getIngredientesNecessarios().size(); j++) {
+                                    ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getNomeItemEstoque(), Float.parseFloat(quantidadeField.getText()) * novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getQuantidade());
+                                }
+                            }
+                            w = false;
+                        }else{
+                            JOptionPane.showMessageDialog(null, "Quantidade insuficiente para servir " + Float.parseFloat(quantidadeField.getText()) + " pedidos de " + cardapio.getSelectedValue(), "ERRO", JOptionPane.ERROR_MESSAGE);
                         }
-                    }
-                    if (!existeItem) {
-                        pedidos.add(new ItemComanda(ctx.cardapio.getItens().get(cardapio.getSelectedIndex()), Float.parseFloat(quantidadeField.getText())));
-                        valorTotal += ctx.cardapio.getItens().get(cardapio.getSelectedIndex()).getPreco() * Integer.parseInt(quantidadeField.getText());
-                        novoItemComanda = pedidos.get(pedidos.size() - 1);
-                        for (int j = 0; j < novoItemComanda.getItemCardapio().getIngredientesNecessarios().size(); j++) {
-                            ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getNomeItemEstoque(), Float.parseFloat(quantidadeField.getText()) * novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getQuantidade());
-                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Digite um valor maior que 0s", "ERRO", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Pedido cancelado", "AVISO", JOptionPane.WARNING_MESSAGE);
+                    w = false;
                 }
-                w = false;
             } catch (ArrayIndexOutOfBoundsException e) {
                 JOptionPane.showMessageDialog(null, "Selecione algum item", "Erro", JOptionPane.ERROR_MESSAGE);
             } catch (NumberFormatException e) {
@@ -127,10 +136,25 @@ public class Comanda {
         return itensComanda;
     }
 
-//    private boolean getDisponibilidadeOf(){
-//        boolean disp = false;
-//        
-//    }
+    private boolean getDisponibilidadeOf(Contexto ctx, String nomeIC, float quantidade){
+        boolean disp = true;
+        ItemCardapio ic = new ItemCardapio(null, 0, null);
+        for (int k = 0; k < ctx.cardapio.getItens().size(); k++) {
+            if(ctx.cardapio.getItens().get(k).getNome().equals(nomeIC)){
+                ic = ctx.cardapio.getItens().get(k);
+                for (int i = 0; i < ctx.estoque.getEstoqueSize(); i++) {
+                    for (int j = 0; j < ic.getIngredientesNecessarios().size(); j++) {
+                        if(ic.getIngredientesNecessarios().get(j).getNomeItemEstoque().equalsIgnoreCase(ctx.estoque.getEstoqueItens().get(i).getNomeItemEstoque())){
+                            if(ctx.estoque.getEstoqueItens().get(i).getQuantidade() < ic.getIngredientesNecessarios().get(j).getQuantidade()*quantidade)
+                                disp = false;
+                        }
+                    }
+                }
+            }
+        }
+        return disp;
+    }
+    
     public int getId() {
         return id;
     }
