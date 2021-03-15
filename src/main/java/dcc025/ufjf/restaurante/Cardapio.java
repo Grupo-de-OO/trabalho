@@ -1,4 +1,4 @@
-package dcc025.ufjf.trabalho;
+package dcc025.ufjf.restaurante;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;

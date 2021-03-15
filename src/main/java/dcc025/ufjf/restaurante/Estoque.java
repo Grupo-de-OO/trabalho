@@ -1,4 +1,4 @@
-package dcc025.ufjf.trabalho;
+package dcc025.ufjf.restaurante;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -49,13 +49,11 @@ public class Estoque {
 
         ItemEstoque ingrediente = new ItemEstoque(ingredienteNome, quantidade, " ");
 
-        boolean itemExiste = false;
         for (ItemEstoque ingredienteEst : estoqueItens) {
             if (ingredienteEst.getNomeItemEstoque().equalsIgnoreCase(ingrediente.getNomeItemEstoque())) {
                 if (ingredienteEst.getQuantidade() - quantidade >= 0) {
                     ingredienteEst.setQuantidade(ingredienteEst.getQuantidade() - quantidade);
                     JOptionPane.showMessageDialog(null, "Foram removidos " + quantidade + ingredienteEst.getUnidade() + " de " + ingredienteEst.getNomeItemEstoque() + " do estoque.", "AVISO", JOptionPane.WARNING_MESSAGE);
-                    itemExiste = true;
                 } else {
                     int opcao = JOptionPane.showConfirmDialog(null, "Não foi possível remover " + quantidade + ingredienteEst.getUnidade() + " de " + ingredienteEst.getNomeItemEstoque() + " do estoque pois só tem " + ingredienteEst.getQuantidade() + ingredienteEst.getUnidade()
                             + "\nGostaria de remover mesmo assim?");

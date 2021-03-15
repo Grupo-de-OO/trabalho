@@ -1,9 +1,10 @@
-
 package dcc025.ufjf.utils;
         
+import dcc025.ufjf.restaurante.Movimentacao;
+import dcc025.ufjf.restaurante.ItemCardapio;
+import dcc025.ufjf.restaurante.ItemEstoque;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import dcc025.ufjf.trabalho.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,6 @@ public class Json {
         return json;
     }
   
-    
     public static<T> List<T> toGenerics(String conteudo) {
         Gson gson = new Gson();
         Type genericType= new TypeToken<ArrayList<T>>() {
@@ -33,7 +33,6 @@ public class Json {
         return generic;
     }
 
-    
     public static List<ItemEstoque> toEstoque(String conteudo) {
         Gson gson = new Gson();
         Type item= new TypeToken<ArrayList<ItemEstoque>>() {
@@ -43,7 +42,6 @@ public class Json {
         return itemEstoque;
     }
 
-    
     public static List<ItemCardapio> toCardapio(String conteudo){
         Gson gson = new Gson();
          Type item= new TypeToken<ArrayList<ItemCardapio>>() {

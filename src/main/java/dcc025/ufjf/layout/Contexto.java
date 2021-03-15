@@ -5,10 +5,10 @@
  */
 package dcc025.ufjf.layout;
 
-import dcc025.ufjf.trabalho.Caixa;
-import dcc025.ufjf.trabalho.Estoque;
-import dcc025.ufjf.trabalho.Cardapio;
-import dcc025.ufjf.trabalho.ListaComandas;
+import dcc025.ufjf.restaurante.Caixa;
+import dcc025.ufjf.restaurante.Estoque;
+import dcc025.ufjf.restaurante.Cardapio;
+import dcc025.ufjf.restaurante.ListaComandas;
 /**
  *
  * @author bruno

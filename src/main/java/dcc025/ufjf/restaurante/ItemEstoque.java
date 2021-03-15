@@ -1,25 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package dcc025.ufjf.trabalho;
+package dcc025.ufjf.restaurante;
 
-/*
- 
- * @author
-
- *  Bruno de Oliveira Jucá - 201965013A
-
- *  Thales Brito de Souza Fonseca Rodrigues - 201965191A
-
- *  Rômulo Chrispim de Mello - 201935038
-
- *  Lowrran Durao Matias - 201935036
-
- *  Pedro Henrique Moreira Raad - 201965215A
- 
- */
 public class ItemEstoque {
     
     private String nomeItemEstoque;
@@ -38,7 +18,6 @@ public class ItemEstoque {
         return (this.quantidade + " " + this.unidade + " de " + this.nomeItemEstoque); //To change body of generated methods, choose Tools | Templates.
     }
   
-    //Getters e Setters--------------------------------------
     public String getNomeItemEstoque() {
         return nomeItemEstoque;
     }

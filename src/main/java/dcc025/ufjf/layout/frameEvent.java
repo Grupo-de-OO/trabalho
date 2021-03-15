@@ -1,8 +1,8 @@
 package dcc025.ufjf.layout;
 
-import dcc025.ufjf.trabalho.ItemCardapio;
-import dcc025.ufjf.trabalho.ItemEstoque;
-import dcc025.ufjf.trabalho.Movimentacao;
+import dcc025.ufjf.restaurante.ItemCardapio;
+import dcc025.ufjf.restaurante.ItemEstoque;
+import dcc025.ufjf.restaurante.Movimentacao;
 import dcc025.ufjf.utils.Arquivo;
 import dcc025.ufjf.utils.Json;
 import java.awt.Component;

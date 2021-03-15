@@ -1,7 +1,7 @@
 package dcc025.ufjf.layout;
 
-import dcc025.ufjf.trabalho.ItemCardapio;
-import dcc025.ufjf.trabalho.ItemEstoque;
+import dcc025.ufjf.restaurante.ItemCardapio;
+import dcc025.ufjf.restaurante.ItemEstoque;
 import java.awt.event.ActionEvent;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
