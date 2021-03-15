@@ -77,19 +77,26 @@ public class Comanda {
         while(w){
             try {
                 boolean existeItem = false;
-                JOptionPane.showMessageDialog(null, painel1);
-                for (int i = 0; i < pedidos.size(); i++) {
-                    if(pedidos.get(i).getItemCardapio().getNome().equals(cardapio.getSelectedValue())){
-                        pedidos.get(i).setQuantidade(pedidos.get(i).getQuantidade() + Float.parseFloat(quantidadeField.getText()));
-                        valorTotal += pedidos.get(i).getItemCardapio().getPreco()*Float.parseFloat(quantidadeField.getText());
-                        existeItem = true;
-                        novoItemComanda = pedidos.get(i);
+                if(JOptionPane.showConfirmDialog(null, painel1, "Faça o pedido", JOptionPane.OK_CANCEL_OPTION)==0){
+                    for (int i = 0; i < pedidos.size(); i++) {
+                        if(pedidos.get(i).getItemCardapio().getNome().equals(cardapio.getSelectedValue())){
+                            pedidos.get(i).setQuantidade(pedidos.get(i).getQuantidade() + Float.parseFloat(quantidadeField.getText()));
+                            valorTotal += pedidos.get(i).getItemCardapio().getPreco()*Float.parseFloat(quantidadeField.getText());
+                            existeItem = true;
+                            novoItemComanda = pedidos.get(i);
+                            for(int j = 0; j < novoItemComanda.getItemCardapio().getIngredientesNecessarios().size();j++)
+                                ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getNomeItemEstoque(),Float.parseFloat(quantidadeField.getText())*novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getQuantidade());
+                        }
                     }
-                }
-                if(!existeItem){
-                    pedidos.add(new ItemComanda(ctx.cardapio.getItens().get(cardapio.getSelectedIndex()), Float.parseFloat(quantidadeField.getText())));
-                    valorTotal += ctx.cardapio.getItens().get(cardapio.getSelectedIndex()).getPreco()*Integer.parseInt(quantidadeField.getText());
-                    novoItemComanda =  pedidos.get(pedidos.size()-1);
+                    if(!existeItem){
+                        pedidos.add(new ItemComanda(ctx.cardapio.getItens().get(cardapio.getSelectedIndex()), Float.parseFloat(quantidadeField.getText())));
+                        valorTotal += ctx.cardapio.getItens().get(cardapio.getSelectedIndex()).getPreco()*Integer.parseInt(quantidadeField.getText());
+                        novoItemComanda =  pedidos.get(pedidos.size()-1);
+                        for(int j = 0; j < novoItemComanda.getItemCardapio().getIngredientesNecessarios().size();j++)
+                            ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getNomeItemEstoque(),Float.parseFloat(quantidadeField.getText())*novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(j).getQuantidade());
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Pedido cancelado", "AVISO", JOptionPane.WARNING_MESSAGE);
                 }
                 w = false;
             } catch (ArrayIndexOutOfBoundsException e) {
@@ -97,8 +104,6 @@ public class Comanda {
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Insira um número válido no campo quantidade", "Erro", JOptionPane.ERROR_MESSAGE);
             }
-            for(int i = 0; i < novoItemComanda.getItemCardapio().getIngredientesNecessarios().size();i++)
-            ctx.estoque.remEstoque(novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(i).getNomeItemEstoque(),Float.parseFloat(quantidadeField.getText())*novoItemComanda.getItemCardapio().getIngredientesNecessarios().get(i).getQuantidade());
         }
     }
     
@@ -114,7 +119,12 @@ public class Comanda {
              itensComanda[i][1] = pedidos.get(i).getQuantidade();
              itensComanda[i][2] = "R$" + new DecimalFormat("0.00").format(pedidos.get(i).getItemCardapio().getPreco());}
          return itensComanda;
-     }
+    }
+    
+//    private boolean getDisponibilidadeOf(){
+//        boolean disp = false;
+//        
+//    }
     
     public int getId() {
         return id;

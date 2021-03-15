@@ -85,22 +85,28 @@ public class frameEvent implements WindowListener {
         texto.setLayout(new BoxLayout(texto, BoxLayout.Y_AXIS));
         texto.add(txt);
         texto.add(txt2);
+        if(ctx.listaComandas.getListaComandas().size() > 0 )
+            escreveArquivos();
         if(JOptionPane.showConfirmDialog(frame, texto, "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0){
-            ArrayList cardapio = ctx.cardapio.getItens();
-            String json1 = Json.toJSON(cardapio);
-            Arquivo.escreverArquivo("jsons//cardapio.json", json1);
-
-            ArrayList estoque = ctx.estoque.getEstoqueItens();
-            String json2 = Json.toJSON(estoque);
-            Arquivo.escreverArquivo("jsons//estoque.json", json2);
-
-            ArrayList transacoes = ctx.caixa.getTransacoes();
-            String json3 = Json.toJSON(transacoes);
-            Arquivo.escreverArquivo("jsons//caixa.json", json3);
-            
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            escreveArquivos();
         }else
             frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    }
+    
+    private void escreveArquivos(){
+        ArrayList cardapio = ctx.cardapio.getItens();
+        String json1 = Json.toJSON(cardapio);
+        Arquivo.escreverArquivo("jsons//cardapio.json", json1);
+
+        ArrayList estoque = ctx.estoque.getEstoqueItens();
+        String json2 = Json.toJSON(estoque);
+        Arquivo.escreverArquivo("jsons//estoque.json", json2);
+
+        ArrayList transacoes = ctx.caixa.getTransacoes();
+        String json3 = Json.toJSON(transacoes);
+        Arquivo.escreverArquivo("jsons//caixa.json", json3);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     @Override

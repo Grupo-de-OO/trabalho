@@ -74,6 +74,7 @@ public class NewMenu {
         frame.setTitle("Restaurante");
         ImageIcon image = new ImageIcon("restaurante.png");
         frame.setIconImage(image.getImage());
+        frame.getLayeredPane().setToolTipText("Restaurant Manager System");
 
         //Toolbar 
         JPanel pDireita = new JPanel();
