@@ -69,7 +69,7 @@ public class Cardapio {
 
     }
     
-    public Object[][] getCardapioTemp() {
+    public Object[][] getCardapioTemp() { // nao eh mais utilizada
         Object[][] itensCardapio = new Object[Itens.size()][4];
         for (int i = 0; i < Itens.size(); i++) {
             itensCardapio[i][0] = Itens.get(i).getNome();

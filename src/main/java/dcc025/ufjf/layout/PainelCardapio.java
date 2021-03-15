@@ -61,7 +61,7 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         buttonWrapper.setLayout(new BoxLayout(buttonWrapper, BoxLayout.X_AXIS));
         JButton adiciona = new JButton("Adicionar no cardapio");
         buttonWrapper.add(adiciona);
-        JButton ver = new JButton("Ver mais...");
+        JButton ver = new JButton("Ver Ingredientes");
         buttonWrapper.add(ver);
         JButton retira = new JButton("Retirar do cardápio");
         buttonWrapper.add(Box.createHorizontalGlue());
@@ -71,7 +71,11 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 //contexto.cardapio.getItens().get(tabela.getSelectedRow());
-                JOptionPane.showMessageDialog(null,contexto.cardapio.getItens().get(tabela.getSelectedRow()).getIngredientesNecessarios());
+                String ingString = "";
+                for (ItemEstoque ingrediente : contexto.cardapio.getItens().get(tabela.getSelectedRow()).getIngredientesNecessarios()) {
+                ingString = ingString + ingrediente.toString() + "\n ";
+                }
+                JOptionPane.showMessageDialog(null, ingString);
                 //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
@@ -151,9 +155,9 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
     public void atualizaPainel() {
         checaDisponibilidade();
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                contexto.cardapio.getCardapioTemp(), // Apos testes, voltar para getCardapio() e remover coluna "Ingredientes"
+                contexto.cardapio.getCardapio(), // Apos testes, voltar para getCardapio() e remover coluna "Ingredientes"
                 new String[]{
-                    "Nome", "Preço", "Disponibilidade", "Ingredientes" // ingredientes temporariamente inseridos
+                    "Nome", "Preço", "Disponibilidade" // ingredientes temporariamente inseridos
                 }
         ));
     }
