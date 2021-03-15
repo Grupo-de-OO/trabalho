@@ -81,6 +81,11 @@ public class PainelEstoque extends JPanel implements InterfaceLayout {
                 new String[]{
                     "Produtos", "Quantidade", "Unidade"
                 }
-        ));
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
     }
 }

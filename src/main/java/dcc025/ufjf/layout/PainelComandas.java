@@ -172,7 +172,12 @@ public class PainelComandas extends JPanel implements InterfaceLayout {
                     new String[]{
                         "Nome", "Quantidade", "Preço"
                     }
-            ));
+            ) {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            });
             total.setText("TOTAL: R$" + new DecimalFormat("0.00").format(contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getValorTotal()));
         } else {
             tabela.setModel(new javax.swing.table.DefaultTableModel(null, new String[]{"Nome", "Quantidade", "Preço"}));

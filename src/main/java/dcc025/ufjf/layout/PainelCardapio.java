@@ -43,6 +43,7 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         JButton adiciona = new JButton("Adicionar no cardapio");
         buttonWrapper.add(adiciona);
         JButton ver = new JButton("Ver Ingredientes");
+        buttonWrapper.add(Box.createHorizontalGlue());
         buttonWrapper.add(ver);
         JButton retira = new JButton("Retirar do cardápio");
         buttonWrapper.add(Box.createHorizontalGlue());
@@ -139,9 +140,13 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         tabela.setModel(new javax.swing.table.DefaultTableModel(
                 contexto.cardapio.getCardapio(),
                 new String[]{
-                    "Nome", "Preço", "Disponibilidade", 
-                }
-        ));
+                    "Nome", "Preço", "Disponibilidade",}
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
     }
 
     public void checaDisponibilidade() {
