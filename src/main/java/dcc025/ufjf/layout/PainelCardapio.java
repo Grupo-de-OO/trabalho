@@ -10,6 +10,7 @@ import dcc025.ufjf.trabalho.ItemEstoque;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -60,11 +61,21 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         buttonWrapper.setLayout(new BoxLayout(buttonWrapper, BoxLayout.X_AXIS));
         JButton adiciona = new JButton("Adicionar no cardapio");
         buttonWrapper.add(adiciona);
-
+        JButton ver = new JButton("Ver mais...");
+        buttonWrapper.add(ver);
         JButton retira = new JButton("Retirar do cardápio");
         buttonWrapper.add(Box.createHorizontalGlue());
         buttonWrapper.add(retira);
 
+        ver.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                //contexto.cardapio.getItens().get(tabela.getSelectedRow());
+                JOptionPane.showMessageDialog(null,contexto.cardapio.getItens().get(tabela.getSelectedRow()).getIngredientesNecessarios());
+                //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        
         //action buttons
         adiciona.addActionListener(new java.awt.event.ActionListener() {
             @Override
