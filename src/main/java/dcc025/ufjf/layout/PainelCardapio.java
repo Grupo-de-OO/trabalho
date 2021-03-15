@@ -103,25 +103,23 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         });
 
         retira.addActionListener(new java.awt.event.ActionListener() {
+
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (contexto.cardapio.getCardapio().length != 0) {
                     JTextField nomeRetira = new JTextField();
                     Object[] itemRetira = {"Digite o nome do item para retirar do cardápio: ", nomeRetira};
-                    JOptionPane.showMessageDialog(null, itemRetira);
+                    int opcao = JOptionPane.showConfirmDialog(null, itemRetira, "Retira", JOptionPane.OK_CANCEL_OPTION);
 
                     boolean aux = contexto.cardapio.remItem(nomeRetira.getText().toLowerCase().trim());
-                    do {
-                        if (aux) {
-                            break;
-                        } else {
-                            JTextField newnomeRetira = new JTextField();
-                            Object[] newitemRetira = {"Item não encontrado, digite um item que tenha no cardápio :", newnomeRetira};
-                            JOptionPane.showMessageDialog(null, newitemRetira);
-                            aux = contexto.cardapio.remItem(newnomeRetira.getText().toLowerCase().trim());
+                    while (!aux && opcao == 0) {
 
-                        }
-                    } while (!aux);
+                        JTextField newnomeRetira = new JTextField();
+                        Object[] newitemRetira = {"Item não encontrado, digite um item que tenha no cardápio :", newnomeRetira};
+                        opcao = JOptionPane.showConfirmDialog(null, newitemRetira, "Retira", JOptionPane.OK_CANCEL_OPTION);
+                        aux = contexto.cardapio.remItem(newnomeRetira.getText().toLowerCase().trim());
+
+                    }
                     atualizaPainel();
                 } else {
                     JOptionPane.showMessageDialog(null, "Cardápio Vazio", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -137,7 +135,7 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         add(main);
 
     }
-    
+
     @Override
     public void atualizaPainel() {
         checaDisponibilidade();

@@ -111,12 +111,21 @@ public class PainelComandas extends JPanel implements InterfaceLayout {
         fechaComanda.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                if(contexto.listaComandas.getListaComandas().size()> 0){
                 if (JOptionPane.showConfirmDialog(main, "Tem certeza que deseja fechar a Comanda #" + comandas.getSelectedItem(), "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0) {
                     contexto.listaComandas.fechaComanda(comandas.getSelectedIndex(), contexto);
                 }
                 atualizaPainel();
             }
-        });
+                
+                else{JOptionPane.showMessageDialog(main,"Lista de comanda vazia","ERRO",JOptionPane.ERROR_MESSAGE);
+                
+                
+                
+                }
+            }
+            
+            });
 
         //Add wrapper1
         wrapper1.setLayout(new BoxLayout(wrapper1, BoxLayout.X_AXIS));
