@@ -76,8 +76,7 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
 
                 Object[] novoItem = {"Nome:", nome, "Preço:", preco};
                 JOptionPane.showMessageDialog(null, novoItem);
-                if (nome.getText().isEmpty() || preco.getText().isEmpty()) {
-                } else {
+                if (!nome.getText().isEmpty() && !preco.getText().isEmpty()) {
                     ItemCardapio novoItemCardapio = new ItemCardapio(nome.getText(), Float.parseFloat(preco.getText()), false);
 
                     int option = 0;
@@ -138,9 +137,9 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
     public void atualizaPainel() {
         checaDisponibilidade();
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                contexto.cardapio.getCardapio(), // Apos testes, voltar para getCardapio() e remover coluna "Ingredientes"
+                contexto.cardapio.getCardapio(),
                 new String[]{
-                    "Nome", "Preço", "Disponibilidade", // ingredientes temporariamente inseridos
+                    "Nome", "Preço", "Disponibilidade", 
                 }
         ));
     }

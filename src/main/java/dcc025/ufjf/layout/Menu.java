@@ -1,6 +1,7 @@
 package dcc025.ufjf.layout;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import javax.swing.Box;
@@ -46,18 +47,16 @@ public class Menu {
                 }
             }
         } catch (Exception e) {
-            // If Nimbus is not available, fall back to cross-platform
             try {
                 UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
             } catch (Exception ex) {
-                // Not worth my time
             }
         }
         
         JFrame frame = new JFrame();
         frame.addWindowListener(new frameEvent(contexto,frame));
 
-        frame.setSize(900, 600);
+        frame.setSize(1000, 600);
         frame.setMinimumSize(frame.getSize());
         frame.setLocation(100, 100);
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -65,9 +64,7 @@ public class Menu {
         frame.setTitle("Restaurante");
         ImageIcon image = new ImageIcon("restaurante.png");
         frame.setIconImage(image.getImage());
-        frame.getLayeredPane().setToolTipText("Restaurant Manager System");
 
-        //Toolbar 
         JPanel pDireita = new JPanel();
 
         //Setando paineis secundários
@@ -76,31 +73,29 @@ public class Menu {
         PainelComandas pComandas = new PainelComandas(contexto);
         PainelCardapio pCardapio = new PainelCardapio(contexto);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(pDireita);
-        pDireita.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 601, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pComandas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pEstoque, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pCardapio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout grupoLayout = new javax.swing.GroupLayout(pDireita);
+        pDireita.setLayout(grupoLayout);
+        grupoLayout.setHorizontalGroup(
+                grupoLayout.createParallelGroup()
+                        .addGroup(grupoLayout.createParallelGroup()
+                                .addComponent(pComandas))
+                        .addGroup(grupoLayout.createParallelGroup()
+                                .addComponent(pCaixa))
+                        .addGroup(grupoLayout.createParallelGroup()
+                                .addComponent(pEstoque))
+                        .addGroup(grupoLayout.createParallelGroup()
+                                .addComponent(pCardapio))
         );
-        jPanel3Layout.setVerticalGroup(
-                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pComandas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pCaixa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pEstoque, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(pCardapio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        grupoLayout.setVerticalGroup(
+                grupoLayout.createParallelGroup()
+                        .addGroup(grupoLayout.createParallelGroup()
+                                .addComponent(pComandas))
+                        .addGroup(grupoLayout.createParallelGroup()
+                                .addComponent(pCaixa))
+                        .addGroup(grupoLayout.createParallelGroup()
+                                .addComponent(pEstoque))
+                        .addGroup(grupoLayout.createParallelGroup()
+                                .addComponent(pCardapio))
         );
 
         //Add pDireita
@@ -189,12 +184,12 @@ public class Menu {
         //Setando pEsquerdaTitulo    
         JLabel imagem = new JLabel(image);
         imagem.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JLabel nomeRestaurante = new JLabel("THALEZIN DO CAPA");
+        JLabel nomeRestaurante = new JLabel("RESTAURANTE");
         nomeRestaurante.setAlignmentX(Component.CENTER_ALIGNMENT);
         pEsquerdaTitulo.add(imagem);
         pEsquerdaTitulo.add(Box.createVerticalStrut(50));
         pEsquerdaTitulo.add(nomeRestaurante);
-        pEsquerdaTitulo.add(Box.createVerticalStrut(100));
+        pEsquerdaTitulo.add(Box.createVerticalStrut(80));
         
         //setando pEsquerda
         pEsquerda.setLayout(new BoxLayout(pEsquerda, BoxLayout.Y_AXIS));
@@ -209,82 +204,6 @@ public class Menu {
 
         //Add pEsquerda
         frame.add(BorderLayout.WEST, pEsquerdaAux);
-
-//        //////////toolBar/////////// 
-//        JMenuBar menuBar = new JMenuBar();
-//        frame.setJMenuBar(menuBar);
-//
-//        //menus
-//        JMenu menu = new JMenu();
-//        ImageIcon iconeConfig = new ImageIcon("confic_icon.png");
-//        Image image2 = iconeConfig.getImage();
-//        Image newimgIcon = image2.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
-//        iconeConfig = new ImageIcon(newimgIcon);
-//
-//        menu.setIcon(iconeConfig);
-//
-//        //menu itens
-//        JMenu subMenu1 = new JMenu("Carregar arquivos");
-//
-//        JRadioButton escolheEstoque = new JRadioButton("Carregar estoque");
-//        subMenu1.add(escolheEstoque);
-//
-//        escolheEstoque.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//
-//                try {
-//                    String lerArquivo = Arquivo.lerArquivo("jsons//estoque.json");
-//                    List<ItemEstoque> itens = Json.toEstoque(lerArquivo);
-//
-//                    for (int i = 0; i < itens.size(); i++) {
-//                        contexto.estoque.addEstoque(itens.get(i).getNomeItemEstoque(), itens.get(i).getQuantidade(), itens.get(i).getUnidade());
-//                    }
-//                } catch (IOException r) {
-//                    System.err.println("Erro ao tentar escrever no arquivo: " + r.toString());
-//                }
-//
-//            }
-//        });
-//
-//        JRadioButton escolheCardapio = new JRadioButton("Carregar cardápio");
-//        subMenu1.add(escolheCardapio);
-       
-//        escolheCardapio.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//
-//                try {
-//                    String lerArquivo = Arquivo.lerArquivo("jsons//cardapio.json");
-//                    List<ItemCardapio> itens = Json.toCardapio(lerArquivo);
-//
-//                    for (int i = 0; i < itens.size(); i++) {
-//                        contexto.cardapio.addCardapio(itens.get(i).getNome(), itens.get(i).getPreco(), itens.get(i).getDisponivel());
-//                    }
-//                } catch (IOException i) {
-//                    System.err.println("Erro ao tentar escrever no arquivo: " + e.toString());
-//                }
-//            }
-//        });
-
-//        JRadioButton escolheCaixa = new JRadioButton("Carregar caixa");
-//        subMenu1.add(escolheCaixa);
-        
-//        JButton renomeiaRestaurante = new JButton();
-//        renomeiaRestaurante.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent ae) {
-//                String novoNome = JOptionPane.showInputDialog(null, "Novo nome do restaurante:", "Novo Nome");
-//                try {
-//                    BufferedReader br = new BufferedReader(new FileReader(new File("NomeRestaurante")));
-//                    BufferedWriter bw = new BufferedWriter(new FileWriter(new File("NomeRestaurante")));
-//                    
-//                } catch (IOException ex) {
-//                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-//            }
-//        });
-        
-//        menu.add(subMenu1);
-//        menuBar.add(menu);
 
         frame.setVisible(true);
 
