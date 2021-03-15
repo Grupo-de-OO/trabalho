@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dcc025.ufjf.layout;
 
 import java.awt.Dimension;
@@ -51,14 +46,11 @@ public class PainelEstoque extends JPanel implements InterfaceLayout {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTextField nome = new JTextField();
                 JTextField quantidade = new JTextField();
-                //JTextField unidade = new JTextField();
-                String [] opcoesUnidade = {"Kg", "Unid"};
+                String[] opcoesUnidade = {"Kg", "Unid"};
                 JComboBox unidade = new JComboBox(opcoesUnidade);
                 Object[] novoIngrediente = {"Nome:", nome, "Quantidade:", quantidade, "Unidade:", unidade};
                 JOptionPane.showMessageDialog(null, novoIngrediente);
-                //arrumar esse tratamento para null
                 if (nome.getText().isEmpty() || quantidade.getText().isEmpty() || unidade.getSelectedItem().toString().equals("")) {
-                    //JOptionPane.showMessageDialog(null, "Você deixou algum campo sem preencher informação.", "ERRO", JOptionPane.ERROR_MESSAGE);   
                 } else {
                     contexto.estoque.addEstoque(nome.getText(), Float.parseFloat(quantidade.getText()), unidade.getSelectedItem().toString());
                 }
@@ -73,17 +65,15 @@ public class PainelEstoque extends JPanel implements InterfaceLayout {
                 JTextField quantidade = new JTextField();
                 Object[] ingrediente = {"Nome:", nome, "Quantidade:", quantidade};
                 JOptionPane.showMessageDialog(null, ingrediente);
-                if (nome.getText().isEmpty() || quantidade.getText().isEmpty()) {
-                    //JOptionPane.showMessageDialog(null, "Você deixou algum campo sem preencher informação.", "ERRO", JOptionPane.ERROR_MESSAGE);                       
-                } else {
+                if (!nome.getText().isEmpty() && !quantidade.getText().isEmpty()) {
                     contexto.estoque.remEstoque(nome.getText().trim(), Float.parseFloat(quantidade.getText()));
                 }
                 atualizaPainel();
             }
         });
         atualizaPainel();
-
     }
+
     @Override
     public void atualizaPainel() {
         tabela.setModel(new javax.swing.table.DefaultTableModel(
@@ -93,5 +83,4 @@ public class PainelEstoque extends JPanel implements InterfaceLayout {
                 }
         ));
     }
-
 }

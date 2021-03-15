@@ -138,9 +138,9 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
     public void atualizaPainel() {
         checaDisponibilidade();
         tabela.setModel(new javax.swing.table.DefaultTableModel(
-                contexto.cardapio.getCardapio(), // Apos testes, voltar para getCardapio() e remover coluna "Ingredientes"
+                contexto.cardapio.getCardapio(),
                 new String[]{
-                    "Nome", "Preço", "Disponibilidade", // ingredientes temporariamente inseridos
+                    "Nome", "Preço", "Disponibilidade", 
                 }
         ));
     }

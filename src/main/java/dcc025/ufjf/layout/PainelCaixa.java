@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dcc025.ufjf.layout;
 
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,10 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- *
- * @author bruno
- */
 public class PainelCaixa extends JPanel implements InterfaceLayout {
 
     private JPanel header = new Header("Caixa");
@@ -36,16 +24,9 @@ public class PainelCaixa extends JPanel implements InterfaceLayout {
     private JPanel bottomWrapper = new JPanel();
     private JButton novaEntrada = new JButton("Nova Entrada");
     private JButton novaSaida = new JButton("Nova Saída");
-//    private JLabel saldo = formataLabel("Saldo do dia: ");
-
             
     public PainelCaixa(Contexto ctx) {
 
-        // A ideia seria desenvolver a pagina dentro do JPanel main, podendo alterar o layout dele
-        // sem problemas, sem quebrar a pagina. nao setar o layout dos paineis diretamente pois  
-        // dessa forma quebraria.
-        // Ex: main.setLayout(new blablaLayout());
-        // e a partir dai add os componentes com main.add(Component);
         contexto = ctx;
         statusWrapper.setLayout(new BoxLayout(statusWrapper, BoxLayout.X_AXIS));
         statusWrapper.add(emCaixa);

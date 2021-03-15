@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dcc025.ufjf.layout;
 
 import java.awt.Component;
@@ -21,12 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 
-/**
- *
- * @author bruno
- */
 public class PainelComandas extends JPanel implements InterfaceLayout {
 
     private Contexto contexto;
@@ -89,14 +79,16 @@ public class PainelComandas extends JPanel implements InterfaceLayout {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if (contexto.listaComandas.getListaComandas().size() > 0 && contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().size() > 0) {
-                    if(tabela.getSelectedRow() != -1){    
+                    if (tabela.getSelectedRow() != -1) {
                         if (JOptionPane.showConfirmDialog(main, "Tem certeza que deseja remover " + contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).getPedidos().get(tabela.getSelectedRow()).getItemCardapio().getNome(), "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0) {
                             contexto.listaComandas.getListaComandas().get(comandas.getSelectedIndex()).removePedido(tabela.getSelectedRow());
                         }
-                    }else
+                    } else {
                         JOptionPane.showMessageDialog(main, "Selecione o item que deseja remover.", "ATENÇÃO", JOptionPane.ERROR_MESSAGE);
-                }else
+                    }
+                } else {
                     JOptionPane.showMessageDialog(main, "Nenhuma comanda aberta ou nenhum item adicionado.", "ATENÇÃO!", JOptionPane.ERROR_MESSAGE);
+                }
                 trocaTabela();
                 atualizaPainel();
             }
@@ -105,19 +97,18 @@ public class PainelComandas extends JPanel implements InterfaceLayout {
         fechaComanda.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if(contexto.listaComandas.getListaComandas().size()> 0){
-                if (JOptionPane.showConfirmDialog(main, "Tem certeza que deseja fechar a Comanda #" + comandas.getSelectedItem(), "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0) {
-                    contexto.listaComandas.fechaComanda(comandas.getSelectedIndex(), contexto);
-                }
-                atualizaPainel();
-            }
-                
-                else{JOptionPane.showMessageDialog(main,"Lista de comanda vazia","ERRO",JOptionPane.ERROR_MESSAGE);
+                if (contexto.listaComandas.getListaComandas().size() > 0) {
+                    if (JOptionPane.showConfirmDialog(main, "Tem certeza que deseja fechar a Comanda #" + comandas.getSelectedItem(), "ATENÇÃO", JOptionPane.YES_NO_OPTION) == 0) {
+                        contexto.listaComandas.fechaComanda(comandas.getSelectedIndex(), contexto);
+                    }
+                    atualizaPainel();
+                } else {
+                    JOptionPane.showMessageDialog(main, "Lista de comanda vazia", "ERRO", JOptionPane.ERROR_MESSAGE);
 
                 }
             }
-            
-            });
+
+        });
 
         //Add wrapper1
         wrapper1.setLayout(new BoxLayout(wrapper1, BoxLayout.X_AXIS));
@@ -189,7 +180,6 @@ public class PainelComandas extends JPanel implements InterfaceLayout {
         }
     }
 
-    //Não sei se vai ser usado mas ta ai
     @Override
     public void atualizaPainel() {
         int i;
