@@ -54,7 +54,7 @@ public class Menu {
         }
         
         JFrame frame = new JFrame();
-        frame.addWindowListener(new frameEvent(contexto,frame));
+        frame.addWindowListener(new FrameEvent(contexto,frame));
 
         frame.setSize(1000, 600);
         frame.setMinimumSize(frame.getSize());
