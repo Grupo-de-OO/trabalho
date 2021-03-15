@@ -91,7 +91,7 @@ public class PainelEstoque extends JPanel implements InterfaceLayout {
                 if (nome.getText().isEmpty() || quantidade.getText().isEmpty()) {
                     //JOptionPane.showMessageDialog(null, "Você deixou algum campo sem preencher informação.", "ERRO", JOptionPane.ERROR_MESSAGE);                       
                 } else {
-                    contexto.estoque.remEstoque(nome.getText(), Integer.parseInt(quantidade.getText()));
+                    contexto.estoque.remEstoque(nome.getText().trim(), Float.parseFloat(quantidade.getText()));
                 }
                 atualizaPainel();
             }

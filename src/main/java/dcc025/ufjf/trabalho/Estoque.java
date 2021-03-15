@@ -88,7 +88,7 @@ public class  Estoque
                     JOptionPane.showMessageDialog(null, "Foram removidos " + quantidade + ingredienteEst.getUnidade() + " de " + ingredienteEst.getNomeItemEstoque() +" do estoque.", "AVISO",JOptionPane.WARNING_MESSAGE);
                     itemExiste = true;
                 }else{
-                    opcao = JOptionPane.showConfirmDialog(null,"Não foi possível remover " + quantidade + ingredienteEst.getUnidade() + " do estoque pois só tem " + ingredienteEst.getQuantidade() + ingredienteEst.getUnidade()
+                    opcao = JOptionPane.showConfirmDialog(null,"Não foi possível remover " + quantidade + ingredienteEst.getUnidade() + " de " + ingredienteEst.getNomeItemEstoque() + " do estoque pois só tem " + ingredienteEst.getQuantidade() + ingredienteEst.getUnidade()
                                       + "\nGostaria de remover mesmo assim?");
                     if(opcao==JOptionPane.YES_OPTION)
                         ingredienteEst.setQuantidade(0);
