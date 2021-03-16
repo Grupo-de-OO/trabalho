@@ -72,8 +72,7 @@ public class Menu {
         PainelCaixa pCaixa = new PainelCaixa(contexto);
         PainelComandas pComandas = new PainelComandas(contexto);
         PainelCardapio pCardapio = new PainelCardapio(contexto);
-<<<<<<< HEAD
-=======
+
         JPanel bemVindo = new JPanel();
         ImageIcon imgBemVindo = new ImageIcon("bemVindo.png");
         
@@ -84,8 +83,7 @@ public class Menu {
         bemVindo.add(bem_Vindo);
         bemVindo.add(Box.createGlue());
         pDireita.add(bemVindo);
->>>>>>> 25ef21f218a0ca709863e581af63713027342c76
-        
+
         javax.swing.GroupLayout grupoLayout = new javax.swing.GroupLayout(pDireita);
         pDireita.setLayout(grupoLayout);
         grupoLayout.setHorizontalGroup(
