@@ -23,15 +23,6 @@ public class Json {
         String json = gson.toJson(genericType);
         return json;
     }
-  
-    public static<T> List<T> toGenerics(String conteudo) {
-        Gson gson = new Gson();
-        Type genericType= new TypeToken<ArrayList<T>>() {
-        }.getType();
-        List<T> generic = gson.fromJson(conteudo, genericType);
-
-        return generic;
-    }
 
     public static List<ItemEstoque> toEstoque(String conteudo) {
         Gson gson = new Gson();
