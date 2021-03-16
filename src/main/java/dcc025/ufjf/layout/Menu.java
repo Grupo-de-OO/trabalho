@@ -72,14 +72,16 @@ public class Menu {
         PainelCaixa pCaixa = new PainelCaixa(contexto);
         PainelComandas pComandas = new PainelComandas(contexto);
         PainelCardapio pCardapio = new PainelCardapio(contexto);
-        JPanel bemVindo = new JPanel(null);
-        JLabel bem_Vindo = new JLabel("BEM VINDO");
-        bem_Vindo.setFont(new java.awt.Font("Tahoma", 1, 36));
-        bem_Vindo.setBounds(bemVindo.getWidth()/2,bemVindo.getHeight()/2,100,50);
+        JPanel bemVindo = new JPanel();
+        ImageIcon imgBemVindo = new ImageIcon("bemVindo.png");
+        
+        JLabel bem_Vindo = new JLabel(imgBemVindo);
+        bemVindo.setLayout(new BoxLayout(bemVindo, BoxLayout.X_AXIS));
+        
+        bemVindo.add(Box.createHorizontalGlue());        
         bemVindo.add(bem_Vindo);
+        bemVindo.add(Box.createGlue());
         pDireita.add(bemVindo);
-        
-        
         
         javax.swing.GroupLayout grupoLayout = new javax.swing.GroupLayout(pDireita);
         pDireita.setLayout(grupoLayout);
@@ -94,6 +96,7 @@ public class Menu {
                         .addGroup(grupoLayout.createParallelGroup()
                                 .addComponent(pCardapio))
                         .addGroup(grupoLayout.createParallelGroup().addComponent(bemVindo))
+                        
         );
         grupoLayout.setVerticalGroup(
                 grupoLayout.createParallelGroup()
@@ -105,6 +108,7 @@ public class Menu {
                                 .addComponent(pEstoque))
                         .addGroup(grupoLayout.createParallelGroup()
                                 .addComponent(pCardapio))
+                        .addGroup(grupoLayout.createParallelGroup().addComponent(bemVindo))
         );
 
         //Add pDireita
@@ -142,6 +146,7 @@ public class Menu {
                 pCaixa.setVisible(false);
                 pEstoque.setVisible(true);
                 pCardapio.setVisible(false);
+                bemVindo.setVisible(false);
             }
         });
 
@@ -153,6 +158,7 @@ public class Menu {
                 pCaixa.setVisible(false);
                 pEstoque.setVisible(false);
                 pCardapio.setVisible(true);
+                bemVindo.setVisible(false);                
             }
         });
 
@@ -164,6 +170,7 @@ public class Menu {
                 pCaixa.setVisible(true);
                 pEstoque.setVisible(false);
                 pCardapio.setVisible(false);
+                bemVindo.setVisible(false);
             }
         });
 
@@ -175,6 +182,7 @@ public class Menu {
                 pCaixa.setVisible(false);
                 pEstoque.setVisible(false);
                 pCardapio.setVisible(false);
+                bemVindo.setVisible(false);
             }
         });
 

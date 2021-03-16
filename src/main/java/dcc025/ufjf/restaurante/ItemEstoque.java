@@ -1,13 +1,12 @@
 package dcc025.ufjf.restaurante;
 
 public class ItemEstoque {
-    
+
     private String nomeItemEstoque;
     private float quantidade;
     private String unidade;
-    
-    public ItemEstoque(String nome, float quantidade, String unidade)
-    {
+
+    public ItemEstoque(String nome, float quantidade, String unidade) {
         this.nomeItemEstoque = nome;
         this.quantidade = quantidade;
         this.unidade = unidade;
@@ -15,11 +14,9 @@ public class ItemEstoque {
 
     @Override
     public String toString() {
-
         return (this.quantidade + " " + this.unidade + " de " + this.nomeItemEstoque);
-
     }
-  
+
     public String getNomeItemEstoque() {
         return nomeItemEstoque;
     }
@@ -43,5 +40,5 @@ public class ItemEstoque {
     public void setUnidade(String unidade) {
         this.unidade = unidade;
     }
-    
+
 }
