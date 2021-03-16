@@ -36,6 +36,7 @@ public class PainelCardapio extends JPanel implements InterfaceLayout {
         }
 
         tabela.setPreferredScrollableViewportSize(InterfaceLayout.tableDimension);
+        tabela.setSelectionMode(0);
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
 

@@ -37,6 +37,7 @@ public class PainelCaixa extends JPanel implements InterfaceLayout {
         statusWrapper.add(emAberto);
 
         tabela.setPreferredScrollableViewportSize(InterfaceLayout.tableDimension);
+        tabela.setSelectionMode(0);
 
         bottomWrapper.setLayout(new BoxLayout(bottomWrapper, BoxLayout.X_AXIS));
         bottomWrapper.add(novaEntrada);

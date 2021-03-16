@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.text.DecimalFormat;
+import javafx.scene.control.TableSelectionModel;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -121,6 +122,7 @@ public class PainelComandas extends JPanel implements InterfaceLayout {
         //Add tabela
         tabela.setPreferredScrollableViewportSize(InterfaceLayout.tableDimension);
         tabela.setRowSelectionAllowed(true);
+        tabela.setSelectionMode(0);
         wrapper2.add(new JScrollPane(tabela));
 
         //Add wrapperBotoes
@@ -192,7 +194,10 @@ public class PainelComandas extends JPanel implements InterfaceLayout {
             i = comandas.getSelectedIndex();
             atualizaComboBox();
             trocaTabela();
-            comandas.setSelectedIndex(i);
+            if(i == contexto.listaComandas.getListaComandas().size())
+                comandas.setSelectedIndex(i - 1);
+            else
+                comandas.setSelectedIndex(i);
         } else {
             atualizaComboBox();
             trocaTabela();

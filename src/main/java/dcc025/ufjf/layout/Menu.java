@@ -72,7 +72,7 @@ public class Menu {
         PainelCaixa pCaixa = new PainelCaixa(contexto);
         PainelComandas pComandas = new PainelComandas(contexto);
         PainelCardapio pCardapio = new PainelCardapio(contexto);
-
+        
         javax.swing.GroupLayout grupoLayout = new javax.swing.GroupLayout(pDireita);
         pDireita.setLayout(grupoLayout);
         grupoLayout.setHorizontalGroup(

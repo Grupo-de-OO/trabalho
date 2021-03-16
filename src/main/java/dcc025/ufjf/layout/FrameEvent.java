@@ -82,6 +82,7 @@ public class FrameEvent implements WindowListener {
                 frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             }
         }else{
+            escreveArquivos();
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         }
     }

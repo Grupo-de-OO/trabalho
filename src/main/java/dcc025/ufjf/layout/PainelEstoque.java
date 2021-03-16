@@ -25,6 +25,7 @@ public class PainelEstoque extends JPanel implements InterfaceLayout {
         main.setLayout(new BoxLayout(main, BoxLayout.Y_AXIS));
 
         tabela.setPreferredScrollableViewportSize(new Dimension(500, 330));
+        tabela.setSelectionMode(0);
         main.add(new JScrollPane(tabela));
         main.add(Box.createVerticalStrut(30));
 

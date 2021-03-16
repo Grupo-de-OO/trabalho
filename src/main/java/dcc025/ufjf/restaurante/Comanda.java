@@ -15,6 +15,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 public class Comanda {
 
@@ -35,6 +36,7 @@ public class Comanda {
         cardapioAux.setBorder(BorderFactory.createTitledBorder("Cardápio"));
         cardapioAux.setLayout(new BorderLayout());
         JList<String> cardapio = new JList<String>();
+        cardapio.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         cardapio.setPreferredSize(new Dimension(150, 300));
         cardapio.setMinimumSize(new Dimension(150, 300));
         cardapio.setMaximumSize(new Dimension(150, 300));
